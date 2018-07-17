@@ -7,7 +7,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-public class Order {
+class Order {
     @JsonPropertyOrder("order_id")
     private Integer orderId;
     @JsonProperty("stock_id")
@@ -16,19 +16,16 @@ public class Order {
     private float price;
     @JsonProperty("order_timestamp")
     private Timestamp timestamp;
-    public Order(
-            Integer orderId,
-            int stockId,
-            int quantity,
-            float orderPrice,
-            Timestamp timestamp) {
+
+    Order(Integer orderId, int stockId, int quantity, float orderPrice, Timestamp timestamp) {
         setOrderId(orderId);
         setStockId(stockId);
         setQuantity(quantity);
         setPrice(orderPrice);
         setTimestamp(timestamp);
     }
-    public Order(int stockId, int quantity, float orderPrice) {
-        this(null,stockId,quantity,orderPrice,null);
+
+    Order(int stockId, int quantity, float orderPrice) {
+        this(null, stockId, quantity, orderPrice, null);
     }
 }
