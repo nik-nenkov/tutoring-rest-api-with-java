@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.InvalidParameterException;
-//import java.text.SimpleDateFormat;
+import java.util.List;
 
 @RestController
 public class MainController {
@@ -127,9 +127,44 @@ public class MainController {
         return currentOrder;
     }
 
+    @RequestMapping("/revise")
+    public Revision reviseLastThirtyMinutes() {
+        java.sql.Timestamp startingTime = new java.sql.Timestamp(System.currentTimeMillis() - 1800000);
+
+        Float sumOfPrice = 0F;
+        Integer sumQuantity = 0;
+
+        List<Order> ordersFromLastThirtyMinutes = jdbcTemplate.query(
+                "select * from `order` where order_timestamp>unix_timestamp(?)",
+                new Object[]{startingTime},
+                (rs, rowNum) -> new Order(
+                        rs.getInt("stock_id"),
+                        rs.getInt("quantity"),
+                        rs.getFloat("price")));
+
+
+        for (Order order : ordersFromLastThirtyMinutes) {
+            sumQuantity += order.getQuantity();
+            sumOfPrice += order.getPrice();
+        }
+
+        jdbcTemplate.update(
+                "INSERT into revision(total_quantities, total_price, revision_started) " +
+                        "values(?,?,?)", sumQuantity, sumOfPrice, startingTime);
+
+        return jdbcTemplate.queryForObject("select * from `revision` order by revision_id desc limit 1",
+                (rs, rowNum) -> new Revision(
+                        rs.getInt("revision_id"),
+                        rs.getInt("total_quantities"),
+                        rs.getFloat("total_price"),
+                        rs.getTimestamp("revision_started"),
+                        rs.getTimestamp("revision_ended")
+                ));
+    }
+
     @Scheduled(fixedRate = 60000)   //  1 minute == 60 000 milliseconds
     private void addSomeStocks() {
-        //Някъде ще трябва да задаваме кои стоки и сколко да бъдат увеличавани периодично
+        //Някъде ще трябва да задаваме кои стоки и с колко да бъдат увеличавани периодично
         increaseStock(111, 20);
         log.info("Stock with id=111 was increased by quantity=50");
         increaseStock(345, 80);
@@ -138,6 +173,9 @@ public class MainController {
 
     @Scheduled(fixedRate = 1800000) // 30 minutes == 1 800 000 milliseconds
     private void makeComputationAndLogResult() {
-
+        Revision currentRevision = reviseLastThirtyMinutes();
+        log.info("Revision:\n id=" + currentRevision.getRevisionId() +
+                ", quantity=" + currentRevision.getTotalQuantities() +
+                ", price=" + currentRevision.getTotalPrice());
     }
 }
