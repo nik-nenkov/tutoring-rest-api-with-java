@@ -1,4 +1,4 @@
-package jdbc.crud.demo;
+package com.epam.training.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -7,7 +7,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-class Order {
+public class Order {
     @JsonPropertyOrder("order_id")
     private Integer orderId;
     @JsonProperty("stock_id")
@@ -17,7 +17,7 @@ class Order {
     @JsonProperty("order_timestamp")
     private Timestamp timestamp;
 
-    Order(Integer orderId, int stockId, int quantity, float orderPrice, Timestamp timestamp) {
+    public Order(Integer orderId, int stockId, int quantity, float orderPrice, Timestamp timestamp) {
         setOrderId(orderId);
         setStockId(stockId);
         setQuantity(quantity);
@@ -25,7 +25,7 @@ class Order {
         setTimestamp(timestamp);
     }
 
-    Order(int stockId, int quantity, float orderPrice) {
+    public Order(int stockId, int quantity, float orderPrice) {
         this(null, stockId, quantity, orderPrice, null);
     }
 }

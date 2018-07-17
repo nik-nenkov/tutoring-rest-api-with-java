@@ -1,4 +1,4 @@
-package jdbc.crud.demo;
+package com.epam.training.revision;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,7 +8,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-class Revision {
+public class Revision {
 
     @JsonPropertyOrder("revision_id")
     private Integer revisionId;
@@ -25,16 +25,12 @@ class Revision {
     @JsonProperty("revision_ended")
     private Timestamp revisionEnd;
 
-    Revision(Integer revisionId, int totalQuantities, float totalPrice, Timestamp revisionStart, Timestamp revisionEnd) {
+    public Revision(Integer revisionId, int totalQuantities, float totalPrice, Timestamp revisionStart, Timestamp revisionEnd) {
         setRevisionId(revisionId);
         setTotalQuantities(totalQuantities);
         setTotalPrice(totalPrice);
         setRevisionStart(revisionStart);
         setRevisionEnd(revisionEnd);
-    }
-
-    Revision(Integer totalQuantities, Float totalPrice, Timestamp revisionStart) {
-        this(null, totalQuantities, totalPrice, revisionStart, null);
     }
 
 }

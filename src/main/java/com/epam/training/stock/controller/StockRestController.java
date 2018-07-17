@@ -1,5 +1,10 @@
-package jdbc.crud.demo;
+package com.epam.training.stock.controller;
 
+import com.epam.training.order.Order;
+import com.epam.training.revision.Revision;
+import com.epam.training.stock.Stock;
+import com.epam.training.stock.repository.StockRepository;
+import com.epam.training.stock.service.StockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,24 +13,24 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.InvalidParameterException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+
 @RestController
-public class MainController {
+public class StockRestController {
 
-    private static final Logger log = LoggerFactory.getLogger(MainController.class);
+    private static final Logger log = LoggerFactory.getLogger(StockRestController.class);
     private final JdbcTemplate jdbcTemplate;
-
-//    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private final StockRepository stockRepository;
+    private final StockService stockService;
 
     @Autowired
-    public MainController(JdbcTemplate jdbcTemplate) {
+    public StockRestController(JdbcTemplate jdbcTemplate, StockRepository stockRepository, StockService stockService) {
         this.jdbcTemplate = jdbcTemplate;
-    }
-
-    @RequestMapping("/home")
-    public String homeMessage() {
-        return "test123";
+        this.stockRepository = stockRepository;
+        this.stockService = stockService;
     }
 
     @RequestMapping(
@@ -34,7 +39,8 @@ public class MainController {
             consumes = "application/json",
             produces = "application/json")
     public Stock newStock(@RequestBody Stock stockToAdd) {
-        jdbcTemplate.update("INSERT INTO stock(stock_id, price, quantity) VALUES (?, ?, ?)",
+        jdbcTemplate.update(
+                "INSERT INTO stock(stock_id, price, quantity) VALUES (?, ?, ?)",
                 stockToAdd.getSockId(), stockToAdd.getPrice(), stockToAdd.getQuantity());
         return stockToAdd;
     }
@@ -46,28 +52,8 @@ public class MainController {
     public Stock increaseStock(
             @RequestParam("stock_id") int stockId,
             @RequestParam("quantity") int quantity) throws InvalidParameterException {
-
-        Stock stockToUpdate = jdbcTemplate.queryForObject("SELECT * FROM stock WHERE stock_id=" + stockId + " LIMIT 1",
-                (rs, rowNum) -> new Stock(
-                        rs.getInt("stock_id"),
-                        rs.getFloat("price"),
-                        rs.getInt("quantity"))
-        );
-        assert stockToUpdate != null;
-        int newQuantity = stockToUpdate.getQuantity() + quantity;
-        if (newQuantity >= 0) {
-            stockToUpdate.setQuantity(newQuantity);
-            jdbcTemplate.update("UPDATE stock " +
-                    "SET quantity=" + stockToUpdate.getQuantity() + " " +
-                    "WHERE stock_id=" + stockToUpdate.getSockId());
-            return stockToUpdate;
-        }
-        throw new InvalidParameterException() {
-            @Override
-            public String getMessage() {
-                return "Stock quantity can not be negative!";
-            }
-        };
+        stockService.addQuantityToStock(stockId, quantity);
+        return stockRepository.getStockById(stockId);
     }
 
     @RequestMapping("/new_order")
@@ -160,6 +146,26 @@ public class MainController {
                         rs.getTimestamp("revision_started"),
                         rs.getTimestamp("revision_ended")
                 ));
+    }
+
+    @RequestMapping(value = "/stats", produces = "application/json")
+    public List<Revision> showStatistics(
+            @RequestParam("start_date") String startDate,
+            @RequestParam("end_date") String endDate) {
+//        Timestamp startTime = new Timestamp(dateFormat.parse(startDate).getTime());
+//        Timestamp endTime = new Timestamp(dateFormat.parse(endDate).getTime());
+
+//        log.info("\n\n\tstartTime="+startTime.toString()+"\n\tendTime="+endTime.toString());
+
+        return jdbcTemplate.query(
+                "select * from `revision` where revision_started > ? and revision_ended < ?",
+                new Object[]{startDate, endDate},
+                (rs, rowNum) -> new Revision(
+                        rs.getInt("revision_id"),
+                        rs.getInt("total_quantities"),
+                        rs.getFloat("total_price"),
+                        rs.getTimestamp("revision_started"),
+                        rs.getTimestamp("revision_ended")));
     }
 
     @Scheduled(fixedRate = 60000)   //  1 minute == 60 000 milliseconds
