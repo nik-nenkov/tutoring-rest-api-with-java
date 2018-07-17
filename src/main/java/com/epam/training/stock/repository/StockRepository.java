@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Repository
 
@@ -26,6 +27,7 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     private static final String SELECT_STOCK_BY_ID = "SELECT * FROM stock WHERE stock_id=:stock_id";
     private static final String UPDATE_STOCK_QUANTITY__BY_ID = "UPDATE stock SET quantity=:quantity WHERE stock_id=:stock_id";
     private static final Logger log = LoggerFactory.getLogger(StockRepository.class);
+
     private final DataSource dataSource;
 
     @Autowired
@@ -43,22 +45,24 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
 
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);
-        return getNamedParameterJdbcTemplate().queryForObject(SELECT_STOCK_BY_ID, params, new StockRowMapper());
+        return Objects.requireNonNull(getNamedParameterJdbcTemplate()).queryForObject(SELECT_STOCK_BY_ID, params, new StockRowMapper());
     }
 
     @Transactional
-    public void updateStockQuantity(int stockId, int quantity) {
+    public void updateStockQuantity(int stockId, int quantity) throws NullPointerException {
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);
         params.put("quantity", quantity);
-
-        getNamedParameterJdbcTemplate().update(UPDATE_STOCK_QUANTITY__BY_ID, params);
+        Objects.requireNonNull(getNamedParameterJdbcTemplate()).update(UPDATE_STOCK_QUANTITY__BY_ID, params);
     }
 
     private static class StockRowMapper implements RowMapper<Stock> {
         @Override
         public Stock mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new Stock(rs.getInt("stock_id"), rs.getFloat("price"), rs.getInt("quantity"));
+            return new Stock(
+                    rs.getInt("stock_id"),
+                    rs.getFloat("price"),
+                    rs.getInt("quantity"));
         }
     }
 }

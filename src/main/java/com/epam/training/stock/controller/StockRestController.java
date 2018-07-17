@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.InvalidParameterException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -22,7 +21,6 @@ public class StockRestController {
 
     private static final Logger log = LoggerFactory.getLogger(StockRestController.class);
     private final JdbcTemplate jdbcTemplate;
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private final StockRepository stockRepository;
     private final StockService stockService;
 
@@ -152,10 +150,6 @@ public class StockRestController {
     public List<Revision> showStatistics(
             @RequestParam("start_date") String startDate,
             @RequestParam("end_date") String endDate) {
-//        Timestamp startTime = new Timestamp(dateFormat.parse(startDate).getTime());
-//        Timestamp endTime = new Timestamp(dateFormat.parse(endDate).getTime());
-
-//        log.info("\n\n\tstartTime="+startTime.toString()+"\n\tendTime="+endTime.toString());
 
         return jdbcTemplate.query(
                 "select * from `revision` where revision_started > ? and revision_ended < ?",
