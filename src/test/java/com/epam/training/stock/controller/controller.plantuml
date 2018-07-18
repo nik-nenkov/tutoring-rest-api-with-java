@@ -4,9 +4,8 @@ title __CONTROLLER's Class Diagram__\n
 
   package com.epam.training.stock {
     package com.epam.training.stock.controller {
-      class StockRestController {
-          - jdbcTemplate : JdbcTemplate
-          + StockRestController()
+      class StockRestControllerTest {
+          - mockMvc : MockMvc
           + newStock()
           + increaseStock()
       }
@@ -14,8 +13,6 @@ title __CONTROLLER's Class Diagram__\n
   }
   
 
-  StockRestController o-- StockRepository : stockRepository
-  StockRestController o-- StockService : stockService
 
 
 right footer

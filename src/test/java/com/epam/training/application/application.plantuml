@@ -3,14 +3,12 @@
 title __APPLICATION's Class Diagram__\n
 
   package com.epam.training.application {
-    class DemoApplication {
-        {static} + main()
-        + run()
+    class DemoApplicationTest {
+        + contextLoads()
     }
   }
   
 
-  DemoApplication -up-|> CommandLineRunner
 
 
 right footer

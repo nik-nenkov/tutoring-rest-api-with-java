@@ -2,30 +2,28 @@
 
 title __REVISION's Class Diagram__\n
 
-  package com.epam.training {
-    package com.epam.training.revision {
-      class Revision {
-          - revisionId : Integer
-          - totalQuantities : int
-          - totalPrice : float
-          - revisionStart : Timestamp
-          - revisionEnd : Timestamp
-          + Revision()
-          + getRevisionId()
-          + getTotalQuantities()
-          + getTotalPrice()
-          + getRevisionStart()
-          + getRevisionEnd()
-          + setRevisionId()
-          + setTotalQuantities()
-          + setTotalPrice()
-          + setRevisionStart()
-          + setRevisionEnd()
-          + equals()
-          + hashCode()
-          # canEqual()
-          + toString()
-      }
+  package com.epam.training.revision {
+    class Revision {
+        - revisionId : Integer
+        - totalQuantities : int
+        - totalPrice : float
+        - revisionStart : Timestamp
+        - revisionEnd : Timestamp
+        + Revision()
+        + getRevisionId()
+        + getTotalQuantities()
+        + getTotalPrice()
+        + getRevisionStart()
+        + getRevisionEnd()
+        + setRevisionId()
+        + setTotalQuantities()
+        + setTotalPrice()
+        + setRevisionStart()
+        + setRevisionEnd()
+        + equals()
+        + hashCode()
+        # canEqual()
+        + toString()
     }
   }
   

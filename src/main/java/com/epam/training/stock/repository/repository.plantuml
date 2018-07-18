@@ -2,30 +2,28 @@
 
 title __REPOSITORY's Class Diagram__\n
 
-  package com.epam.training {
-    package com.epam.training.stock {
-      package com.epam.training.stock.repository {
-        class StockRepository {
-            {static} - SELECT_STOCK_BY_ID : String
-            {static} - UPDATE_STOCK_QUANTITY__BY_ID : String
-            {static} - log : Logger
-            - dataSource : DataSource
-            + StockRepository()
-            - initialize()
-            + getStockById()
-            + updateStockQuantity()
-        }
+  package com.epam.training.stock {
+    package com.epam.training.stock.repository {
+      class StockRepository {
+          {static} - INSERT_STOCK_NEW : String
+          {static} - SELECT_STOCK_BY_ID : String
+          {static} - UPDATE_STOCK_QUANTITY_BY_ID : String
+          - jdbcTemplate : NamedParameterJdbcTemplate
+          - dataSource : DataSource
+          + StockRepository()
+          - initialize()
+          + getStockById()
+          + updateQuantityById()
+          + insertNewStock()
       }
     }
   }
   
 
-  package com.epam.training {
-    package com.epam.training.stock {
-      package com.epam.training.stock.repository {
-        class StockRowMapper {
-            + mapRow()
-        }
+  package com.epam.training.stock {
+    package com.epam.training.stock.repository {
+      class StockRowMapper {
+          + mapRow()
       }
     }
   }

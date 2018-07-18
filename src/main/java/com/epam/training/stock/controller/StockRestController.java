@@ -36,10 +36,8 @@ public class StockRestController {
             consumes = "application/json",
             produces = "application/json")
     public Stock newStock(@RequestBody Stock stockToAdd) {
-        jdbcTemplate.update(
-                "INSERT INTO stock(stock_id, price, quantity) VALUES (?, ?, ?)",
-                stockToAdd.getSockId(), stockToAdd.getPrice(), stockToAdd.getQuantity());
-        return stockToAdd;
+        stockRepository.insertNewStock(stockToAdd.getSockId(), stockToAdd.getPrice(), stockToAdd.getQuantity());
+        return stockRepository.getStockById(stockToAdd.getSockId());
     }
 
     @RequestMapping(
