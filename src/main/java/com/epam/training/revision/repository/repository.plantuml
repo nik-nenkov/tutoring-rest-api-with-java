@@ -8,9 +8,7 @@ title __REPOSITORY's Class Diagram__\n
           {static} - INSERT_REVISION_NEW : String
           {static} - SELECT_REVISION_LAST_ENTERED : String
           {static} - SELECT_REVISIONS_FROM_TIMESTAMP : String
-          - dataSource : DataSource
           + RevisionRepository()
-          - initialize()
           + insertNewRevision()
           + getLastRevisionEntered()
           + getRevisionsInTimeInterval()

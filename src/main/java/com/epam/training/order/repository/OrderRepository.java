@@ -1,14 +1,15 @@
 package com.epam.training.order.repository;
 
 import com.epam.training.order.Order;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -26,15 +27,9 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
     private static final String SELECT_LAST_ORDER = "SELECT * FROM `order` ORDER BY order_id DESC LIMIT 1";
     private static final String SELECT_ORDERS_AFTER_UNIX_TIMESTAMP = "select * from `order` where order_timestamp>unix_timestamp(:starting_time)";
 
-    private final DataSource dataSource;
 
+    @Autowired
     public OrderRepository(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
-
-    @PostConstruct
-    private void initialize() {
         setDataSource(dataSource);
     }
 
@@ -55,7 +50,7 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
     }
 
     @Transactional
-    public void createNewOrder(int stockId, int quantity, float orderPrice) {
+    public void createNewOrder(int stockId, int quantity, BigDecimal orderPrice) {
 
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);

@@ -9,9 +9,7 @@ title __REPOSITORY's Class Diagram__\n
           {static} - SELECT_STOCK_BY_ID : String
           {static} - UPDATE_STOCK_QUANTITY_BY_ID : String
           - jdbcTemplate : NamedParameterJdbcTemplate
-          - dataSource : DataSource
           + StockRepository()
-          - initialize()
           + getStockById()
           + updateQuantityById()
           + insertNewStock()

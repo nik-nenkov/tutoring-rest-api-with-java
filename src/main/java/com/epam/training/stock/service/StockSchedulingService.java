@@ -7,11 +7,14 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 
 @Service
 @EnableScheduling
 public class StockSchedulingService {
 
+    private final int interval = 60000;
     private static final Logger log = LoggerFactory.getLogger(StockSchedulingService.class);
     private final StockService stockService;
 
@@ -20,7 +23,12 @@ public class StockSchedulingService {
         this.stockService = stockService;
     }
 
-    @Scheduled(fixedRate = 60000)   //  1 minute == 60 000 milliseconds
+    @PostConstruct
+    private void initialize() {
+        //TODO тук да заредя от базата позиции ? редовни доставки ?
+    }
+
+    @Scheduled(fixedRate = interval)   //  1 minute == 60 000 milliseconds
     private void addSomeStocks() {
         //Някъде ще трябва да задаваме кои стоки и с колко да бъдат увеличавани периодично
         // TODO use a settings file from which to load the stocks and their amounts

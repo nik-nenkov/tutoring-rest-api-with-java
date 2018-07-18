@@ -7,9 +7,11 @@ import com.epam.training.stock.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.security.InvalidParameterException;
 
 @RestController
@@ -26,7 +28,8 @@ public class OrderRestController {
     }
 
     @RequestMapping(value = "/new_order",
-            produces = "application/json")
+            produces = "application/json",
+            method = RequestMethod.POST)
     public Order createOrder(
             @RequestParam("stock_id") int stockId,
             @RequestParam("quantity") int quantity) {
@@ -43,7 +46,7 @@ public class OrderRestController {
         };
 
         //Правим изчисления са цена на поръчката и промяна на количеството в склада:
-        float orderPrice = currentStock.getPrice() * quantity;
+        BigDecimal orderPrice = currentStock.getPrice().multiply(BigDecimal.valueOf(quantity));
         int newQuantity = currentStock.getQuantity() - quantity;
         //Променяме количеството на стоката или извеждаме съобщение за грешка ако то е отрицателно:
         if (newQuantity >= 0) {

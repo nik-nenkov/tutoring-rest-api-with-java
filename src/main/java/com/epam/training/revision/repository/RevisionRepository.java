@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,17 +31,13 @@ public class RevisionRepository extends NamedParameterJdbcDaoSupport {
             "select * from revision where " +
                     "(revision_started between unix_timestamp(:starting_time) and unix_timestamp(revision_ended)) and " +
                     "(revision_ended between unix_timestamp(revision_started) and unix_timestamp(:ending_time))";
-    private DataSource dataSource;
+
 
     @Autowired
     public RevisionRepository(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
-    @PostConstruct
-    private void initialize() {
         setDataSource(dataSource);
     }
+
 
     public void insertNewRevision(Integer sumQuantity, Float sumOfPrice, Timestamp startingTime) {
         Map<String, Object> params = new HashMap<>();

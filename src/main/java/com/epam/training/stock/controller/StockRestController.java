@@ -4,7 +4,6 @@ import com.epam.training.stock.Stock;
 import com.epam.training.stock.repository.StockRepository;
 import com.epam.training.stock.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.InvalidParameterException;
@@ -14,21 +13,15 @@ import java.security.InvalidParameterException;
 
 public class StockRestController {
 
-    private final JdbcTemplate jdbcTemplate;
     private final StockRepository stockRepository;
     private final StockService stockService;
 
-
     @Autowired
-    public StockRestController(JdbcTemplate jdbcTemplate,
-                               StockRepository stockRepository,
-                               StockService stockService) {
-        this.jdbcTemplate = jdbcTemplate;
+    public StockRestController(StockRepository stockRepository, StockService stockService) {
         this.stockRepository = stockRepository;
         this.stockService = stockService;
 
     }
-
 
     @RequestMapping(
             value = "/new_stock",
@@ -50,6 +43,5 @@ public class StockRestController {
         stockService.addQuantityToStock(stockId, quantity);
         return stockRepository.getStockById(stockId);
     }
-
 
 }

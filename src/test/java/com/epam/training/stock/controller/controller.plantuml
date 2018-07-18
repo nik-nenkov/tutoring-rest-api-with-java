@@ -6,13 +6,15 @@ title __CONTROLLER's Class Diagram__\n
     package com.epam.training.stock.controller {
       class StockRestControllerTest {
           - mockMvc : MockMvc
+          - jsonStock : JacksonTester<Stock>
+          + setUp()
           + newStock()
-          + increaseStock()
       }
     }
   }
   
 
+  StockRestControllerTest o-- StockRepository : stockRepository
 
 
 right footer

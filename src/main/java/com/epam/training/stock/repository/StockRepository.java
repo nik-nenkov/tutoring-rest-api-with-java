@@ -9,8 +9,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -25,15 +25,18 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     private static final String UPDATE_STOCK_QUANTITY_BY_ID = "UPDATE stock SET quantity=:quantity WHERE stock_id=:stock_id";
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
+    @Transactional
+    public void insertNewStock(int stockId, BigDecimal price, int quantity) {
+        final Map<String, Object> params = new HashMap<>();
+        params.put("stock_id", stockId);
+        params.put("price", price);
+        params.put("quantity", quantity);
+        jdbcTemplate.update(INSERT_STOCK_NEW, params);
+    }
+
     @Autowired
     public StockRepository(DataSource dataSource, NamedParameterJdbcTemplate jdbcTemplate) {
-        this.dataSource = dataSource;
         this.jdbcTemplate = jdbcTemplate;
-    }
-    private final DataSource dataSource;
-
-    @PostConstruct
-    private void initialize() {
         setDataSource(dataSource);
     }
 
@@ -54,20 +57,12 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
         jdbcTemplate.update(UPDATE_STOCK_QUANTITY_BY_ID, params);
     }
 
-    public void insertNewStock(int stockId, float price, int quantity) {
-        final Map<String, Object> params = new HashMap<>();
-        params.put("stock_id", stockId);
-        params.put("price", price);
-        params.put("quantity", quantity);
-        jdbcTemplate.update(INSERT_STOCK_NEW, params);
-    }
-
     private final class StockRowMapper implements RowMapper<Stock> {
         @Override
         public Stock mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Stock(
                     rs.getInt("stock_id"),
-                    rs.getFloat("price"),
+                    rs.getBigDecimal("price"),
                     rs.getInt("quantity"));
         }
     }

@@ -7,6 +7,7 @@ import com.epam.training.revision.repository.RevisionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class RevisionRestController {
         this.revisionRepository = revisionRepository;
     }
 
-    @RequestMapping("/revise")
+    @RequestMapping(value = "/revise", method = RequestMethod.GET)
     public Revision reviseLastThirtyMinutes() {
 
         java.sql.Timestamp startingTime = new java.sql.Timestamp(System.currentTimeMillis() - 1800000);
