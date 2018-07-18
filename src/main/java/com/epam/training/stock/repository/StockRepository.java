@@ -1,8 +1,6 @@
 package com.epam.training.stock.repository;
 
 import com.epam.training.stock.Stock;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.RowMapper;
@@ -23,12 +21,19 @@ import java.util.Objects;
 @ComponentScan("com.epam.training.*")
 public class StockRepository extends NamedParameterJdbcDaoSupport {
 
-
     private static final String SELECT_STOCK_BY_ID = "SELECT * FROM stock WHERE stock_id=:stock_id";
     private static final String UPDATE_STOCK_QUANTITY__BY_ID = "UPDATE stock SET quantity=:quantity WHERE stock_id=:stock_id";
-    private static final Logger log = LoggerFactory.getLogger(StockRepository.class);
-
     private final DataSource dataSource;
+
+    @Transactional
+    public Stock getStockById(final int stockId) throws NullPointerException {
+
+        final Map<String, Object> params = new HashMap<>();
+        params.put("stock_id", stockId);
+
+        return Objects.requireNonNull(getNamedParameterJdbcTemplate())
+                .queryForObject(SELECT_STOCK_BY_ID, params, new StockRowMapper());
+    }
 
     @Autowired
     public StockRepository(DataSource dataSource) {
@@ -41,15 +46,7 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     }
 
     @Transactional
-    public Stock getStockById(final int stockId) throws NullPointerException {
-
-        final Map<String, Object> params = new HashMap<>();
-        params.put("stock_id", stockId);
-        return Objects.requireNonNull(getNamedParameterJdbcTemplate()).queryForObject(SELECT_STOCK_BY_ID, params, new StockRowMapper());
-    }
-
-    @Transactional
-    public void updateStockQuantity(int stockId, int quantity) throws NullPointerException {
+    public void updateQuantityById(int stockId, int quantity) throws NullPointerException {
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);
         params.put("quantity", quantity);
@@ -65,4 +62,5 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
                     rs.getInt("quantity"));
         }
     }
+
 }

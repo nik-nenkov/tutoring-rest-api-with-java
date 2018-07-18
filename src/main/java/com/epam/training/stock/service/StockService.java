@@ -18,13 +18,10 @@ public class StockService {
         this.stockRepository = stockRepository;
     }
 
-
     @Transactional
     public void addQuantityToStock(final int stockId, final int quantity) {
         final Stock stockToUpdate = stockRepository.getStockById(stockId);
-
         int newQuantity = stockToUpdate.getQuantity() + quantity;
-
-        stockRepository.updateStockQuantity(stockId, newQuantity);
+        stockRepository.updateQuantityById(stockId, newQuantity);
     }
 }
