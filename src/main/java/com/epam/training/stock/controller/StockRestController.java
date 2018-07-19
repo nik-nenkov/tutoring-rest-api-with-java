@@ -44,4 +44,13 @@ public class StockRestController {
         return stockRepository.getStockById(stockId);
     }
 
+    @RequestMapping(
+            value = "/stock",
+            method = RequestMethod.GET,
+            produces = "application/json")
+    public Stock showStock(
+            @RequestParam("id") int stockId) {
+        return stockRepository.getStockById(stockId);
+    }
+
 }

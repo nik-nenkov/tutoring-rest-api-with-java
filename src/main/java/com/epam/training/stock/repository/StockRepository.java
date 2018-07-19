@@ -20,9 +20,13 @@ import java.util.Map;
 @ComponentScan("com.epam.training.*")
 public class StockRepository extends NamedParameterJdbcDaoSupport {
 
-    private static final String INSERT_STOCK_NEW = "INSERT INTO stock(stock_id, price, quantity) VALUES (:stock_id, :price, :quantity)";
-    private static final String SELECT_STOCK_BY_ID = "SELECT * FROM stock WHERE stock_id=:stock_id";
-    private static final String UPDATE_STOCK_QUANTITY_BY_ID = "UPDATE stock SET quantity=:quantity WHERE stock_id=:stock_id";
+    private static final String INSERT_STOCK_NEW =
+            "INSERT INTO stock(stock_id, price, quantity) VALUES (:stock_id, :price, :quantity)";
+    private static final String SELECT_STOCK_BY_ID =
+            "SELECT * FROM stock WHERE stock_id=:stock_id";
+    private static final String UPDATE_STOCK_QUANTITY_BY_ID =
+            "UPDATE stock SET quantity=:quantity WHERE stock_id=:stock_id";
+
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     @Transactional

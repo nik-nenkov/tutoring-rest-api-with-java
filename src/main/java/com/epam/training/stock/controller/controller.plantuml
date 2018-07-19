@@ -8,6 +8,7 @@ title __CONTROLLER's Class Diagram__\n
           + StockRestController()
           + newStock()
           + increaseStock()
+          + showStock()
       }
     }
   }

@@ -25,12 +25,32 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
 
     private static final String INSERT_ORDER_NEW = "INSERT INTO `order`(stock_id, quantity, price) VALUES(:stock_id, :quantity, :price)";
     private static final String SELECT_LAST_ORDER = "SELECT * FROM `order` ORDER BY order_id DESC LIMIT 1";
+    private static final String SELECT_ORDER_BY_ID = "SELECT * FROM `order` WHERE order_id = :order_id";
     private static final String SELECT_ORDERS_AFTER_UNIX_TIMESTAMP = "select * from `order` where order_timestamp>unix_timestamp(:starting_time)";
 
+    @Transactional
+    public Order getOrderById(int id) {
+        Map<String, Object> args = new HashMap<>();
+        args.put("order_id", id);
+        return Objects.requireNonNull(getNamedParameterJdbcTemplate())
+                .queryForObject(SELECT_ORDER_BY_ID, args, new OrderRowMapper());
+    }
 
     @Autowired
     public OrderRepository(DataSource dataSource) {
         setDataSource(dataSource);
+    }
+
+    private static final class OrderRowMapper implements RowMapper<Order> {
+        @Override
+        public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Order(
+                    rs.getInt("order_id"),
+                    rs.getInt("stock_id"),
+                    rs.getInt("quantity"),
+                    rs.getFloat("price"),
+                    rs.getTimestamp("order_timestamp"));
+        }
     }
 
     @Transactional
@@ -58,18 +78,6 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
         params.put("price", orderPrice);
 
         Objects.requireNonNull(getNamedParameterJdbcTemplate()).update(INSERT_ORDER_NEW, params);
-    }
-
-    private static final class OrderRowMapper implements RowMapper<Order> {
-        @Override
-        public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new Order(
-                    rs.getInt("order_id"),
-                    rs.getInt("stock_id"),
-                    rs.getInt("quantity"),
-                    rs.getFloat("price"),
-                    rs.getTimestamp("order_timestamp"));
-        }
     }
 
 }

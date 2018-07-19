@@ -1,8 +1,11 @@
 package com.epam.training.stock.repository;
 
+import org.junit.Test;
+
+
 class StockRepositoryTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getStockById() {
 
     }

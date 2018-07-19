@@ -25,7 +25,7 @@ public class Order {
         setTimestamp(timestamp);
     }
 
-    public Order(int stockId, int quantity, float orderPrice) {
-        this(null, stockId, quantity, orderPrice, null);
-    }
+//    public Order(int stockId, int quantity, float orderPrice) {
+//        this(null, stockId, quantity, orderPrice, null);
+//    }
 }

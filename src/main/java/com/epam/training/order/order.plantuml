@@ -10,7 +10,6 @@ title __ORDER's Class Diagram__\n
         - price : float
         - timestamp : Timestamp
         + Order()
-        + Order()
         + getOrderId()
         + getStockId()
         + getQuantity()

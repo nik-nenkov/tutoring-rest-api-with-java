@@ -7,8 +7,10 @@ title __REPOSITORY's Class Diagram__\n
       class OrderRepository {
           {static} - INSERT_ORDER_NEW : String
           {static} - SELECT_LAST_ORDER : String
+          {static} - SELECT_ORDER_BY_ID : String
           {static} - SELECT_ORDERS_AFTER_UNIX_TIMESTAMP : String
           + OrderRepository()
+          + getOrderById()
           + getLastOrder()
           + ordersAfterTimestamp()
           + createNewOrder()

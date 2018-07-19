@@ -5,16 +5,18 @@ title __CONTROLLER's Class Diagram__\n
   package com.epam.training.stock {
     package com.epam.training.stock.controller {
       class StockRestControllerTest {
-          - mockMvc : MockMvc
+          - mvc : MockMvc
           - jsonStock : JacksonTester<Stock>
-          + setUp()
-          + newStock()
+          + setup()
+          + canRetrieveByIdWhenExists()
+          + canDoSomething()
       }
     }
   }
   
 
   StockRestControllerTest o-- StockRepository : stockRepository
+  StockRestControllerTest o-- StockRestController : stockRestController
 
 
 right footer

@@ -3,51 +3,69 @@ package com.epam.training.stock.controller;
 import com.epam.training.stock.Stock;
 import com.epam.training.stock.repository.StockRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.math.BigDecimal;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-
-@RunWith(SpringRunner.class)
-@WebMvcTest(StockRestController.class)
+@RunWith(MockitoJUnitRunner.class)
 public class StockRestControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mvc;
 
-    @MockBean
+    @Mock
     private StockRepository stockRepository;
 
+    @InjectMocks
+    private StockRestController stockRestController;
+
+    @MockBean
     private JacksonTester<Stock> jsonStock;
 
-    @BeforeAll
-    public void setUp() {
+    @Before
+    public void setup() {
         JacksonTester.initFields(this, new ObjectMapper());
+        mvc = MockMvcBuilders.standaloneSetup(stockRestController).build();
     }
 
     @Test
-    public void newStock() throws Exception {
+    public void canRetrieveByIdWhenExists() throws Exception {
+        Stock testStock = new Stock(1992, BigDecimal.valueOf(4.14), 35);
         //given
         given(stockRepository.getStockById(1992))
-                .willReturn(new Stock(
-                        1992,
-                        BigDecimal.valueOf(4.14),
-                        35));
+                .willReturn(testStock);
         //when
-        MockHttpServletResponse response = mockMvc.perform(
-                get("")
-        ).andReturn().getResponse();
+        MockHttpServletResponse response =
+                mvc.perform(
+                        get("/stock?id=1992")
+                                .accept(MediaType.APPLICATION_JSON))
+                        .andReturn()
+                        .getResponse();
+        //then
+        assertThat(response.getStatus())
+                .isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getContentAsString())
+                .isEqualTo(jsonStock.write(testStock).getJson()
+                );
+    }
+
+    @Test
+    public void canDoSomething() {
+
     }
 }

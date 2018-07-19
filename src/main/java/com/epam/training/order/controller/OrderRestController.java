@@ -27,6 +27,14 @@ public class OrderRestController {
         this.stockRepository = stockRepository;
     }
 
+    @RequestMapping(value = "/order",
+            produces = "application/json",
+            method = RequestMethod.GET)
+    public Order showOrder(
+            @RequestParam("id") int orderId) {
+        return orderRepository.getOrderById(orderId);
+    }
+
     @RequestMapping(value = "/new_order",
             produces = "application/json",
             method = RequestMethod.POST)
@@ -45,7 +53,7 @@ public class OrderRestController {
             }
         };
 
-        //Правим изчисления са цена на поръчката и промяна на количеството в склада:
+        //Правим изчисления за цена на поръчката и промяна на количеството в склада:
         BigDecimal orderPrice = currentStock.getPrice().multiply(BigDecimal.valueOf(quantity));
         int newQuantity = currentStock.getQuantity() - quantity;
         //Променяме количеството на стоката или извеждаме съобщение за грешка ако то е отрицателно:

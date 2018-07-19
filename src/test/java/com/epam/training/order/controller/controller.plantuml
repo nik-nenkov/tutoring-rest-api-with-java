@@ -4,17 +4,15 @@ title __CONTROLLER's Class Diagram__\n
 
   package com.epam.training.order {
     package com.epam.training.order.controller {
-      class OrderRestController {
-          + OrderRestController()
-          + showOrder()
-          + createOrder()
+      class OrderRestControllerTest {
+          - port : int
+          - restTemplate : TestRestTemplate
+          + getOrderById()
       }
     }
   }
   
 
-  OrderRestController o-- OrderRepository : orderRepository
-  OrderRestController o-- StockRepository : stockRepository
 
 
 right footer
