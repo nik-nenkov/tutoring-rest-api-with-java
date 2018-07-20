@@ -10,7 +10,6 @@ import java.security.InvalidParameterException;
 @RestController
 public class StockRestController {
 
-
     private final StockService stockService;
 
     @Autowired

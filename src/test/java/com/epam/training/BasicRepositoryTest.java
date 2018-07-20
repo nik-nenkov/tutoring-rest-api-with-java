@@ -17,7 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Rollback
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = DemoApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = DemoApplication.class,
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ComponentScan("com.epam")
 public abstract class BasicRepositoryTest {
 

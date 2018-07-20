@@ -24,6 +24,11 @@ public class DemoApplicationTest {
     StockRestController stockRestController;
 
     @Test
+    public void main() {
+        DemoApplication.main(new String[]{});
+    }
+
+    @Test
     public void contextLoads() {
 
     }
@@ -36,6 +41,7 @@ public class DemoApplicationTest {
     @Test
     public void controllerIsNotNull() {
         Assertions.assertNotNull(stockRestController);
+        Assertions.assertEquals(new Stock(999, BigDecimal.valueOf(6.6), 0), stockRestController.showStock(999));
     }
 
     @Test
