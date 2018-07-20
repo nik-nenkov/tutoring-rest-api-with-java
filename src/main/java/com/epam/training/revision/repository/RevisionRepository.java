@@ -23,8 +23,8 @@ import java.util.Objects;
 public class RevisionRepository extends NamedParameterJdbcDaoSupport {
 
     private static final String INSERT_REVISION_NEW =
-            "INSERT into revision(total_quantities, total_price, revision_started) " +
-                    "values(:total_quantities, :total_price, :revision_started)";
+            "INSERT into revision(total_quantities, total_price, revision_started, revision_ended) " +
+                    "values(:total_quantities, :total_price, :revision_started, :revision_ended)";
     private static final String SELECT_REVISION_LAST_ENTERED =
             "select * from `revision` order by revision_id desc limit 1";
     private static final String SELECT_REVISIONS_FROM_TIMESTAMP =
@@ -32,19 +32,9 @@ public class RevisionRepository extends NamedParameterJdbcDaoSupport {
                     "(revision_started between unix_timestamp(:starting_time) and unix_timestamp(revision_ended)) and " +
                     "(revision_ended between unix_timestamp(revision_started) and unix_timestamp(:ending_time))";
 
-
     @Autowired
     public RevisionRepository(DataSource dataSource) {
         setDataSource(dataSource);
-    }
-
-
-    public void insertNewRevision(Integer sumQuantity, Float sumOfPrice, Timestamp startingTime) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("total_quantities", sumQuantity);
-        params.put("total_price", sumOfPrice);
-        params.put("revision_started", startingTime);
-        Objects.requireNonNull(getNamedParameterJdbcTemplate()).update(INSERT_REVISION_NEW, params);
     }
 
     public Revision getLastRevisionEntered() {
@@ -64,6 +54,15 @@ public class RevisionRepository extends NamedParameterJdbcDaoSupport {
                 SELECT_REVISIONS_FROM_TIMESTAMP,
                 params,
                 new RevisionRowMapper());
+    }
+
+    public void insertNewRevision(Integer sumQuantity, Float sumOfPrice, Timestamp startingTime, Timestamp endingTime) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("total_quantities", sumQuantity);
+        params.put("total_price", sumOfPrice);
+        params.put("revision_started", startingTime);
+        params.put("revision_ended", endingTime);
+        Objects.requireNonNull(getNamedParameterJdbcTemplate()).update(INSERT_REVISION_NEW, params);
     }
 
     private static class RevisionRowMapper implements RowMapper<Revision> {

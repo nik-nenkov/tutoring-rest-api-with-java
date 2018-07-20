@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Data
 public class Stock {
@@ -14,7 +15,8 @@ public class Stock {
 
     public Stock(int sockId, BigDecimal price, int quantity) {
         this.sockId = sockId;
-        this.price = price;
+        this.price = price.setScale(2, RoundingMode.CEILING);
         this.quantity = quantity;
     }
+
 }

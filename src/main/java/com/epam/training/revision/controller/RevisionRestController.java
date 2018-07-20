@@ -1,51 +1,40 @@
 package com.epam.training.revision.controller;
 
-import com.epam.training.order.Order;
-import com.epam.training.order.repository.OrderRepository;
 import com.epam.training.revision.Revision;
-import com.epam.training.revision.repository.RevisionRepository;
+import com.epam.training.revision.service.RevisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.sql.Timestamp;
 
 @RestController
 
 @ComponentScan("com.epam.training.*")
 public class RevisionRestController {
 
-    private final OrderRepository orderRepository;
-    private final RevisionRepository revisionRepository;
+    private final RevisionService revisionService;
 
     @Autowired
-    public RevisionRestController(
-            OrderRepository orderRepository,
-            RevisionRepository revisionRepository) {
-        this.orderRepository = orderRepository;
-        this.revisionRepository = revisionRepository;
+    public RevisionRestController(RevisionService revisionService) {
+        this.revisionService = revisionService;
     }
 
-    @RequestMapping(value = "/revise", method = RequestMethod.GET)
-    public Revision reviseLastThirtyMinutes() {
+    @RequestMapping(value = "/revise_last", method = RequestMethod.GET)
+    public Revision reviseLastThirtyMinutes(@RequestParam("minutes") int minutes) {
+        int milliseconds = minutes * 30000;
+        java.sql.Timestamp startingTime = new java.sql.Timestamp(System.currentTimeMillis() - milliseconds);
+        return revisionService.makeRevisionFromTimeUntilNow(startingTime);
+    }
 
-        java.sql.Timestamp startingTime = new java.sql.Timestamp(System.currentTimeMillis() - 1800000);
+    @RequestMapping(value = "/revision", method = RequestMethod.GET)
+    public Revision makeRevisionByGivenTimeInterval(
+            @RequestParam("from") String startDate,
+            @RequestParam("to") String endDate) {
 
-        Float sumOfPrice = 0F;
-        Integer sumQuantity = 0;
-
-        List<Order> ordersFromLastThirtyMinutes = orderRepository.ordersAfterTimestamp(startingTime);
-
-
-        for (Order order : ordersFromLastThirtyMinutes) {
-            sumQuantity += order.getQuantity();
-            sumOfPrice += order.getPrice();
-        }
-
-        revisionRepository.insertNewRevision(sumQuantity, sumOfPrice, startingTime);
-
-        return revisionRepository.getLastRevisionEntered();
+        return revisionService.revisionFromTo(Timestamp.valueOf(startDate), Timestamp.valueOf(endDate));
     }
 }

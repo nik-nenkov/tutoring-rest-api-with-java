@@ -32,9 +32,9 @@ public class StockSchedulingService {
     private void addSomeStocks() {
         //Някъде ще трябва да задаваме кои стоки и с колко да бъдат увеличавани периодично
         // TODO use a settings file from which to load the stocks and their amounts
-        stockService.addQuantityToStock(111, 20);
+        stockService.increaseQuantityOfStock(111, 20);
         log.info("Stock with id=111 was increased by quantity=20");
-        stockService.addQuantityToStock(345, 80);
+        stockService.increaseQuantityOfStock(345, 80);
         log.info("Stock with id=345 was increased by quantity=80");
     }
 

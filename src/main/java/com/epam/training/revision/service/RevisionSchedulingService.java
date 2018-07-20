@@ -31,8 +31,13 @@ public class RevisionSchedulingService {
             totalPrice += r.getTotalPrice();
             totalQuantity += r.getTotalQuantities();
         }
-        log.info("{\nnumber_of_revisions:" + revisionsFromLastThirtyMinutes.size() +
-                ",\ntotal_quantity:" + totalQuantity +
-                ",\ntotal_price:" + totalPrice);
+
+        final String sfm = String.format(
+                "\n{\nnumber_of_revisions:%d,\ntotal_quantity:%d,\ntotal_price:%f\n}",
+                revisionsFromLastThirtyMinutes.size(),
+                totalQuantity,
+                totalPrice);
+
+        log.info(sfm);
     }
 }

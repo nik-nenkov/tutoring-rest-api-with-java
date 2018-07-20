@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+
 
 @Service
 public class StockService {
@@ -19,9 +21,21 @@ public class StockService {
     }
 
     @Transactional
-    public void addQuantityToStock(final int stockId, final int quantity) {
-        final Stock stockToUpdate = stockRepository.getStockById(stockId);
+    public Stock increaseQuantityOfStock(final int stockId, final int quantity) {
+
+        final Stock stockToUpdate = readStock(stockId);
         int newQuantity = stockToUpdate.getQuantity() + quantity;
+
         stockRepository.updateQuantityById(stockId, newQuantity);
+        return readStock(stockId);
+    }
+
+    public Stock createStock(int id, BigDecimal price, int quantity) {
+        stockRepository.insertNewStock(id, price, quantity);
+        return readStock(id);
+    }
+
+    public Stock readStock(int id) {
+        return stockRepository.getStockById(id);
     }
 }
