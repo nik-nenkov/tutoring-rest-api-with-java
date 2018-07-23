@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Timestamp;
+import java.text.ParseException;
 
 @RestController
 
@@ -33,8 +33,8 @@ public class RevisionRestController {
     @RequestMapping(value = "/revision", method = RequestMethod.GET)
     public Revision makeRevisionByGivenTimeInterval(
             @RequestParam("from") String startDate,
-            @RequestParam("to") String endDate) {
+            @RequestParam("to") String endDate) throws ParseException {
 
-        return revisionService.revisionFromTo(Timestamp.valueOf(startDate), Timestamp.valueOf(endDate));
+        return revisionService.revisionFromTo(startDate, endDate);
     }
 }

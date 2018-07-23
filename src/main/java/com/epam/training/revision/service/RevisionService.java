@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -53,7 +56,14 @@ public class RevisionService {
     }
 
     @Transactional
-    public Revision revisionFromTo(Timestamp startingTime, Timestamp endingTime) {
+    public Revision revisionFromTo(String start, String end) throws ParseException {
+
+        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        Date startDate = df.parse(start);
+        Date endDate = df.parse(end);
+        Timestamp startingTime = new Timestamp(startDate.getTime());
+        Timestamp endingTime = new Timestamp(endDate.getTime());
+
         List<Order> orders = orderRepository.ordersBetweenTwoTimestamps(startingTime, endingTime);
 
         Float sumOfPrice = 0F;

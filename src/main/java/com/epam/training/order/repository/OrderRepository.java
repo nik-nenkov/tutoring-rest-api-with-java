@@ -27,7 +27,7 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
     private static final String SELECT_LAST_ORDER = "SELECT * FROM `order` ORDER BY order_id DESC LIMIT 1";
     private static final String SELECT_ORDER_BY_ID = "SELECT * FROM `order` WHERE order_id = :order_id";
     private static final String SELECT_ORDERS_AFTER_UNIX_TIMESTAMP = "select * from `order` where order_timestamp>unix_timestamp(:starting_time)";
-    private static final String SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS = "select * from `order` where order_timestamp BETWEEN unix_timestamp(:start_time) AND unix_timestamp(:end_time)";
+    private static final String SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS = "select * from `order` where order_timestamp BETWEEN :start_time AND :end_time";
 
     @Transactional
     public Order getOrderById(int id) {
@@ -62,6 +62,7 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
 
     @Transactional
     public List<Order> ordersAfterTimestamp(Timestamp startingTime) {
+
         Map<String, Object> params = new HashMap<>();
         params.put("starting_time", startingTime);
 
@@ -73,12 +74,19 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
     @Transactional
     public List<Order> ordersBetweenTwoTimestamps(Timestamp start, Timestamp end) {
         Map<String, Object> params = new HashMap<>();
-        params.put("start_time", start);
-        params.put("end_time", end);
+        params.put("start_time", start.toString());
+        params.put("end_time", end.toString());
 
-        return Objects.requireNonNull(getNamedParameterJdbcTemplate()).queryForList(
+        System.out.println(start);
+        System.out.println(end);
+
+        List<Order> lo = Objects.requireNonNull(getNamedParameterJdbcTemplate()).queryForList(
                 SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS,
                 params, Order.class);
+
+        System.out.println();
+
+        return lo;
     }
 
     @Transactional
