@@ -1,9 +1,7 @@
 package com.epam.training.order.controller;
 
 import com.epam.training.order.Order;
-import com.epam.training.order.repository.OrderRepository;
-import com.epam.training.stock.Stock;
-import com.epam.training.stock.repository.StockRepository;
+import com.epam.training.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,20 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
-import java.security.InvalidParameterException;
-
 @RestController
-
 @ComponentScan("com.epam.training.*")
 public class OrderRestController {
-    private final OrderRepository orderRepository;
-    private final StockRepository stockRepository;
+
+
+    private final OrderService orderService;
 
     @Autowired
-    public OrderRestController(OrderRepository orderRepository, StockRepository stockRepository) {
-        this.orderRepository = orderRepository;
-        this.stockRepository = stockRepository;
+    public OrderRestController(OrderService orderService) {
+        this.orderService = orderService;
     }
 
     @RequestMapping(value = "/order",
@@ -32,7 +26,7 @@ public class OrderRestController {
             method = RequestMethod.GET)
     public Order showOrder(
             @RequestParam("id") int orderId) {
-        return orderRepository.getOrderById(orderId);
+        return orderService.getInfoAboutOrder(orderId);
     }
 
     @RequestMapping(value = "/new_order",
@@ -41,41 +35,6 @@ public class OrderRestController {
     public Order createOrder(
             @RequestParam("stock_id") int stockId,
             @RequestParam("quantity") int quantity) {
-
-        //Търсим в базата стока с посоченият ID номер:
-        Stock currentStock = stockRepository.getStockById(stockId);
-
-        //В случай че не е намерена такава стока приключваме с подходящо съобщение:
-        if (currentStock == null) throw new InvalidParameterException() {
-            @Override
-            public String getMessage() {
-                return "Could not find s stock with id=" + stockId;
-            }
-        };
-
-        //Правим изчисления за цена на поръчката и промяна на количеството в склада:
-        BigDecimal orderPrice = currentStock.getPrice().multiply(BigDecimal.valueOf(quantity));
-        int newQuantity = currentStock.getQuantity() - quantity;
-        //Променяме количеството на стоката или извеждаме съобщение за грешка ако то е отрицателно:
-        if (newQuantity >= 0) {
-            currentStock.setQuantity(newQuantity);
-        } else {
-            throw new InvalidParameterException() {
-                @Override
-                public String getMessage() {
-                    return "Requested quantity should not exceed total stock quantity!";
-                }
-            };
-        }
-        //След проверки и изчисления, можем да създадем новата поръчка:
-        //Съхраняваме поръчката в базата данни:
-        orderRepository.createNewOrder(stockId, quantity, orderPrice);
-
-        //Променяме количеството на стоката в базата данни:
-        stockRepository.updateQuantityById(stockId, newQuantity);
-
-        //Ако искаме да изведем цялата информация за новата поръчка правим последно търсене в базата
-        //където обекта е полъчил уникален ID номер и TIMESTAMP на въвеждането си:
-        return orderRepository.getLastOrder();
+        return orderService.placeNewOrder(stockId, quantity);
     }
 }

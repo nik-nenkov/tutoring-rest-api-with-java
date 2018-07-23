@@ -1,10 +1,17 @@
 package com.epam.training.stock.repository;
 
-import com.epam.training.BasicRepositoryTest;
+import com.epam.training.application.DemoApplication;
 import com.epam.training.stock.Stock;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,7 +20,15 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class StockRepositoryTest extends BasicRepositoryTest {
+@ActiveProfiles("test")
+@RunWith(SpringRunner.class)
+@SpringBootTest(
+        classes = DemoApplication.class,
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ComponentScan("com.epam")
+@Transactional
+@Rollback
+public class StockRepositoryTest {
 
 
     @Autowired
@@ -37,20 +52,14 @@ public class StockRepositoryTest extends BasicRepositoryTest {
 
     @Test
     public void insertNewStock() {
-//        try {
         stockRepository.insertNewStock(22, BigDecimal.valueOf(15.6), 133);
-//        } finally {
         assertThat(stockRepository.getLastInsertedStock()).isEqualTo(stocks.get(1));
-//        }
     }
 
     @Test
     public void updateQuantityById() {
-//        try {
         stockRepository.updateQuantityById(43, 956);
-//        } finally {
         Stock s2 = stockRepository.getStockById(43);
         assertThat(s2).isEqualTo(stocks.get(2));
-//        }
     }
 }
