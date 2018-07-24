@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -19,13 +18,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+//import org.springframework.context.annotation.ComponentScan;
+
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         classes = DemoApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ComponentScan("com.epam")
+//@ComponentScan("com.epam")
 @Transactional
 @Rollback
 public class StockRepositoryTest {
