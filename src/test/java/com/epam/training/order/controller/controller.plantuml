@@ -7,12 +7,18 @@ title __CONTROLLER's Class Diagram__\n
       class OrderRestControllerTest {
           - port : int
           - restTemplate : TestRestTemplate
+          - jdbcTemplate : JdbcTemplate
+          {static} + clearTestDatabase()
+          + prepare()
           + getOrderById()
+          + clear()
       }
     }
   }
   
 
+  OrderRestControllerTest o-- OrderRepository : orderRepository
+  OrderRestControllerTest o-- StockRepository : stockRepository
 
 
 right footer

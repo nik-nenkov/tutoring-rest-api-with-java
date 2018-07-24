@@ -5,12 +5,17 @@ title __REPOSITORY's Class Diagram__\n
   package com.epam.training.stock {
     package com.epam.training.stock.repository {
       class StockRepositoryTest {
-          ~ getStockById()
+          - stocks : List<Stock>
+          + createStocksForTesting()
+          + getStockById()
+          + insertNewStock()
+          + updateQuantityById()
       }
     }
   }
   
 
+  StockRepositoryTest o-- StockRepository : stockRepository
 
 
 right footer

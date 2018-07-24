@@ -9,9 +9,9 @@ title __REPOSITORY's Class Diagram__\n
           {static} - SELECT_REVISION_LAST_ENTERED : String
           {static} - SELECT_REVISIONS_FROM_TIMESTAMP : String
           + RevisionRepository()
-          + insertNewRevision()
           + getLastRevisionEntered()
           + getRevisionsInTimeInterval()
+          + insertNewRevision()
       }
     }
   }

@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -29,8 +30,8 @@ public class RevisionRepository extends NamedParameterJdbcDaoSupport {
             "select * from `revision` order by revision_id desc limit 1";
     private static final String SELECT_REVISIONS_FROM_TIMESTAMP =
             "select * from revision where " +
-                    "(revision_started between unix_timestamp(:starting_time) and unix_timestamp(revision_ended)) and " +
-                    "(revision_ended between unix_timestamp(revision_started) and unix_timestamp(:ending_time))";
+                    "(revision_started between :starting_time and revision_ended) and " +
+                    "(revision_ended between revision_started and :ending_time)";
 
     @Autowired
     public RevisionRepository(DataSource dataSource) {
@@ -47,8 +48,8 @@ public class RevisionRepository extends NamedParameterJdbcDaoSupport {
     public List<Revision> getRevisionsInTimeInterval(Timestamp startingTime, Timestamp endingTime) {
 
         Map<String, Object> params = new HashMap<>();
-        params.put("ending_time", endingTime);
-        params.put("starting_time", startingTime);
+        params.put("ending_time", endingTime.toString());
+        params.put("starting_time", startingTime.toString());
 
         return Objects.requireNonNull(getNamedParameterJdbcTemplate()).query(
                 SELECT_REVISIONS_FROM_TIMESTAMP,
@@ -56,7 +57,7 @@ public class RevisionRepository extends NamedParameterJdbcDaoSupport {
                 new RevisionRowMapper());
     }
 
-    public void insertNewRevision(Integer sumQuantity, Float sumOfPrice, Timestamp startingTime, Timestamp endingTime) {
+    public void insertNewRevision(Integer sumQuantity, BigDecimal sumOfPrice, Timestamp startingTime, Timestamp endingTime) {
         Map<String, Object> params = new HashMap<>();
         params.put("total_quantities", sumQuantity);
         params.put("total_price", sumOfPrice);
@@ -71,7 +72,7 @@ public class RevisionRepository extends NamedParameterJdbcDaoSupport {
             return new Revision(
                     rs.getInt("revision_id"),
                     rs.getInt("total_quantities"),
-                    rs.getFloat("total_price"),
+                    rs.getBigDecimal("total_price"),
                     rs.getTimestamp("revision_started"),
                     rs.getTimestamp("revision_ended"));
         }

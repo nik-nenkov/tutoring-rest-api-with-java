@@ -112,7 +112,7 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
                     rs.getInt("order_id"),
                     rs.getInt("stock_id"),
                     rs.getInt("quantity"),
-                    rs.getFloat("price"),
+                    rs.getBigDecimal("price"),
                     rs.getTimestamp("order_timestamp"));
         }
     }

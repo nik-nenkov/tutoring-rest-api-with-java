@@ -3,6 +3,12 @@
 title __JDBC-CRUD3's Class Diagram__\n
 
   package com.epam.training.application {
+    class AppConfig {
+    }
+  }
+  
+
+  package com.epam.training.application {
     class DemoApplication {
     }
   }
@@ -25,6 +31,14 @@ title __JDBC-CRUD3's Class Diagram__\n
   package com.epam.training.order {
     package com.epam.training.order.controller {
       class OrderRestController {
+      }
+    }
+  }
+  
+
+  package com.epam.training.order {
+    package com.epam.training.order.service {
+      class OrderService {
       }
     }
   }
@@ -114,15 +128,15 @@ title __JDBC-CRUD3's Class Diagram__\n
 
   DemoApplication -up-|> CommandLineRunner
   OrderRepository -up-|> NamedParameterJdbcDaoSupport
-  OrderRestController o-- OrderRepository : orderRepository
-  OrderRestController o-- StockRepository : stockRepository
+  OrderRestController o-- OrderService : orderService
+  OrderService o-- OrderRepository : orderRepository
+  OrderService o-- StockRepository : stockRepository
   RevisionRepository -up-|> NamedParameterJdbcDaoSupport
-  RevisionRestController o-- OrderRepository : orderRepository
-  RevisionRestController o-- RevisionRepository : revisionRepository
+  RevisionRestController o-- RevisionService : revisionService
   RevisionSchedulingService o-- RevisionService : revisionService
   RevisionService o-- RevisionRepository : revisionRepository
+  RevisionService o-- OrderRepository : orderRepository
   StockRepository -up-|> NamedParameterJdbcDaoSupport
-  StockRestController o-- StockRepository : stockRepository
   StockRestController o-- StockService : stockService
   StockSchedulingService o-- StockService : stockService
   StockService o-- StockRepository : stockRepository

@@ -13,8 +13,7 @@ title __CONTROLLER's Class Diagram__\n
   }
   
 
-  OrderRestController o-- OrderRepository : orderRepository
-  OrderRestController o-- StockRepository : stockRepository
+  OrderRestController o-- OrderService : orderService
 
 
 right footer

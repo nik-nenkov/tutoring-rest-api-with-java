@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Timestamp;
 
 @Data
@@ -13,15 +15,15 @@ public class Order {
     @JsonProperty("stock_id")
     private int stockId;
     private int quantity;
-    private float price;
+    private BigDecimal price;
     @JsonProperty("order_timestamp")
     private Timestamp timestamp;
 
-    public Order(Integer orderId, int stockId, int quantity, float orderPrice, Timestamp timestamp) {
+    public Order(Integer orderId, int stockId, int quantity, BigDecimal orderPrice, Timestamp timestamp) {
         setOrderId(orderId);
         setStockId(stockId);
         setQuantity(quantity);
-        setPrice(orderPrice);
+        setPrice(orderPrice.setScale(2, RoundingMode.CEILING));
         setTimestamp(timestamp);
     }
 

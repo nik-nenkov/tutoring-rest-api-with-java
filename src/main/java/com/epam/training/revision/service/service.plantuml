@@ -18,6 +18,8 @@ title __SERVICE's Class Diagram__\n
       class RevisionService {
           + RevisionService()
           + revisionsByTimeIntervalBeforeNowMills()
+          + makeRevisionFromTimeUntilNow()
+          + revisionFromTo()
       }
     }
   }
@@ -25,6 +27,7 @@ title __SERVICE's Class Diagram__\n
 
   RevisionSchedulingService o-- RevisionService : revisionService
   RevisionService o-- RevisionRepository : revisionRepository
+  RevisionService o-- OrderRepository : orderRepository
 
 
 right footer

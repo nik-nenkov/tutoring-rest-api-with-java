@@ -24,10 +24,15 @@ public class RevisionRestController {
     }
 
     @RequestMapping(value = "/revise_last", method = RequestMethod.GET)
-    public Revision reviseLastThirtyMinutes(@RequestParam("minutes") int minutes) {
+    public Revision reviseLastThirtyMinutes(
+            @RequestParam(
+                    value = "minutes",
+                    required = false,
+                    defaultValue = "30") int minutes
+    ) {
         int milliseconds = minutes * 30000;
         java.sql.Timestamp startingTime = new java.sql.Timestamp(System.currentTimeMillis() - milliseconds);
-        return revisionService.makeRevisionFromTimeUntilNow(startingTime);
+        return revisionService.sumOfRevisionsFromTimestamp(startingTime);
     }
 
     @RequestMapping(value = "/revision", method = RequestMethod.GET)

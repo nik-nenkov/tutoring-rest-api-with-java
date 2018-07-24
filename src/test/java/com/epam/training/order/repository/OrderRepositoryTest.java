@@ -94,7 +94,7 @@ public class OrderRepositoryTest {
 
 
         Assertions.assertEquals(
-                new Order(2, 3232, 10, 85F, new Timestamp((new Date().getTime() / 1000) * 1000)),
+                new Order(2, 3232, 10, BigDecimal.valueOf(85), new Timestamp((new Date().getTime() / 1000) * 1000)),
                 result.get(1));
     }
 
@@ -108,7 +108,7 @@ public class OrderRepositoryTest {
                 BigDecimal.valueOf(85)
         );
         Assertions.assertEquals(
-                new Order(1, 3232, 10, 85F, new Timestamp((new Date().getTime() / 1000) * 1000)),
+                new Order(1, 3232, 10, BigDecimal.valueOf(85), new Timestamp((new Date().getTime() / 1000) * 1000)),
                 orderRepository.getLastOrder());
     }
 
@@ -119,10 +119,10 @@ public class OrderRepositoryTest {
         jdbcTemplate.execute("INSERT INTO `test_warehouse_db`.`stock` (`stock_id`, `quantity`, `price`) VALUES ('3232', '50', '7.8');");
         jdbcTemplate.execute("insert into `test_warehouse_db`.`order` " +
                 "(stock_id, quantity, price, order_timestamp) VALUES " +
-                "(442,10,3.4,'1999-12-03 16:46:30')," +
-                "(3232,10,34.5,'2000-12-03 16:46:30')," +
-                "(442,20,13.4,'2007-12-03 16:46:30')," +
-                "(3232,20,134.5,'2013-12-03 16:46:30')");
+                "(442,10,3.40,'1999-12-03 16:46:30')," +
+                "(3232,10,34.50,'2000-12-03 16:46:30')," +
+                "(442,20,13.40,'2007-12-03 16:46:30')," +
+                "(3232,20,134.50,'2013-12-03 16:46:30')");
         Timestamp specifiedTime = new Timestamp(
                 new SimpleDateFormat("yyyy-MM-dd")
                         .parse("2003-12-02")
@@ -134,8 +134,8 @@ public class OrderRepositoryTest {
         StringBuilder resultToString = new StringBuilder();
         result.forEach(x -> resultToString.append(x.toString().concat("\n")));
 
-        Assertions.assertEquals("Order(orderId=3, stockId=442, quantity=20, price=13.4, timestamp=2007-12-03 16:46:30.0)\n" +
-                "Order(orderId=4, stockId=3232, quantity=20, price=134.5, timestamp=2013-12-03 16:46:30.0)\n", resultToString.toString());
+        Assertions.assertEquals("Order(orderId=3, stockId=442, quantity=20, price=13.40, timestamp=2007-12-03 16:46:30.0)\n" +
+                "Order(orderId=4, stockId=3232, quantity=20, price=134.50, timestamp=2013-12-03 16:46:30.0)\n", resultToString.toString());
     }
 
     @Test
@@ -145,10 +145,10 @@ public class OrderRepositoryTest {
         jdbcTemplate.execute("INSERT INTO `test_warehouse_db`.`stock` (`stock_id`, `quantity`, `price`) VALUES ('3232', '50', '7.8');");
         jdbcTemplate.execute("insert into `test_warehouse_db`.`order` " +
                 "(stock_id, quantity, price, order_timestamp) VALUES " +
-                "(442,10,3.4,'1999-12-03 16:46:30')," +
-                "(3232,10,34.5,'2000-12-03 16:46:30')," +
-                "(442,20,13.4,'2007-12-03 16:46:30')," +
-                "(3232,20,134.5,'2013-12-03 16:46:30')");
+                "(442,10,3.40,'1999-12-03 16:46:30')," +
+                "(3232,10,34.50,'2000-12-03 16:46:30')," +
+                "(442,20,13.40,'2007-12-03 16:46:30')," +
+                "(3232,20,134.50,'2013-12-03 16:46:30')");
         Timestamp specifiedTimeStart = new Timestamp(
                 new SimpleDateFormat("yyyy-MM-dd")
                         .parse("2000-12-02")
@@ -164,8 +164,8 @@ public class OrderRepositoryTest {
         StringBuilder resultToString = new StringBuilder();
         result.forEach(x -> resultToString.append(x.toString().concat("\n")));
 
-        Assertions.assertEquals("Order(orderId=2, stockId=3232, quantity=10, price=34.5, timestamp=2000-12-03 16:46:30.0)\n" +
-                "Order(orderId=3, stockId=442, quantity=20, price=13.4, timestamp=2007-12-03 16:46:30.0)\n", resultToString.toString());
+        Assertions.assertEquals("Order(orderId=2, stockId=3232, quantity=10, price=34.50, timestamp=2000-12-03 16:46:30.0)\n" +
+                "Order(orderId=3, stockId=442, quantity=20, price=13.40, timestamp=2007-12-03 16:46:30.0)\n", resultToString.toString());
     }
 
 

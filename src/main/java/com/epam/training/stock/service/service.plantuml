@@ -19,7 +19,9 @@ title __SERVICE's Class Diagram__\n
     package com.epam.training.stock.service {
       class StockService {
           + StockService()
-          + addQuantityToStock()
+          + increaseQuantityOfStock()
+          + createStock()
+          + readStock()
       }
     }
   }

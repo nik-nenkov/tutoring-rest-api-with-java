@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Timestamp;
 
 @Data
@@ -17,7 +19,7 @@ public class Revision {
     private int totalQuantities;
 
     @JsonProperty("total_price")
-    private float totalPrice;
+    private BigDecimal totalPrice;
 
     @JsonProperty("revision_started")
     private Timestamp revisionStart;
@@ -25,10 +27,10 @@ public class Revision {
     @JsonProperty("revision_ended")
     private Timestamp revisionEnd;
 
-    public Revision(Integer revisionId, int totalQuantities, float totalPrice, Timestamp revisionStart, Timestamp revisionEnd) {
+    public Revision(Integer revisionId, int totalQuantities, BigDecimal totalPrice, Timestamp revisionStart, Timestamp revisionEnd) {
         setRevisionId(revisionId);
         setTotalQuantities(totalQuantities);
-        setTotalPrice(totalPrice);
+        setTotalPrice(totalPrice.setScale(2, RoundingMode.CEILING));
         setRevisionStart(revisionStart);
         setRevisionEnd(revisionEnd);
     }

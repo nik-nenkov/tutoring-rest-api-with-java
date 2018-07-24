@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -36,21 +37,22 @@ public class RevisionService {
     }
 
     @Transactional
-    public Revision makeRevisionFromTimeUntilNow(Timestamp startingTime) {
+    public Revision sumOfRevisionsFromTimestamp(Timestamp startingTime) {
 
+        Timestamp timeNow = new Timestamp(System.currentTimeMillis());
 
-        List<Order> ordersFromLastThirtyMinutes = orderRepository.ordersAfterTimestamp(startingTime);
+        List<Revision> revisionsInTimeInterval = revisionRepository
+                .getRevisionsInTimeInterval(startingTime, timeNow);
 
-
-        Float sumOfPrice = 0F;
+        BigDecimal sumOfPrice = BigDecimal.ZERO;
         Integer sumQuantity = 0;
 
-        for (Order order : ordersFromLastThirtyMinutes) {
-            sumQuantity += order.getQuantity();
-            sumOfPrice += order.getPrice();
+        for (Revision r : revisionsInTimeInterval) {
+            sumQuantity += r.getTotalQuantities();
+            sumOfPrice = sumOfPrice.add(r.getTotalPrice());
         }
 
-        revisionRepository.insertNewRevision(sumQuantity, sumOfPrice, startingTime, new Timestamp(System.currentTimeMillis()));
+        revisionRepository.insertNewRevision(sumQuantity, sumOfPrice, startingTime, timeNow);
 
         return revisionRepository.getLastRevisionEntered();
     }
@@ -66,12 +68,12 @@ public class RevisionService {
 
         List<Order> orders = orderRepository.ordersBetweenTwoTimestamps(startingTime, endingTime);
 
-        Float sumOfPrice = 0F;
+        BigDecimal sumOfPrice = BigDecimal.ZERO;
         Integer sumQuantity = 0;
 
         for (Order order : orders) {
             sumQuantity += order.getQuantity();
-            sumOfPrice += order.getPrice();
+            sumOfPrice = sumOfPrice.add(order.getPrice());
         }
 
         revisionRepository.insertNewRevision(sumQuantity, sumOfPrice, startingTime, endingTime);

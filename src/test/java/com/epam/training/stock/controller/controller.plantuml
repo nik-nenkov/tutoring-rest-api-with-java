@@ -8,14 +8,16 @@ title __CONTROLLER's Class Diagram__\n
           - mvc : MockMvc
           - jsonStock : JacksonTester<Stock>
           + setup()
-          + canRetrieveByIdWhenExists()
-          + canDoSomething()
+          + canShowExistingStock()
+          + canCreateNewStock()
+          + canAddQuantityToExistingStock()
       }
     }
   }
   
 
   StockRestControllerTest o-- StockRepository : stockRepository
+  StockRestControllerTest o-- StockService : stockService
   StockRestControllerTest o-- StockRestController : stockRestController
 
 

@@ -6,13 +6,17 @@ title __REPOSITORY's Class Diagram__\n
     package com.epam.training.order.repository {
       class OrderRepository {
           {static} - INSERT_ORDER_NEW : String
-          {static} - SELECT_LAST_ORDER : String
+          {static} - SELECT_ORDER_LAST : String
           {static} - SELECT_ORDER_BY_ID : String
+          {static} - SELECT_ORDERS_ALL_LIMIT_FIFTY : String
           {static} - SELECT_ORDERS_AFTER_UNIX_TIMESTAMP : String
-          + getOrderById()
+          {static} - SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS : String
           + OrderRepository()
+          + getOrderById()
           + getLastOrder()
+          + getLastOrdersLimitFifty()
           + ordersAfterTimestamp()
+          + ordersBetweenTwoTimestamps()
           + createNewOrder()
       }
     }

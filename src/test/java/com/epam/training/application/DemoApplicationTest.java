@@ -23,10 +23,10 @@ public class DemoApplicationTest {
     @Autowired
     StockRestController stockRestController;
 
-    @Test
-    public void main() {
-        DemoApplication.main(new String[]{});
-    }
+//    @Test
+//    public void main() {
+//        DemoApplication.main(new String[]{});
+//    }
 
     @Test
     public void contextLoads() {

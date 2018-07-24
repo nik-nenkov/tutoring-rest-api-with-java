@@ -5,16 +5,20 @@ title __REPOSITORY's Class Diagram__\n
   package com.epam.training.order {
     package com.epam.training.order.repository {
       class OrderRepositoryTest {
-          - port : int
-          - restTemplate : TestRestTemplate
-          + getLastOrder()
-          + ordersAfterTimestamp()
+          - jdbcTemplate : JdbcTemplate
+          + prepareTestDatabase()
+          + addSomeEntries()
+          + getLastOrdersLimitFifty()
           + createNewOrder()
+          + getOrdersAfterSpecificTimestamp()
+          + getOrdersBetweenTwoSpecifiedTimestamps()
       }
     }
   }
   
 
+  OrderRepositoryTest o-- StockRepository : stockRepository
+  OrderRepositoryTest o-- OrderRepository : orderRepository
 
 
 right footer

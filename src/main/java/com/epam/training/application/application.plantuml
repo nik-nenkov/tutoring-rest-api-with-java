@@ -3,6 +3,12 @@
 title __APPLICATION's Class Diagram__\n
 
   package com.epam.training.application {
+    class AppConfig {
+    }
+  }
+  
+
+  package com.epam.training.application {
     class DemoApplication {
         {static} + main()
         + run()
