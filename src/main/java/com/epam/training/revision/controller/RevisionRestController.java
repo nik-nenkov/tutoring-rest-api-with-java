@@ -40,6 +40,6 @@ public class RevisionRestController {
             @RequestParam("from") String startDate,
             @RequestParam("to") String endDate) throws ParseException {
 
-        return revisionService.revisionFromTo(startDate, endDate);
+        return revisionService.revisionFromToStringYyyyMmDd(startDate, endDate);
     }
 }

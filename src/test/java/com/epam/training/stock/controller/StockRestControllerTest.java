@@ -94,9 +94,9 @@ public class StockRestControllerTest {
     public void canAddQuantityToExistingStock() throws Exception {
         Stock testStock4 = new Stock(45, BigDecimal.valueOf(45.55), 65);
         //given
-        given(stockRepository.getStockById(65))
+        given(stockRepository.getStockById(45))
                 .willReturn(testStock4);
-        given(stockService.readStock(45)).willReturn(testStock4);
+//        given(stockService.readStock(45)).willReturn(testStock4);
         //when
         MockHttpServletResponse response = mvc
                 .perform(put("/add_stock?quantity=10&stock_id=45")

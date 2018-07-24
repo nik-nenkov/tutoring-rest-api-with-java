@@ -4,17 +4,11 @@ title __APPLICATION's Class Diagram__\n
 
   package com.epam.training.application {
     class DemoApplicationTest {
-        + main()
         + contextLoads()
-        + repositoryIsNotNull()
-        + controllerIsNotNull()
-        + checkPriceOfExistingStockById()
     }
   }
   
 
-  DemoApplicationTest o-- StockRepository : stockRepository
-  DemoApplicationTest o-- StockRestController : stockRestController
 
 
 right footer

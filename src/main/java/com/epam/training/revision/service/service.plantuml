@@ -17,9 +17,9 @@ title __SERVICE's Class Diagram__\n
     package com.epam.training.revision.service {
       class RevisionService {
           + RevisionService()
-          + revisionsByTimeIntervalBeforeNowMills()
-          + makeRevisionFromTimeUntilNow()
-          + revisionFromTo()
+          + sumOfRevisionsFromTimestamp()
+          + revisionFromToStringYyyyMmDd()
+          + revisionFromToTimestamp()
       }
     }
   }

@@ -6,7 +6,7 @@ title __REVISION's Class Diagram__\n
     class Revision {
         - revisionId : Integer
         - totalQuantities : int
-        - totalPrice : float
+        - totalPrice : BigDecimal
         - revisionStart : Timestamp
         - revisionEnd : Timestamp
         + Revision()

@@ -30,13 +30,6 @@ public class RevisionService {
     }
 
     @Transactional
-    public List<Revision> revisionsByTimeIntervalBeforeNowMills(long mills) {
-        Timestamp startingTime = new Timestamp(new Date().getTime() - mills);
-        Timestamp timeNow = new Timestamp(new Date().getTime());
-        return revisionRepository.getRevisionsInTimeInterval(startingTime, timeNow);
-    }
-
-    @Transactional
     public Revision sumOfRevisionsFromTimestamp(Timestamp startingTime) {
 
         Timestamp timeNow = new Timestamp(System.currentTimeMillis());
@@ -58,7 +51,7 @@ public class RevisionService {
     }
 
     @Transactional
-    public Revision revisionFromTo(String start, String end) throws ParseException {
+    public Revision revisionFromToStringYyyyMmDd(String start, String end) throws ParseException {
 
         DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
         Date startDate = df.parse(start);
@@ -77,6 +70,25 @@ public class RevisionService {
         }
 
         revisionRepository.insertNewRevision(sumQuantity, sumOfPrice, startingTime, endingTime);
+
+        return revisionRepository.getLastRevisionEntered();
+    }
+
+    @Transactional
+    public Revision revisionFromToTimestamp(Timestamp start, Timestamp end) {
+
+
+        List<Order> orders = orderRepository.ordersBetweenTwoTimestamps(start, end);
+
+        BigDecimal sumOfPrice = BigDecimal.ZERO;
+        Integer sumQuantity = 0;
+
+        for (Order order : orders) {
+            sumQuantity += order.getQuantity();
+            sumOfPrice = sumOfPrice.add(order.getPrice());
+        }
+
+        revisionRepository.insertNewRevision(sumQuantity, sumOfPrice, start, end);
 
         return revisionRepository.getLastRevisionEntered();
     }

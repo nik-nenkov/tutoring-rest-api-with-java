@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan("com.epam.training.*")
 public class OrderRestController {
 
-
     private final OrderService orderService;
 
     @Autowired

@@ -5,12 +5,21 @@ title __CONTROLLER's Class Diagram__\n
   package com.epam.training.revision {
     package com.epam.training.revision.controller {
       class RevisionRestControllerTest {
+          - port : int
+          - restTemplate : TestRestTemplate
+          - jdbcTemplate : JdbcTemplate
+          + setupStocksAndOrdersForRevision()
           + createNewRevisionWithTimeInterval()
+          + checkTheSumOfAllRevisionsInTheLastThirtyMinutes()
+          + clearDatabase()
       }
     }
   }
   
 
+  RevisionRestControllerTest o-- StockRepository : stockRepository
+  RevisionRestControllerTest o-- OrderRepository : orderRepository
+  RevisionRestControllerTest o-- RevisionRepository : revisionRepository
 
 
 right footer

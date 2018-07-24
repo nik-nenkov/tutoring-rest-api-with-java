@@ -11,13 +11,15 @@ title __CONTROLLER's Class Diagram__\n
           {static} + clearTestDatabase()
           + prepare()
           + getOrderById()
+          + createNewOrder()
+          + failToCreateNewOrderOfNonExistingStock()
+          + failToCreateNewOrderOfExceedingQuantity()
           + clear()
       }
     }
   }
   
 
-  OrderRestControllerTest o-- OrderRepository : orderRepository
   OrderRestControllerTest o-- StockRepository : stockRepository
 
 

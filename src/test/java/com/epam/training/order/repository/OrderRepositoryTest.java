@@ -58,24 +58,8 @@ public class OrderRepositoryTest {
     public void addSomeEntries() {
         jdbcTemplate.execute("INSERT INTO `test_warehouse_db`.`stock` (`stock_id`, `quantity`, `price`) VALUES ('442', '40', '3.4');");
         jdbcTemplate.execute("INSERT INTO `test_warehouse_db`.`stock` (`stock_id`, `quantity`, `price`) VALUES ('3232', '50', '7.8');");
-
-//        stockRepository.insertNewStock(22, BigDecimal.valueOf(15.6), 133);
         assertThat(stockRepository.getLastInsertedStock()).isEqualTo(new Stock(3232, BigDecimal.valueOf(7.8), 50));
     }
-
-//    @Autowired
-//    private OrderRepository orderRepository;
-//
-//    @Test
-//    public void getAnyOrderById() throws ParseException {
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:m:s");
-//        Date date = dateFormat.parse("2018-07-19 14:00:00.0");
-//        long time = date.getTime();
-//
-//        Assertions.assertEquals(
-//                new Order(8, 442, 20, 10.05F, new Timestamp(time)),
-//                orderRepository.getOrderById(8));
-//    }
 
     @Test
     @Rollback

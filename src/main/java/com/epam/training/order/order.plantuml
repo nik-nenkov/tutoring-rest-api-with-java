@@ -7,7 +7,7 @@ title __ORDER's Class Diagram__\n
         - orderId : Integer
         - stockId : int
         - quantity : int
-        - price : float
+        - price : BigDecimal
         - timestamp : Timestamp
         + Order()
         + getOrderId()
