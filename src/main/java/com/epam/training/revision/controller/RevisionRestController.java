@@ -3,17 +3,15 @@ package com.epam.training.revision.controller;
 import com.epam.training.revision.Revision;
 import com.epam.training.revision.service.RevisionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 
 @RestController
-
-@ComponentScan("com.epam.training.*")
+@RequestMapping("/revision")
 public class RevisionRestController {
 
     private final RevisionService revisionService;
@@ -23,7 +21,7 @@ public class RevisionRestController {
         this.revisionService = revisionService;
     }
 
-    @RequestMapping(value = "/revise_last", method = RequestMethod.GET)
+    @GetMapping("/last")
     public Revision reviseLastThirtyMinutes(
             @RequestParam(
                     value = "minutes",
@@ -35,7 +33,7 @@ public class RevisionRestController {
         return revisionService.sumOfRevisionsFromTimestamp(startingTime);
     }
 
-    @RequestMapping(value = "/revision", method = RequestMethod.GET)
+    @GetMapping("/interval")
     public Revision makeRevisionByGivenTimeInterval(
             @RequestParam("from") String startDate,
             @RequestParam("to") String endDate) throws ParseException {

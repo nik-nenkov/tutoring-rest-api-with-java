@@ -60,7 +60,7 @@ public class StockRestControllerTest {
                 .willReturn(testStock2);
         //when
         MockHttpServletResponse response = mvc
-                .perform(get("/stock?id=33")
+                .perform(get("/stock/33")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
         //then
@@ -78,7 +78,7 @@ public class StockRestControllerTest {
                 .willReturn(testStock3);
         //when
         MockHttpServletResponse response = mvc
-                .perform(post("/new_stock")
+                .perform(post("/stock/new")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonStock.write(testStock3).getJson())
                         .accept(MediaType.APPLICATION_JSON))
@@ -99,7 +99,7 @@ public class StockRestControllerTest {
 //        given(stockService.readStock(45)).willReturn(testStock4);
         //when
         MockHttpServletResponse response = mvc
-                .perform(put("/add_stock?quantity=10&stock_id=45")
+                .perform(put("/stock/increase?quantity=10&stock_id=45")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
         //then

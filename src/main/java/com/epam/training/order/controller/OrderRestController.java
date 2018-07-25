@@ -3,14 +3,10 @@ package com.epam.training.order.controller;
 import com.epam.training.order.Order;
 import com.epam.training.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@ComponentScan("com.epam.training.*")
+@RequestMapping("/order")
 public class OrderRestController {
 
     private final OrderService orderService;
@@ -20,17 +16,15 @@ public class OrderRestController {
         this.orderService = orderService;
     }
 
-    @RequestMapping(value = "/order",
-            produces = "application/json",
-            method = RequestMethod.GET)
+    @GetMapping(value = "/{id}",
+            produces = "application/json")
     public Order showOrder(
-            @RequestParam("id") int orderId) {
+            @PathVariable("id") int orderId) {
         return orderService.getInfoAboutOrder(orderId);
     }
 
-    @RequestMapping(value = "/new_order",
-            produces = "application/json",
-            method = RequestMethod.POST)
+    @PostMapping(value = "/new",
+            produces = "application/json")
     public Order createOrder(
             @RequestParam("stock_id") int stockId,
             @RequestParam("quantity") int quantity) {

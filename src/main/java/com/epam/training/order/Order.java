@@ -26,9 +26,4 @@ public class Order {
         setPrice(orderPrice.setScale(2, RoundingMode.CEILING));
         setTimestamp(timestamp);
     }
-
-//    public Order(int stockId, int quantity, float orderPrice) {
-//        this(null, stockId, quantity, orderPrice, null);
-//    }
-
 }

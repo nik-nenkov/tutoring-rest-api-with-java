@@ -67,12 +67,14 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     }
 
     @Transactional
-    public Stock getStockById(final int stockId) throws NullPointerException {
-
+    public Stock getStockById(final int stockId) {
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);
-
-        return jdbcTemplate.queryForObject(SELECT_STOCK_BY_ID, params, new StockRowMapper());
+        try {
+            return jdbcTemplate.queryForObject(SELECT_STOCK_BY_ID, params, new StockRowMapper());
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Transactional

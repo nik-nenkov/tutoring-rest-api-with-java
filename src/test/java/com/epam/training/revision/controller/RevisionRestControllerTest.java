@@ -1,6 +1,6 @@
 package com.epam.training.revision.controller;
 
-import com.epam.training.application.DemoApplication;
+import com.epam.training.DemoApplication;
 import com.epam.training.order.controller.OrderRestControllerTest;
 import com.epam.training.order.repository.OrderRepository;
 import com.epam.training.revision.repository.RevisionRepository;
@@ -86,7 +86,7 @@ public class RevisionRestControllerTest {
     public void createNewRevisionWithTimeInterval() {
         assertThat(this
                 .restTemplate
-                .getForObject("http://localhost:" + port + "/revision?from=2012-01-01&to=2020-01-01",
+                .getForObject("http://localhost:" + port + "/revision/interval?from=2012-01-01&to=2020-01-01",
                         String.class)
         ).isEqualTo("{" +
                 "\"revisionId\":4," +
@@ -101,7 +101,7 @@ public class RevisionRestControllerTest {
     public void checkTheSumOfAllRevisionsInTheLastThirtyMinutes() {
         assertThat(
                 this.restTemplate
-                        .getForObject("http://localhost:" + port + "/revise_last",
+                        .getForObject("http://localhost:" + port + "revision/last",
                                 String.class)
         ).contains("{\"revisionId\":4," +
                 "\"total_quantities\":1400," +

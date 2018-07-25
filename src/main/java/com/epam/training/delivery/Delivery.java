@@ -1,10 +1,12 @@
 package com.epam.training.delivery;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.sql.Timestamp;
 
 @Data
+@AllArgsConstructor
 public class Delivery {
     private Integer id;
     private int stockId;
@@ -12,15 +14,6 @@ public class Delivery {
     private Timestamp date;
     private boolean scheduled;
     private Long timeInterval;
-
-    public Delivery(Integer deliveryId, int stockId, int quantity, Timestamp date, boolean scheduled, Long timeInterval) {
-        this.id = deliveryId;
-        this.stockId = stockId;
-        this.quantity = quantity;
-        this.date = date;
-        this.scheduled = scheduled;
-        this.timeInterval = timeInterval;
-    }
 
     public Delivery(int stockId, int quantity, long timeInterval) {
         this(null, stockId, quantity, null, true, timeInterval);

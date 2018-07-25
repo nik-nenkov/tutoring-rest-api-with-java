@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.InvalidParameterException;
 
 @RestController
+@RequestMapping("/stock")
 public class StockRestController {
 
     private final StockService stockService;
@@ -17,18 +18,16 @@ public class StockRestController {
         this.stockService = stockService;
     }
 
-    @RequestMapping(
-            value = "/new_stock",
-            method = RequestMethod.POST,
+    @PostMapping(
+            value = "/new",
             consumes = "application/json",
             produces = "application/json")
     public Stock newStock(@RequestBody Stock stockToAdd) {
         return stockService.createStock(stockToAdd.getSockId(), stockToAdd.getPrice(), stockToAdd.getQuantity());
     }
 
-    @RequestMapping(
-            value = "/add_stock",
-            method = RequestMethod.PUT,
+    @PutMapping(
+            value = "/increase",
             produces = "application/json")
     public Stock increaseStock(
             @RequestParam("stock_id") int stockId,
@@ -36,12 +35,11 @@ public class StockRestController {
         return stockService.increaseQuantityOfStock(stockId, quantity);
     }
 
-    @RequestMapping(
-            value = "/stock",
-            method = RequestMethod.GET,
+    @GetMapping(
+            value = "/{id}",
             produces = "application/json")
     public Stock showStock(
-            @RequestParam("id") int stockId) {
+            @PathVariable("id") int stockId) {
         return stockService.readStock(stockId);
     }
 

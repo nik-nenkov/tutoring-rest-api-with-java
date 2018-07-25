@@ -1,7 +1,7 @@
 package com.epam.training.order.repository;
 
 
-import com.epam.training.application.DemoApplication;
+import com.epam.training.DemoApplication;
 import com.epam.training.order.Order;
 import com.epam.training.order.controller.OrderRestControllerTest;
 import com.epam.training.stock.Stock;

@@ -1,6 +1,6 @@
 package com.epam.training.revision.repository;
 
-import com.epam.training.application.DemoApplication;
+import com.epam.training.DemoApplication;
 import com.epam.training.revision.Revision;
 import org.junit.Test;
 import org.junit.runner.RunWith;

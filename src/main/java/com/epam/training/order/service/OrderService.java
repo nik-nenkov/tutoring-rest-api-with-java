@@ -26,16 +26,16 @@ public class OrderService {
     public Order placeNewOrder(int stockId, int quantity) {
         //Търсим в базата стока с посоченият ID номер:
         Stock currentStock;
-        try {
+
             currentStock = stockRepository.getStockById(stockId);
-        } catch (Exception e) {
-            throw new InvalidParameterException() {
+
+        if (currentStock == null) throw new InvalidParameterException() {
                 @Override
                 public String getMessage() {
                     return "Could not find s stock with id=" + stockId;
                 }
             };
-        }
+
         //Правим изчисления за цена на поръчката и промяна на количеството в склада:
         BigDecimal orderPrice = currentStock.getPrice().multiply(BigDecimal.valueOf(quantity));
         int newQuantity = currentStock.getQuantity() - quantity;

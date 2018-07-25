@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -32,6 +33,7 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
         setDataSource(dataSource);
     }
 
+    @Transactional
     public void createNewScheduledDelivery(Delivery deliveryToPersist) {
         Map<String, Object> params = new HashMap<>();
         params.put("stock_id", deliveryToPersist.getStockId());
@@ -40,6 +42,7 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
         jdbcTemplate.update(INSERT_SCHEDULED_DELIVERY, params);
     }
 
+    @Transactional
     public void createNewSingleDelivery(Delivery deliveryToPersist) {
         Map<String, Object> params = new HashMap<>();
         params.put("stock_id", deliveryToPersist.getStockId());

@@ -1,15 +1,17 @@
-package com.epam.training.delivery;
+package com.epam.training.delivery.controller;
 
 
+import com.epam.training.delivery.Delivery;
 import com.epam.training.delivery.service.DeliveryService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 
 @RestController
+@RequestMapping("/delivery")
 public class DeliveryRestController {
 
     private final DeliveryService deliveryService;
@@ -18,13 +20,13 @@ public class DeliveryRestController {
         this.deliveryService = deliveryService;
     }
 
-    @RequestMapping(value = "/new_delivery", method = RequestMethod.POST)
+    @PostMapping("/new")
     public Delivery addNewDelivery(
-            @RequestParam int stockId,
+            @RequestParam(value = "stock_id") int stockId,
             @RequestParam int quantity,
-            @RequestParam boolean scheduled,
-            @RequestParam Long timeInterval,
-            @RequestParam Timestamp deliveryTime
+            @RequestParam(required = false, defaultValue = "false") boolean scheduled,
+            @RequestParam(value = "time_interval", required = false, defaultValue = "0") Long timeInterval,
+            @RequestParam(value = "delivery_time") Timestamp deliveryTime
     ) {
         if (scheduled) {
             return deliveryService.newScheduledDelivery(stockId, quantity, timeInterval); //TODO добавяне на начална дата?

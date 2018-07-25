@@ -1,7 +1,8 @@
 package com.epam.training.stock.repository;
 
-import com.epam.training.application.DemoApplication;
+import com.epam.training.DemoApplication;
 import com.epam.training.stock.Stock;
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,6 +44,7 @@ public class StockRepositoryTest {
         stocks.add(new Stock(43, BigDecimal.valueOf(14.30), 156));
         stocks.add(new Stock(22, BigDecimal.valueOf(15.60), 133));
         stocks.add(new Stock(43, BigDecimal.valueOf(14.3), 956));
+        stocks.add(new Stock(650650650, BigDecimal.valueOf(0), 0));
     }
 
     @Test
@@ -62,5 +64,12 @@ public class StockRepositoryTest {
         stockRepository.updateQuantityById(43, 956);
         Stock s2 = stockRepository.getStockById(43);
         assertThat(s2).isEqualTo(stocks.get(2));
+    }
+
+    @Test
+    public void createStockIfNotExists() {
+        Assertions.assertThat(stockRepository.getStockById(650650650)).isNull();
+        stockRepository.createStockIfNotExists(650650650);
+        Assertions.assertThat(stockRepository.getStockById(650650650)).isEqualTo(stocks.get(3));
     }
 }

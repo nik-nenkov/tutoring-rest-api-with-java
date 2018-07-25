@@ -1,6 +1,6 @@
 package com.epam.training.order.controller;
 
-import com.epam.training.application.DemoApplication;
+import com.epam.training.DemoApplication;
 import com.epam.training.stock.repository.StockRepository;
 import org.junit.After;
 import org.junit.Before;
@@ -91,7 +91,7 @@ public class OrderRestControllerTest {
     public void getOrderById() {
         assertThat(this
                 .restTemplate
-                .getForObject("http://localhost:" + port + "/order?id=19",
+                .getForObject("http://localhost:" + port + "/order/19",
                         String.class)
         ).isEqualTo("{\"orderId\":19," +
                 "\"quantity\":20," +
@@ -108,7 +108,7 @@ public class OrderRestControllerTest {
 //        Timestamp timeNow = new Timestamp((new Date().getTime()/1000)*1000);
         assertThat(this
                 .restTemplate
-                .postForObject("http://localhost:" + port + "/new_order", map, String.class)
+                .postForObject("http://localhost:" + port + "/order/new", map, String.class)
         ).contains("{" +
                 "\"orderId\":20," +
                 "\"quantity\":10," +
@@ -124,7 +124,7 @@ public class OrderRestControllerTest {
         map.add("stock_id", "999999999");
         assertThat(this
                 .restTemplate
-                .postForObject("http://localhost:" + port + "/new_order", map, String.class)
+                .postForObject("http://localhost:" + port + "/order/new", map, String.class)
         ).contains("Could not find s stock with id=999999999"); //TODO : this fucks with timestamp precision
     }
 
@@ -135,7 +135,7 @@ public class OrderRestControllerTest {
         map.add("stock_id", "8864408");
         assertThat(this
                 .restTemplate
-                .postForObject("http://localhost:" + port + "/new_order", map, String.class)
+                .postForObject("http://localhost:" + port + "/order/new", map, String.class)
         ).contains("Requested quantity should not exceed total stock quantity!");
     }
 
