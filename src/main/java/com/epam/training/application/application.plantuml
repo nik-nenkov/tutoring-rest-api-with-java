@@ -2,28 +2,23 @@
 
 title __APPLICATION's Class Diagram__\n
 
-  package com.epam.training.application {
-    class AppConfig {
+  package com.epam.training {
+    package com.epam.training.application {
+      class AppConfig {
+      }
     }
   }
   
 
-  package com.epam.training.application {
-    class DemoApplication {
-        {static} + main()
-        + run()
+  package com.epam.training {
+    package com.epam.training.application {
+      class SpringFoxConfig {
+          + apiDocket()
+      }
     }
   }
   
 
-  package com.epam.training.application {
-    class SpringFoxConfig {
-        + apiDocket()
-    }
-  }
-  
-
-  DemoApplication -up-|> CommandLineRunner
 
 
 right footer

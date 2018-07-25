@@ -42,10 +42,12 @@ public class DeliveryRestControllerTest {
 
     @InjectMocks
     private DeliveryRestController deliveryRestController;
+
     private JacksonTester<Delivery> jsonDelivery = null;
 
     @Before
     public void setup() {
+        deliveryService = new DeliveryService(deliveryRepository, stockRepository);
         deliveryRestController = new DeliveryRestController(deliveryService);
         JacksonTester.initFields(this, new ObjectMapper());
         mvc = MockMvcBuilders
@@ -60,7 +62,9 @@ public class DeliveryRestControllerTest {
         Delivery testDelivery2 = new Delivery(23, 111, 10,
                 new Timestamp(sdf.parse("2018-11-13 07:25:30").getTime()), false, 0L);
         //given
-        given(deliveryRepository.lastEnteredDelivery()).willReturn(testDelivery1);
+        given(deliveryRepository.getDeliveryById(22)).willReturn(testDelivery1);
+        given(deliveryRepository.getDeliveryById(23)).willReturn(testDelivery2);
+        given(deliveryRepository.createNewScheduledDelivery(testDelivery2)).willReturn(23);
         //when
         MockHttpServletResponse response = mvc.perform(
                 post("/delivery/new" +

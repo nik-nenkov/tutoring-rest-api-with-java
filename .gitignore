@@ -15,6 +15,7 @@
 *.iws
 *.iml
 *.ipr
+*.plantuml
 
 ### NetBeans ###
 /nbproject/private/
@@ -23,6 +24,6 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-*.plantuml
 src/main/resources/static/
 src/main/resources/templates/
+!/jdbc-crud3.plantuml

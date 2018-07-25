@@ -2,28 +2,30 @@
 
 title __ORDER's Class Diagram__\n
 
-  package com.epam.training.order {
-    class Order {
-        - orderId : Integer
-        - stockId : int
-        - quantity : int
-        - price : BigDecimal
-        - timestamp : Timestamp
-        + Order()
-        + getOrderId()
-        + getStockId()
-        + getQuantity()
-        + getPrice()
-        + getTimestamp()
-        + setOrderId()
-        + setStockId()
-        + setQuantity()
-        + setPrice()
-        + setTimestamp()
-        + equals()
-        + hashCode()
-        # canEqual()
-        + toString()
+  package com.epam.training {
+    package com.epam.training.order {
+      class Order {
+          - orderId : Integer
+          - stockId : int
+          - quantity : int
+          - price : BigDecimal
+          - timestamp : Timestamp
+          + Order()
+          + getOrderId()
+          + getStockId()
+          + getQuantity()
+          + getPrice()
+          + getTimestamp()
+          + setOrderId()
+          + setStockId()
+          + setQuantity()
+          + setPrice()
+          + setTimestamp()
+          + equals()
+          + hashCode()
+          # canEqual()
+          + toString()
+      }
     }
   }
   

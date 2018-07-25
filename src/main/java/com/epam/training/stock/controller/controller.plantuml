@@ -2,13 +2,15 @@
 
 title __CONTROLLER's Class Diagram__\n
 
-  package com.epam.training.stock {
-    package com.epam.training.stock.controller {
-      class StockRestController {
-          + StockRestController()
-          + newStock()
-          + increaseStock()
-          + showStock()
+  package com.epam.training {
+    package com.epam.training.stock {
+      package com.epam.training.stock.controller {
+        class StockRestController {
+            + StockRestController()
+            + newStock()
+            + increaseStock()
+            + showStock()
+        }
       }
     }
   }

@@ -29,7 +29,7 @@ public class DeliveryRestController {
             @RequestParam(value = "delivery_time") Timestamp deliveryTime
     ) {
         if (scheduled) {
-            return deliveryService.newScheduledDelivery(stockId, quantity, timeInterval); //TODO добавяне на начална дата?
+            return deliveryService.newScheduledDelivery(stockId, quantity, timeInterval);
         } else {
             return deliveryService.newSingleDelivery(stockId, quantity, deliveryTime);
         }

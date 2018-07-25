@@ -2,26 +2,30 @@
 
 title __SERVICE's Class Diagram__\n
 
-  package com.epam.training.stock {
-    package com.epam.training.stock.service {
-      class StockSchedulingService {
-          - interval : int
-          {static} - log : Logger
-          + StockSchedulingService()
-          - initialize()
-          - addSomeStocks()
+  package com.epam.training {
+    package com.epam.training.stock {
+      package com.epam.training.stock.service {
+        class StockSchedulingService {
+            - interval : int
+            {static} - log : Logger
+            + StockSchedulingService()
+            - initialize()
+            - addSomeStocks()
+        }
       }
     }
   }
   
 
-  package com.epam.training.stock {
-    package com.epam.training.stock.service {
-      class StockService {
-          + StockService()
-          + increaseQuantityOfStock()
-          + createStock()
-          + readStock()
+  package com.epam.training {
+    package com.epam.training.stock {
+      package com.epam.training.stock.service {
+        class StockService {
+            + StockService()
+            + increaseQuantityOfStock()
+            + createStock()
+            + readStock()
+        }
       }
     }
   }

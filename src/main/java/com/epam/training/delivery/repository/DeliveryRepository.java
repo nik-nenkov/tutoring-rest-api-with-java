@@ -2,10 +2,13 @@ package com.epam.training.delivery.repository;
 
 
 import com.epam.training.delivery.Delivery;
+import com.epam.training.exception.CouldNotCreateOrderException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,41 +21,53 @@ import java.util.Map;
 @Repository
 public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
 
-    private static final String GET_LAST_ENTERED_DELIVERY =
-            "SELECT * FROM `delivery` ORDER BY `id` DESC LIMIT 1";
-    private final static String INSERT_SCHEDULED_DELIVERY =
-            "INSERT INTO `delivery`(stock_id,quantity,time_interval) VALUES(:stock_id,:quantity,:time_interval)";
-    private final static String INSERT_SINGLE_DELIVERY =
-            "INSERT INTO `delivery`(stock_id,quantity,first_date) VALUES(:stock_id,:quantity,:first_date)";
+    private static final String SELECT_DELIVERY_BY_ID =
+            "SELECT * FROM `delivery` WHERE `id` = :id";
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
+    private final SimpleJdbcInsert simpleJdbcInsert;
+
     @Autowired
     public DeliveryRepository(DataSource dataSource, NamedParameterJdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
         setDataSource(dataSource);
+        this.jdbcTemplate = jdbcTemplate;
+        simpleJdbcInsert = new SimpleJdbcInsert(dataSource);
+
     }
 
     @Transactional
-    public void createNewScheduledDelivery(Delivery deliveryToPersist) {
+    public Integer createNewScheduledDelivery(Delivery deliveryToPersist) {
         Map<String, Object> params = new HashMap<>();
         params.put("stock_id", deliveryToPersist.getStockId());
         params.put("quantity", deliveryToPersist.getQuantity());
         params.put("time_interval", deliveryToPersist.getTimeInterval());
-        jdbcTemplate.update(INSERT_SCHEDULED_DELIVERY, params);
+        KeyHolder key = simpleJdbcInsert.executeAndReturnKeyHolder(params);
+        if (key.getKey() != null) {
+            return key.getKey().intValue();
+        } else {
+            throw new CouldNotCreateOrderException();
+        }
     }
 
     @Transactional
-    public void createNewSingleDelivery(Delivery deliveryToPersist) {
+    public Integer createNewSingleDelivery(Delivery deliveryToPersist) {
         Map<String, Object> params = new HashMap<>();
         params.put("stock_id", deliveryToPersist.getStockId());
         params.put("quantity", deliveryToPersist.getQuantity());
         params.put("first_date", deliveryToPersist.getDate());
-        jdbcTemplate.update(INSERT_SINGLE_DELIVERY, params);
+        KeyHolder key = simpleJdbcInsert.executeAndReturnKeyHolder(params);
+        if (key.getKey() != null) {
+            return key.getKey().intValue();
+        } else {
+            throw new CouldNotCreateOrderException();
+        }
     }
 
-    public Delivery lastEnteredDelivery() {
-        return jdbcTemplate.queryForObject(GET_LAST_ENTERED_DELIVERY, new HashMap<>(), new DeliveryRowMapper());
+    public Delivery getDeliveryById(int id) {
+        Map<String, Object> param = new HashMap<>();
+        param.put("id", id);
+        return jdbcTemplate.queryForObject(SELECT_DELIVERY_BY_ID, param, new DeliveryRowMapper());
     }
 
     private static class DeliveryRowMapper implements RowMapper<Delivery> {

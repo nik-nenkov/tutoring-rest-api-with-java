@@ -2,12 +2,14 @@
 
 title __SERVICE's Class Diagram__\n
 
-  package com.epam.training.order {
-    package com.epam.training.order.service {
-      class OrderService {
-          + OrderService()
-          + placeNewOrder()
-          + getInfoAboutOrder()
+  package com.epam.training {
+    package com.epam.training.order {
+      package com.epam.training.order.service {
+        class OrderService {
+            + OrderService()
+            + placeNewOrder()
+            + getInfoAboutOrder()
+        }
       }
     }
   }

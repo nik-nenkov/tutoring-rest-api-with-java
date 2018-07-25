@@ -2,31 +2,35 @@
 
 title __REPOSITORY's Class Diagram__\n
 
-  package com.epam.training.order {
-    package com.epam.training.order.repository {
-      class OrderRepository {
-          {static} - INSERT_ORDER_NEW : String
-          {static} - SELECT_ORDER_LAST : String
-          {static} - SELECT_ORDER_BY_ID : String
-          {static} - SELECT_ORDERS_ALL_LIMIT_FIFTY : String
-          {static} - SELECT_ORDERS_AFTER_UNIX_TIMESTAMP : String
-          {static} - SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS : String
-          + OrderRepository()
-          + getOrderById()
-          + getLastOrder()
-          + getLastOrdersLimitFifty()
-          + ordersAfterTimestamp()
-          + ordersBetweenTwoTimestamps()
-          + createNewOrder()
+  package com.epam.training {
+    package com.epam.training.order {
+      package com.epam.training.order.repository {
+        class OrderRepository {
+            {static} - INSERT_ORDER_NEW : String
+            {static} - SELECT_ORDER_LAST : String
+            {static} - SELECT_ORDER_BY_ID : String
+            {static} - SELECT_ORDERS_ALL_LIMIT_FIFTY : String
+            {static} - SELECT_ORDERS_AFTER_UNIX_TIMESTAMP : String
+            {static} - SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS : String
+            + OrderRepository()
+            + getOrderById()
+            + getLastOrder()
+            + getLastOrdersLimitFifty()
+            + ordersAfterTimestamp()
+            + ordersBetweenTwoTimestamps()
+            + createNewOrder()
+        }
       }
     }
   }
   
 
-  package com.epam.training.order {
-    package com.epam.training.order.repository {
-      class OrderRowMapper {
-          + mapRow()
+  package com.epam.training {
+    package com.epam.training.order {
+      package com.epam.training.order.repository {
+        class OrderRowMapper {
+            + mapRow()
+        }
       }
     }
   }

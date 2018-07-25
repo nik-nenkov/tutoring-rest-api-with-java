@@ -2,14 +2,17 @@
 
 title __REPOSITORY's Class Diagram__\n
 
-  package com.epam.training.stock {
-    package com.epam.training.stock.repository {
-      class StockRepositoryTest {
-          - stocks : List<Stock>
-          + createStocksForTesting()
-          + getStockById()
-          + insertNewStock()
-          + updateQuantityById()
+  package com.epam.training {
+    package com.epam.training.stock {
+      package com.epam.training.stock.repository {
+        class StockRepositoryTest {
+            - stocks : List<Stock>
+            + createStocksForTesting()
+            + getStockById()
+            + insertNewStock()
+            + updateQuantityById()
+            + createStockIfNotExists()
+        }
       }
     }
   }

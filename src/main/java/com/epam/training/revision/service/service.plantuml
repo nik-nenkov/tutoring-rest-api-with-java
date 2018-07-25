@@ -2,24 +2,28 @@
 
 title __SERVICE's Class Diagram__\n
 
-  package com.epam.training.revision {
-    package com.epam.training.revision.service {
-      class RevisionSchedulingService {
-          {static} - log : Logger
-          + RevisionSchedulingService()
-          - makeComputationAndLogResult()
+  package com.epam.training {
+    package com.epam.training.revision {
+      package com.epam.training.revision.service {
+        class RevisionSchedulingService {
+            {static} - log : Logger
+            + RevisionSchedulingService()
+            - makeComputationAndLogResult()
+        }
       }
     }
   }
   
 
-  package com.epam.training.revision {
-    package com.epam.training.revision.service {
-      class RevisionService {
-          + RevisionService()
-          + sumOfRevisionsFromTimestamp()
-          + revisionFromToStringYyyyMmDd()
-          + revisionFromToTimestamp()
+  package com.epam.training {
+    package com.epam.training.revision {
+      package com.epam.training.revision.service {
+        class RevisionService {
+            + RevisionService()
+            + sumOfRevisionsFromTimestamp()
+            + revisionFromToStringYyyyMmDd()
+            + revisionFromToTimestamp()
+        }
       }
     }
   }

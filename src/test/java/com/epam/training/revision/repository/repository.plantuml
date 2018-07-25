@@ -2,12 +2,14 @@
 
 title __REPOSITORY's Class Diagram__\n
 
-  package com.epam.training.revision {
-    package com.epam.training.revision.repository {
-      class RevisionRepositoryTest {
-          + getLastRevisionEntered()
-          + getRevisionsInTimeInterval()
-          + insertNewRevision()
+  package com.epam.training {
+    package com.epam.training.revision {
+      package com.epam.training.revision.repository {
+        class RevisionRepositoryTest {
+            + getLastRevisionEntered()
+            + getRevisionsInTimeInterval()
+            + insertNewRevision()
+        }
       }
     }
   }

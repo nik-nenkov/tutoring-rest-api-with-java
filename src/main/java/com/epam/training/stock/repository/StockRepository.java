@@ -51,6 +51,7 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
         jdbcTemplate.update(INSERT_STOCK_NEW, params);
     }
 
+    @Transactional
     public void createStockIfNotExists(int stockId) {
         if (getStockById(stockId) == null)
             insertNewStock(stockId, BigDecimal.ZERO, 0);
