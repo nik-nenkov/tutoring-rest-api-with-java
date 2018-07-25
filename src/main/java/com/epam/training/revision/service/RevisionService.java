@@ -59,24 +59,12 @@ public class RevisionService {
         Timestamp startingTime = new Timestamp(startDate.getTime());
         Timestamp endingTime = new Timestamp(endDate.getTime());
 
-        List<Order> orders = orderRepository.ordersBetweenTwoTimestamps(startingTime, endingTime);
+        return revisionFromToTimestamp(startingTime, endingTime);
 
-        BigDecimal sumOfPrice = BigDecimal.ZERO;
-        Integer sumQuantity = 0;
-
-        for (Order order : orders) {
-            sumQuantity += order.getQuantity();
-            sumOfPrice = sumOfPrice.add(order.getPrice());
-        }
-
-        revisionRepository.insertNewRevision(sumQuantity, sumOfPrice, startingTime, endingTime);
-
-        return revisionRepository.getLastRevisionEntered();
     }
 
     @Transactional
     public Revision revisionFromToTimestamp(Timestamp start, Timestamp end) {
-
 
         List<Order> orders = orderRepository.ordersBetweenTwoTimestamps(start, end);
 
