@@ -51,6 +51,11 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
         jdbcTemplate.update(INSERT_STOCK_NEW, params);
     }
 
+    public void createStockIfNotExists(int stockId) {
+        if (getStockById(stockId) == null)
+            insertNewStock(stockId, BigDecimal.ZERO, 0);
+    }
+
     private final class StockRowMapper implements RowMapper<Stock> {
         @Override
         public Stock mapRow(ResultSet rs, int rowNum) throws SQLException {
