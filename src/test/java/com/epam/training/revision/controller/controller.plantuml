@@ -5,7 +5,7 @@ title __CONTROLLER's Class Diagram__\n
   package com.epam.training {
     package com.epam.training.revision {
       package com.epam.training.revision.controller {
-        class RevisionRestControllerTest {
+        class RevisionRestControllerIntegrationTest {
             - port : int
             - restTemplate : TestRestTemplate
             - jdbcTemplate : JdbcTemplate
@@ -19,9 +19,10 @@ title __CONTROLLER's Class Diagram__\n
   }
   
 
-  RevisionRestControllerTest o-- StockRepository : stockRepository
-  RevisionRestControllerTest o-- OrderRepository : orderRepository
-  RevisionRestControllerTest o-- RevisionRepository : revisionRepository
+  RevisionRestControllerIntegrationTest -up-|> RepositoryIntegrationTest
+  RevisionRestControllerIntegrationTest o-- StockRepository : stockRepository
+  RevisionRestControllerIntegrationTest o-- OrderRepository : orderRepository
+  RevisionRestControllerIntegrationTest o-- RevisionRepository : revisionRepository
 
 
 right footer

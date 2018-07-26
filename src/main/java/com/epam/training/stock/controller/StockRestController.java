@@ -1,5 +1,6 @@
 package com.epam.training.stock.controller;
 
+import com.epam.training.exception.CouldNotCreateNewStock;
 import com.epam.training.stock.Stock;
 import com.epam.training.stock.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class StockRestController {
             value = "/new",
             consumes = "application/json",
             produces = "application/json")
-    public Stock newStock(@RequestBody Stock stockToAdd) {
+    public Stock newStock(@RequestBody Stock stockToAdd) throws CouldNotCreateNewStock {
         return stockService.createStock(stockToAdd.getSockId(), stockToAdd.getPrice(), stockToAdd.getQuantity());
     }
 

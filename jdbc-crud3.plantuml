@@ -3,14 +3,6 @@
 title __JDBC-CRUD3's Class Diagram__\n
 
   package com.epam.training {
-    package com.epam.training.application {
-      class AppConfig {
-      }
-    }
-  }
-  
-
-  package com.epam.training {
     package com.epam.training.delivery {
       class Delivery {
       }
@@ -141,9 +133,7 @@ title __JDBC-CRUD3's Class Diagram__\n
   
 
   package com.epam.training {
-    package com.epam.training.application {
-      class SpringFoxConfig {
-      }
+    class SpringFoxConfig {
     }
   }
   

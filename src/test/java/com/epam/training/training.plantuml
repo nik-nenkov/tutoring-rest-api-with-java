@@ -3,30 +3,12 @@
 title __TRAINING's Class Diagram__\n
 
   package com.epam.training {
-    class DemoApplicationTests {
-        + contextLoads()
+    interface RepositoryIntegrationTest {
+        + clearTestDatabase()
     }
   }
   
 
-  package com.epam.training {
-    class RevisionTest {
-        + testRevision()
-    }
-  }
-  
-
-  package com.epam.training {
-    class StockRestControllerTest {
-        - mockMvc : MockMvc
-        + homeMessage()
-        + reviseLastThirtyMinutes()
-    }
-  }
-  
-
-  DemoApplicationTests o-- StockRestController : controller
-  RevisionTest o-- StockRepository : stockRepository
 
 
 right footer

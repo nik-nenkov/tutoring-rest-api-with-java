@@ -5,7 +5,7 @@ title __REPOSITORY's Class Diagram__\n
   package com.epam.training {
     package com.epam.training.order {
       package com.epam.training.order.repository {
-        class OrderRepositoryTest {
+        class OrderRepositoryIntegrationTest {
             - jdbcTemplate : JdbcTemplate
             + prepareTestDatabase()
             + addSomeEntries()
@@ -19,8 +19,9 @@ title __REPOSITORY's Class Diagram__\n
   }
   
 
-  OrderRepositoryTest o-- StockRepository : stockRepository
-  OrderRepositoryTest o-- OrderRepository : orderRepository
+  OrderRepositoryIntegrationTest -up-|> RepositoryIntegrationTest
+  OrderRepositoryIntegrationTest o-- StockRepository : stockRepository
+  OrderRepositoryIntegrationTest o-- OrderRepository : orderRepository
 
 
 right footer

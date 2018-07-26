@@ -5,11 +5,10 @@ title __CONTROLLER's Class Diagram__\n
   package com.epam.training {
     package com.epam.training.order {
       package com.epam.training.order.controller {
-        class OrderRestControllerTest {
+        class OrderRestControllerIntegrationTest {
             - port : int
             - restTemplate : TestRestTemplate
             - jdbcTemplate : JdbcTemplate
-            {static} + clearTestDatabase()
             + prepare()
             + getOrderById()
             + createNewOrder()
@@ -22,7 +21,8 @@ title __CONTROLLER's Class Diagram__\n
   }
   
 
-  OrderRestControllerTest o-- StockRepository : stockRepository
+  OrderRestControllerIntegrationTest -up-|> RepositoryIntegrationTest
+  OrderRestControllerIntegrationTest o-- StockRepository : stockRepository
 
 
 right footer
