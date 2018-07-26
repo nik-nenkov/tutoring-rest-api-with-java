@@ -26,7 +26,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @RunWith(MockitoJUnitRunner.class)
-public class DeliveryRestControllerTest {
+public class DeliveryRestControllerMockTest {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     private MockMvc mvc;
@@ -59,12 +59,9 @@ public class DeliveryRestControllerTest {
     public void addNewDeliveryScheduled() throws Exception {
         Delivery testDelivery1 = new Delivery(22, 345, 200,
                 new Timestamp(sdf.parse("2018-10-03 17:45:00").getTime()), true, 5L);
-        Delivery testDelivery2 = new Delivery(23, 111, 10,
-                new Timestamp(sdf.parse("2018-11-13 07:25:30").getTime()), false, 0L);
         //given
         given(deliveryRepository.getDeliveryById(22)).willReturn(testDelivery1);
-        given(deliveryRepository.getDeliveryById(23)).willReturn(testDelivery2);
-        given(deliveryRepository.createNewScheduledDelivery(testDelivery2)).willReturn(23);
+        given(deliveryRepository.createNewScheduledDelivery(new Delivery(345, 250, 5))).willReturn(22);
         //when
         MockHttpServletResponse response = mvc.perform(
                 post("/delivery/new" +
@@ -81,7 +78,24 @@ public class DeliveryRestControllerTest {
     }
 
     @Test
-    public void addNewDeliverySingleTime() {
-
+    public void addNewDeliverySingleTime() throws Exception {
+        final Timestamp ts = new Timestamp(sdf.parse("2018-11-13 07:25:30").getTime());
+        final Delivery testDelivery2 = new Delivery(23, 111, 10, ts, false, 0L);
+        //given
+        given(deliveryRepository.getDeliveryById(23)).willReturn(testDelivery2);
+        given(deliveryRepository.createNewSingleDelivery(new Delivery(111, 10, ts))).willReturn(23);
+        //when
+        MockHttpServletResponse response = mvc.perform(
+                post("/delivery/new" +
+                        "?delivery_time=2018-11-13 07:25:30" +
+                        "&quantity=10" +
+                        "&scheduled=false" +
+                        "&stock_id=111" +
+                        "&time_interval=0").accept(MediaType.APPLICATION_JSON))
+                .andReturn().getResponse();
+        //then
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getContentAsString())
+                .isEqualTo(jsonDelivery.write(testDelivery2).getJson());
     }
 }

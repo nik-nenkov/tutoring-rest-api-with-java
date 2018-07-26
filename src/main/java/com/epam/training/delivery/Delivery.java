@@ -19,7 +19,15 @@ public class Delivery {
         this(null, stockId, quantity, null, true, timeInterval);
     }
 
+    public Delivery(int id, int stockId, int quantity, long timeInterval) {
+        this(id, stockId, quantity, null, true, timeInterval);
+    }
+
     public Delivery(int stockId, int quantity, Timestamp firstDate) {
         this(null, stockId, quantity, firstDate, false, null);
+    }
+
+    public Delivery(int id, int stockId, int quantity, Timestamp firstDate) {
+        this(id, stockId, quantity, firstDate, false, 0L);
     }
 }

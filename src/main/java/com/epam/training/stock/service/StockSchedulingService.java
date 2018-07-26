@@ -1,7 +1,6 @@
 package com.epam.training.stock.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -11,11 +10,12 @@ import javax.annotation.PostConstruct;
 
 
 @Service
+@Log4j
 @EnableScheduling
 public class StockSchedulingService {
 
     private final int interval = 60000;
-    private static final Logger log = LoggerFactory.getLogger(StockSchedulingService.class);
+    //    private static final Logger log = LoggerFactory.getLogger(StockSchedulingService.class);
     private final StockService stockService;
 
     @Autowired

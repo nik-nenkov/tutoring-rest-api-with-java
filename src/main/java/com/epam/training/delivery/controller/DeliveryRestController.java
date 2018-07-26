@@ -19,7 +19,6 @@ public class DeliveryRestController {
     public DeliveryRestController(DeliveryService deliveryService) {
         this.deliveryService = deliveryService;
     }
-
     @PostMapping("/new")
     public Delivery addNewDelivery(
             @RequestParam(value = "stock_id") int stockId,

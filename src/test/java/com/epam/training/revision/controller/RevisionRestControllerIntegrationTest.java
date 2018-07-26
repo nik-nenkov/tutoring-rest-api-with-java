@@ -1,7 +1,7 @@
 package com.epam.training.revision.controller;
 
 import com.epam.training.DemoApplication;
-import com.epam.training.order.controller.OrderRestControllerTest;
+import com.epam.training.RepositoryIntegrationTest;
 import com.epam.training.order.repository.OrderRepository;
 import com.epam.training.revision.repository.RevisionRepository;
 import com.epam.training.stock.repository.StockRepository;
@@ -30,7 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ComponentScan("com.epam")
 
-public class RevisionRestControllerTest {
+public class RevisionRestControllerIntegrationTest implements RepositoryIntegrationTest {
 
     @LocalServerPort
     private int port;
@@ -111,6 +111,6 @@ public class RevisionRestControllerTest {
 
     @After
     public void clearDatabase() {
-        OrderRestControllerTest.clearTestDatabase(jdbcTemplate);
+        clearTestDatabase(jdbcTemplate);
     }
 }

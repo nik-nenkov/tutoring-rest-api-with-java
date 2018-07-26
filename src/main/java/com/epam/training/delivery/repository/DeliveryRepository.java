@@ -2,7 +2,6 @@ package com.epam.training.delivery.repository;
 
 
 import com.epam.training.delivery.Delivery;
-import com.epam.training.exception.CouldNotCreateOrderException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
@@ -17,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Repository
 public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
@@ -33,21 +33,34 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
         setDataSource(dataSource);
         this.jdbcTemplate = jdbcTemplate;
         simpleJdbcInsert = new SimpleJdbcInsert(dataSource);
+        simpleJdbcInsert.includeSynonymsForTableColumnMetaData();
+        simpleJdbcInsert.withTableName("delivery");
+        simpleJdbcInsert.usingColumns(
+                "stock_id",
+                "quantity",
+                "first_date",
+                "scheduled",
+                "time_interval"
+        ).usingGeneratedKeyColumns("id");
+    }
 
+    private Map<String, Object> deliveryMapper(Delivery delivery) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("stock_id", delivery.getStockId());
+        params.put("quantity", delivery.getQuantity());
+        params.put("first_date", delivery.getDate());
+        params.put("scheduled", delivery.isScheduled());
+        params.put("time_interval", delivery.getTimeInterval());
+        return params;
     }
 
     @Transactional
     public Integer createNewScheduledDelivery(Delivery deliveryToPersist) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("stock_id", deliveryToPersist.getStockId());
-        params.put("quantity", deliveryToPersist.getQuantity());
-        params.put("time_interval", deliveryToPersist.getTimeInterval());
+
+        Map<String, Object> params = deliveryMapper(deliveryToPersist);
+
         KeyHolder key = simpleJdbcInsert.executeAndReturnKeyHolder(params);
-        if (key.getKey() != null) {
-            return key.getKey().intValue();
-        } else {
-            throw new CouldNotCreateOrderException();
-        }
+        return Objects.requireNonNull(key.getKey()).intValue();
     }
 
     @Transactional
@@ -57,11 +70,7 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
         params.put("quantity", deliveryToPersist.getQuantity());
         params.put("first_date", deliveryToPersist.getDate());
         KeyHolder key = simpleJdbcInsert.executeAndReturnKeyHolder(params);
-        if (key.getKey() != null) {
-            return key.getKey().intValue();
-        } else {
-            throw new CouldNotCreateOrderException();
-        }
+        return Objects.requireNonNull(key.getKey()).intValue();
     }
 
     public Delivery getDeliveryById(int id) {

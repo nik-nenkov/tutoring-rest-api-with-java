@@ -17,15 +17,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-//import org.springframework.context.annotation.ComponentScan;
-
-
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         classes = DemoApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@ComponentScan("com.epam")
 @Transactional
 @Rollback
 public class RevisionRepositoryTest {

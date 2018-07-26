@@ -2,8 +2,8 @@ package com.epam.training.order.repository;
 
 
 import com.epam.training.DemoApplication;
+import com.epam.training.RepositoryIntegrationTest;
 import com.epam.training.order.Order;
-import com.epam.training.order.controller.OrderRestControllerTest;
 import com.epam.training.stock.Stock;
 import com.epam.training.stock.repository.StockRepository;
 import org.junit.Before;
@@ -36,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ComponentScan("com.epam")
 @Transactional
 @Rollback
-public class OrderRepositoryTest {
+public class OrderRepositoryIntegrationTest implements RepositoryIntegrationTest {
 
     @Autowired
     private StockRepository stockRepository;
@@ -50,7 +50,7 @@ public class OrderRepositoryTest {
 
     @Before
     public void prepareTestDatabase() {
-        OrderRestControllerTest.clearTestDatabase(jdbcTemplate);
+        clearTestDatabase(jdbcTemplate);
     }
 
     @Test

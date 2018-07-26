@@ -24,7 +24,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class StockRestControllerTest {
+public class StockRestControllerMockTest {
 
     private MockMvc mvc;
 
