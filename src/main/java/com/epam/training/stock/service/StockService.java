@@ -24,23 +24,28 @@ public class StockService {
 
     @Transactional
     public Stock increaseQuantityOfStock(final int stockId, final int quantity) {
+        final Stock stockToUpdate = stockRepository.getStockByStockId(stockId);
 
-        final Stock stockToUpdate = readStock(stockId);
         int newQuantity = stockToUpdate.getQuantity() + quantity;
+        int id = stockRepository.updateQuantityById(stockId, newQuantity);
 
-        stockRepository.updateQuantityById(stockId, newQuantity);
-        return readStock(stockId);
-    }
-
-    public Stock createStock(int id, BigDecimal price, int quantity) throws CouldNotCreateNewStock {
-        if (stockRepository.getStockById(id) != null) {
-            throw new StockAlreadyExistsException(id);
-        }
-        stockRepository.insertNewStock(id, price, quantity);
-        return readStock(id);
-    }
-
-    public Stock readStock(int id) {
         return stockRepository.getStockById(id);
+    }
+
+
+    public Stock createStock(int stockId, BigDecimal price, int quantity) throws CouldNotCreateNewStock {
+        if (stockRepository.getStockByStockId(stockId) != null) {
+            throw new StockAlreadyExistsException(stockId);
+        }
+        int newStockId = stockRepository.insertNewStock(stockId, price, quantity);
+        return readStock(newStockId);
+    }
+
+    private Stock readStock(int id) {
+        return stockRepository.getStockById(id);
+    }
+
+    public Stock readStockByStockId(int stockId) {
+        return stockRepository.getStockByStockId(stockId);
     }
 }

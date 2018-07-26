@@ -1,8 +1,7 @@
 package com.epam.training.revision.service;
 
 import com.epam.training.revision.Revision;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,9 +11,9 @@ import java.sql.Timestamp;
 
 @Service
 @EnableScheduling
+@Log4j
 public class RevisionSchedulingService {
 
-    private static final Logger log = LoggerFactory.getLogger(RevisionSchedulingService.class);
     private final RevisionService revisionService;
 
     @Autowired

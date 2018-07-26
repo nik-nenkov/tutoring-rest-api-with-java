@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,22 +21,29 @@ import java.util.Map;
 @ComponentScan("com.epam.training.*")
 public class StockRepository extends NamedParameterJdbcDaoSupport {
 
-    private static final String INSERT_STOCK_NEW =
-            "INSERT INTO stock(stock_id, price, quantity) VALUES (:stock_id, :price, :quantity)";
     private static final String SELECT_STOCK_BY_ID =
+            "SELECT * FROM stock WHERE id=:id";
+    private static final String SELECT_STOCK_BY_STOCK_ID =
             "SELECT * FROM stock WHERE stock_id=:stock_id";
     private static final String SELECT_LAST_INSERTED_STOCK =
             "SELECT * FROM stock ORDER BY id DESC LIMIT 1";
     private static final String UPDATE_STOCK_QUANTITY_BY_ID =
             "UPDATE stock SET quantity=:quantity WHERE stock_id=:stock_id";
+    private final static String GET_ID_FROM_STOCK_ID =
+            "SELECT id FROM stock WHERE stock_id=:stock_id";
+
+    private final NamedParameterJdbcTemplate jdbcTemplate;
+    private final SimpleJdbcInsert simpleJdbcInsert;
 
     @Autowired
     public StockRepository(DataSource dataSource, NamedParameterJdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
         setDataSource(dataSource);
+        this.jdbcTemplate = jdbcTemplate;
+        simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
+                .withTableName("stock")
+                .usingColumns("stock_id", "price", "quantity")
+                .usingGeneratedKeyColumns("id");
     }
-
-    private final NamedParameterJdbcTemplate jdbcTemplate;
 
     @Transactional
     public Stock getLastInsertedStock() {
@@ -43,17 +51,17 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     }
 
     @Transactional
-    public void insertNewStock(int stockId, BigDecimal price, int quantity) {
+    public int insertNewStock(int stockId, BigDecimal price, int quantity) {
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);
         params.put("price", price);
         params.put("quantity", quantity);
-        jdbcTemplate.update(INSERT_STOCK_NEW, params);
+        return simpleJdbcInsert.executeAndReturnKey(params).intValue();
     }
 
     @Transactional
     public void createStockIfNotExists(int stockId) {
-        if (getStockById(stockId) == null)
+        if (getStockByStockId(stockId) == null)
             insertNewStock(stockId, BigDecimal.ZERO, 0);
     }
 
@@ -68,9 +76,20 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     }
 
     @Transactional
-    public Stock getStockById(final int stockId) {
+    public Stock getStockByStockId(final int stockId) {
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);
+        try {
+            return jdbcTemplate.queryForObject(SELECT_STOCK_BY_STOCK_ID, params, new StockRowMapper());
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Transactional
+    public Stock getStockById(final int id) {
+        final Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
         try {
             return jdbcTemplate.queryForObject(SELECT_STOCK_BY_ID, params, new StockRowMapper());
         } catch (Exception e) {
@@ -79,11 +98,12 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     }
 
     @Transactional
-    public void updateQuantityById(int stockId, int quantity) throws NullPointerException {
+    public Integer updateQuantityById(int stockId, int quantity) throws NullPointerException {
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);
         params.put("quantity", quantity);
         jdbcTemplate.update(UPDATE_STOCK_QUANTITY_BY_ID, params);
+        return jdbcTemplate.queryForObject(GET_ID_FROM_STOCK_ID, params, Integer.class);
     }
 
 }

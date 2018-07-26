@@ -27,7 +27,7 @@ public class OrderService {
         //Търсим в базата стока с посоченият ID номер:
         Stock currentStock;
 
-            currentStock = stockRepository.getStockById(stockId);
+        currentStock = stockRepository.getStockByStockId(stockId);
 
         if (currentStock == null) throw new InvalidParameterException() {
                 @Override

@@ -24,7 +24,7 @@ public class StockRestController {
             consumes = "application/json",
             produces = "application/json")
     public Stock newStock(@RequestBody Stock stockToAdd) throws CouldNotCreateNewStock {
-        return stockService.createStock(stockToAdd.getSockId(), stockToAdd.getPrice(), stockToAdd.getQuantity());
+        return stockService.createStock(stockToAdd.getStockId(), stockToAdd.getPrice(), stockToAdd.getQuantity());
     }
 
     @PutMapping(
@@ -41,7 +41,7 @@ public class StockRestController {
             produces = "application/json")
     public Stock showStock(
             @PathVariable("id") int stockId) {
-        return stockService.readStock(stockId);
+        return stockService.readStockByStockId(stockId);
     }
 
 }

@@ -49,7 +49,7 @@ public class StockRepositoryTest {
 
     @Test
     public void getStockById() {
-        Stock s1 = stockRepository.getStockById(43);
+        Stock s1 = stockRepository.getStockByStockId(43);
         assertThat(s1).isEqualTo(stocks.get(0));
     }
 
@@ -62,14 +62,14 @@ public class StockRepositoryTest {
     @Test
     public void updateQuantityById() {
         stockRepository.updateQuantityById(43, 956);
-        Stock s2 = stockRepository.getStockById(43);
+        Stock s2 = stockRepository.getStockByStockId(43);
         assertThat(s2).isEqualTo(stocks.get(2));
     }
 
     @Test
     public void createStockIfNotExists() {
-        Assertions.assertThat(stockRepository.getStockById(650650650)).isNull();
+        Assertions.assertThat(stockRepository.getStockByStockId(650650650)).isNull();
         stockRepository.createStockIfNotExists(650650650);
-        Assertions.assertThat(stockRepository.getStockById(650650650)).isEqualTo(stocks.get(3));
+        Assertions.assertThat(stockRepository.getStockByStockId(650650650)).isEqualTo(stocks.get(3));
     }
 }
