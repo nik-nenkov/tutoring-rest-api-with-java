@@ -1,8 +1,5 @@
 package com.epam.training.stock.service;
 
-
-import com.epam.training.exception.CouldNotCreateNewStock;
-import com.epam.training.exception.StockAlreadyExistsException;
 import com.epam.training.stock.Stock;
 import com.epam.training.stock.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +30,9 @@ public class StockService {
     }
 
 
-    public Stock createStock(int stockId, BigDecimal price, int quantity) throws CouldNotCreateNewStock {
+    public Stock createStock(int stockId, BigDecimal price, int quantity) throws Exception {
         if (stockRepository.getStockByStockId(stockId) != null) {
-            throw new StockAlreadyExistsException(stockId);
+            throw new Exception();
         }
         int newStockId = stockRepository.insertNewStock(stockId, price, quantity);
         return readStock(newStockId);

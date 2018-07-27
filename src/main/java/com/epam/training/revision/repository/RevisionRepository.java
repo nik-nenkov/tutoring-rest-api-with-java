@@ -19,8 +19,6 @@ import java.util.Map;
 import java.util.Objects;
 
 @Repository
-
-@ComponentScan("com.epam.training.*")
 public class RevisionRepository extends NamedParameterJdbcDaoSupport {
 
     private static final String INSERT_REVISION_NEW =

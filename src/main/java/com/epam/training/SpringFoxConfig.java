@@ -1,4 +1,4 @@
-package com.epam.training.application;
+package com.epam.training;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

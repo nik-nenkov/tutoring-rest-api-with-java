@@ -2,7 +2,6 @@ package com.epam.training.order.repository;
 
 import com.epam.training.order.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -19,7 +18,6 @@ import java.util.Map;
 import java.util.Objects;
 
 @Repository
-@ComponentScan("com.epam.training.*")
 public class OrderRepository extends NamedParameterJdbcDaoSupport {
 
     private static final String INSERT_ORDER_NEW =
