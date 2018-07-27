@@ -19,15 +19,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//import org.springframework.context.annotation.ComponentScan;
-
-
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         classes = DemoApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@ComponentScan("com.epam")
 @Transactional
 @Rollback
 public class StockRepositoryTest {

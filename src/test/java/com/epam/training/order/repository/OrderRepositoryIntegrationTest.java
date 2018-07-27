@@ -78,7 +78,7 @@ public class OrderRepositoryIntegrationTest implements RepositoryIntegrationTest
 
 
         Assertions.assertEquals(
-                new Order(2, 3232, 10, BigDecimal.valueOf(85), new Timestamp((new Date().getTime() / 1000) * 1000)),
+                new Order(2, 3232, 10, BigDecimal.valueOf(85), new Timestamp(((new Date().getTime()-80) / 1000) * 1000)),
                 result.get(1));
     }
 
