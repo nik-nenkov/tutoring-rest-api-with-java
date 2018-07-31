@@ -16,7 +16,7 @@ public class OrderRestController {
         this.orderService = orderService;
     }
 
-    @GetMapping(value = "/{id}",
+    @GetMapping(value = "/show/{id}",
             produces = "application/json")
     public Order showOrder(
             @PathVariable("id") int orderId) {

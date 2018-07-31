@@ -36,7 +36,7 @@ public class StockRestController {
     }
 
     @GetMapping(
-            value = "/{id}",
+            value = "/show/{id}",
             produces = "application/json")
     public Stock showStock(
             @PathVariable("id") int stockId) {

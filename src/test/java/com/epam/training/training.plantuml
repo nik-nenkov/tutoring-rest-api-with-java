@@ -3,6 +3,14 @@
 title __TRAINING's Class Diagram__\n
 
   package com.epam.training {
+    class DemoApplicationTest {
+        ~ main()
+        ~ run()
+    }
+  }
+  
+
+  package com.epam.training {
     interface RepositoryIntegrationTest {
         + clearTestDatabase()
     }

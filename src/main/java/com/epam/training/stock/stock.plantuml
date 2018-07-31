@@ -5,14 +5,14 @@ title __STOCK's Class Diagram__\n
   package com.epam.training {
     package com.epam.training.stock {
       class Stock {
-          - sockId : int
+          - stockId : int
           - price : BigDecimal
           - quantity : int
           + Stock()
-          + getSockId()
+          + getStockId()
           + getPrice()
           + getQuantity()
-          + setSockId()
+          + setStockId()
           + setPrice()
           + setQuantity()
           + equals()
