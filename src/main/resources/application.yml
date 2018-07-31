@@ -9,7 +9,7 @@ spring:
     username: root
     password: abc.abc.123
     platform: mysql
-    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: com.mysql.jdbc.Driver
 
 ---
 spring:
@@ -19,4 +19,4 @@ spring:
     username: root
     password: abc.abc.123
     platform: mysql
-    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: com.mysql.jdbc.Driver

@@ -81,12 +81,6 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
         Map<String, Object> params = new HashMap<>();
         params.put("start_time", start.toString());
         params.put("end_time", end.toString());
-//
-//        System.out.println(start);
-//        System.out.println(end);
-
-        //        System.out.println();
-
         return Objects.requireNonNull(getNamedParameterJdbcTemplate()).query(
                 SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS,
                 params, new OrderRowMapper());
@@ -94,12 +88,10 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
 
     @Transactional
     public void createNewOrder(int stockId, int quantity, BigDecimal orderPrice) {
-
         final Map<String, Object> params = new HashMap<>();
         params.put("stock_id", stockId);
         params.put("quantity", quantity);
         params.put("price", orderPrice);
-
         Objects.requireNonNull(getNamedParameterJdbcTemplate()).update(INSERT_ORDER_NEW, params);
     }
 

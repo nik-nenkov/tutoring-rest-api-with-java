@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.security.InvalidParameterException;
 
-
 @Service
 public class OrderService {
-
     private final OrderRepository orderRepository;
     private final StockRepository stockRepository;
 
@@ -24,22 +22,16 @@ public class OrderService {
     }
 
     public Order placeNewOrder(int stockId, int quantity) {
-        //Търсим в базата стока с посоченият ID номер:
         Stock currentStock;
-
         currentStock = stockRepository.getStockByStockId(stockId);
-
         if (currentStock == null) throw new InvalidParameterException() {
-                @Override
-                public String getMessage() {
-                    return "Could not find s stock with id=" + stockId;
-                }
-            };
-
-        //Правим изчисления за цена на поръчката и промяна на количеството в склада:
+            @Override
+            public String getMessage() {
+                return "Could not find s stock with id=" + stockId;
+            }
+        };
         BigDecimal orderPrice = currentStock.getPrice().multiply(BigDecimal.valueOf(quantity));
         int newQuantity = currentStock.getQuantity() - quantity;
-        //Променяме количеството на стоката или извеждаме съобщение за грешка ако то е отрицателно:
         if (newQuantity >= 0) {
             currentStock.setQuantity(newQuantity);
         } else {
@@ -50,12 +42,8 @@ public class OrderService {
                 }
             };
         }
-        //След проверки и изчисления, можем да създадем новата поръчка:
         orderRepository.createNewOrder(stockId, quantity, orderPrice);
-        //Променяме количеството на стоката в базата данни:
         stockRepository.updateQuantityById(stockId, newQuantity);
-        //Ако искаме да изведем цялата информация за новата поръчка правим последно търсене в базата
-        //където обекта е получил уникален ID номер и TIMESTAMP на въвеждането си:
         return orderRepository.getLastOrder();
     }
 
