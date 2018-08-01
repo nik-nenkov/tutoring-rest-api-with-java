@@ -10,6 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+//this file configures the swagger-ui
 public class SpringFoxConfig {
     @Bean
     public Docket api() {
