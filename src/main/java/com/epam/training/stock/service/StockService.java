@@ -29,10 +29,14 @@ public class StockService {
         return stockRepository.getStockById(id);
     }
 
-
     public Stock createStock(int stockId, BigDecimal price, int quantity) throws Exception {
         if (stockRepository.getStockByStockId(stockId) != null) {
-            throw new Exception();
+            throw new Exception() {
+                @Override
+                public String getMessage() {
+                    return "Stock with stockId=" + stockId + " already exists!";
+                }
+            };
         }
         int newStockId = stockRepository.insertNewStock(stockId, price, quantity);
         return readStock(newStockId);

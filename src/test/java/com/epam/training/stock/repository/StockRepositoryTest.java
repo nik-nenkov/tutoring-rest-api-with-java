@@ -68,4 +68,21 @@ public class StockRepositoryTest {
         stockRepository.createStockIfNotExists(650650650);
         Assertions.assertThat(stockRepository.getStockByStockId(650650650)).isEqualTo(stocks.get(3));
     }
+
+    @Test
+    public void getStockById_invalidId_returnNull() {
+        assertThat(stockRepository.getStockByStockId(434343434)).isNull();
+    }
+
+    @Test
+    public void createStock_whereAlreadyExists() {
+        Assertions.assertThat(stockRepository.getStockByStockId(650650650)).isNull();
+        stockRepository.createStockIfNotExists(650650650);
+        Assertions.assertThat(stockRepository.getStockByStockId(650650650)).isEqualTo(stocks.get(3));
+    }
+
+    @Test
+    public void getStock_nonExisting_returnNull() {
+        assertThat(stockRepository.getStockById(23121399)).isNull();
+    }
 }

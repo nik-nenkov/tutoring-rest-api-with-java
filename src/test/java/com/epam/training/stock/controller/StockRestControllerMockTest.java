@@ -22,6 +22,7 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StockRestControllerMockTest {
@@ -88,6 +89,16 @@ public class StockRestControllerMockTest {
                 .isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString())
                 .isEqualTo(jsonStock.write(testStock3).getJson());
+    }
+
+    @Test
+    public void canCreateNewStock_existingId_throwException() throws Exception {
+        Stock testStock3 = new Stock(45, BigDecimal.valueOf(45.55), 55);
+        //given
+        given(stockRepository.getStockByStockId(45))
+                .willReturn(testStock3);
+        //when
+        mvc.perform(post("/stock/new")).andExpect(status().is4xxClientError());
     }
 
     @Test
