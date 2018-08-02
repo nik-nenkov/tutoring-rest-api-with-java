@@ -58,7 +58,7 @@ public class OrderRestControllerIntegrationTest implements RepositoryIntegration
     public void getOrderById() {
         assertThat(this
                 .restTemplate
-                .getForObject("http://localhost:" + port + "/order/19",
+                .getForObject("http://localhost:" + port + "/order/show/19",
                         String.class)
         ).isEqualTo("{\"orderId\":19," +
                 "\"quantity\":20," +

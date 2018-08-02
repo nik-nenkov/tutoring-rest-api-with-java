@@ -56,7 +56,7 @@ public class StockRestControllerMockTest {
         given(stockRepository.getStockByStockId(33)).willReturn(testStock2);
         //when
         MockHttpServletResponse response = mvc
-                .perform(get("/stock/33")
+                .perform(get("/stock/show/33")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
         //then

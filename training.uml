@@ -3,610 +3,614 @@
   <ID>JAVA</ID>
   <OriginalElement>com.epam.training</OriginalElement>
   <nodes>
-    <node x="146.875" y="908.5">com.epam.training.delivery.repository.DeliveryRepository</node>
-    <node x="4399.699865249131" y="1763.0">com.epam.training.revision.controller.RevisionRestController</node>
-    <node x="2104.301203208559" y="22.0">com.epam.training.stock.Stock</node>
-    <node x="1196.5178698752254" y="393.0">com.epam.training.client.Client</node>
-    <node x="3542.8498269004585" y="1452.0">com.epam.training.revision.controller.RevisionRestControllerIntegrationTest</node>
-    <node x="1089.833333333333" y="23.0">com.epam.training.client.Ethnicity</node>
-    <node x="4125.8498269004585" y="1495.5">com.epam.training.revision.service.RevisionService</node>
-    <node x="47.5" y="1551.5">com.epam.training.delivery.repository.DeliveryRepository.DeliveryRowMapper</node>
-    <node x="2442.8498269004585" y="1506.5">com.epam.training.order.service.OrderService</node>
-    <node x="487.625" y="1774.0">com.epam.training.delivery.controller.DeliveryRestController</node>
-    <node x="3413.1373652491316" y="0.0">com.epam.training.order.Order</node>
-    <node x="4023.433160233792" y="1763.0">com.epam.training.revision.service.RevisionSchedulingService</node>
-    <node x="2897.3498269004585" y="986.5">com.epam.training.RepositoryIntegrationTest</node>
-    <node x="4359.898662040572" y="919.0">com.epam.training.revision.repository.RevisionRepository</node>
-    <node x="1982.158333333333" y="1495.5">com.epam.training.stock.service.StockService</node>
-    <node x="631.7528287072398" y="1506.5">com.epam.training.delivery.service.DeliveryService</node>
-    <node x="2160.8498269004585" y="1752.0">com.epam.training.stock.controller.StockRestController</node>
-    <node x="2548.092869875225" y="1763.0">com.epam.training.order.controller.OrderRestController</node>
-    <node x="1868.8498269004588" y="1752.0">com.epam.training.stock.service.StockSchedulingService</node>
-    <node x="1595.8498269004588" y="1485.0">com.epam.training.stock.repository.StockRepositoryTest</node>
-    <node x="3647.183371682006" y="526.0">com.epam.training.order.repository.OrderRepository.OrderRowMapper</node>
-    <node x="3247.3498269004585" y="975.5">com.epam.training.DemoApplication</node>
-    <node x="0.0" y="2258.0">com.epam.training.SpringFoxConfig</node>
-    <node x="2832.8498269004585" y="1452.0">com.epam.training.order.controller.OrderRestControllerIntegrationTest</node>
-    <node x="3185.8498269004585" y="1463.0">com.epam.training.order.repository.OrderRepositoryIntegrationTest</node>
-    <node x="2193.836162040573" y="1974.0">com.epam.training.stock.controller.StockRestControllerMockTest</node>
-    <node x="999.7528287072398" y="1496.0">com.epam.training.delivery.repository.DeliveryRepositoryIntegrationTest</node>
-    <node x="1322.2678698752254" y="78.0">com.epam.training.client.Sex</node>
-    <node x="1117.3361620405728" y="986.5">com.epam.training.client.VipClient</node>
-    <node x="1852.783333333333" y="842.0">com.epam.training.stock.repository.StockRepository</node>
-    <node x="138.01081174894398" y="371.0">com.epam.training.delivery.Delivery</node>
-    <node x="4398.148662040572" y="526.0">com.epam.training.revision.repository.RevisionRepository.RevisionRowMapper</node>
-    <node x="447.5028287072398" y="1963.0">com.epam.training.delivery.controller.DeliveryRestControllerMockTest</node>
-    <node x="3941.8498269004585" y="1540.5">com.epam.training.DemoApplicationTest</node>
-    <node x="4606.023662040572" y="1518.0">com.epam.training.revision.repository.RevisionRepositoryTest</node>
-    <node x="3591.6790319157985" y="853.0">com.epam.training.order.repository.OrderRepository</node>
-    <node x="2002.384536541892" y="526.0">com.epam.training.stock.repository.StockRepository.StockRowMapper</node>
-    <node x="4385.801203208559" y="0.0">com.epam.training.revision.Revision</node>
-    <node x="1437.708333333333" y="986.5">com.epam.training.client.BasicClient</node>
+    <node x="69.5" y="735.5">com.epam.training.delivery.repository.DeliveryRepository</node>
+    <node x="1223.0255623124667" y="1409.0">com.epam.training.revision.controller.RevisionRestController</node>
+    <node x="3361.019014693419" y="55.0">com.epam.training.stock.Stock</node>
+    <node x="1420.3665232254523" y="0.0">com.epam.training.client.Ethnicity</node>
+    <node x="1724.8873565587855" y="1176.0">com.epam.training.revision.controller.RevisionRestControllerIntegrationTest</node>
+    <node x="1518.3023480267525" y="375.0">com.epam.training.client.Client</node>
+    <node x="1096.8248565587855" y="1220.0">com.epam.training.revision.service.RevisionService</node>
+    <node x="110.0" y="463.0">com.epam.training.delivery.repository.DeliveryRepository.DeliveryRowMapper</node>
+    <node x="2755.0956898921186" y="1220.0">com.epam.training.order.service.OrderService</node>
+    <node x="318.97068989211925" y="1409.0">com.epam.training.delivery.controller.DeliveryRestController</node>
+    <node x="2286.542318594104" y="33.0">com.epam.training.order.Order</node>
+    <node x="922.7174620353186" y="1398.0">com.epam.training.revision.service.RevisionSchedulingService</node>
+    <node x="1743.7398480267525" y="768.5">com.epam.training.RepositoryIntegrationTest</node>
+    <node x="932.5833333333335" y="724.0">com.epam.training.revision.repository.RevisionRepository</node>
+    <node x="3121.3373565587854" y="1231.0">com.epam.training.stock.service.StockService</node>
+    <node x="511.3665232254523" y="1220.0">com.epam.training.delivery.service.DeliveryService</node>
+    <node x="3391.6790232254516" y="1409.0">com.epam.training.stock.controller.StockRestController</node>
+    <node x="2712.0956898921186" y="1409.0">com.epam.training.order.controller.OrderRestController</node>
+    <node x="3061.5123565587846" y="1387.0">com.epam.training.stock.service.StockSchedulingService</node>
+    <node x="2315.7100861219906" y="463.0">com.epam.training.order.repository.OrderRepository.OrderRowMapper</node>
+    <node x="3382.3373565587854" y="1220.0">com.epam.training.stock.repository.StockRepositoryTest</node>
+    <node x="2056.501752788657" y="768.5">com.epam.training.DemoApplication</node>
+    <node x="0.0" y="1800.0">com.epam.training.SpringFoxConfig</node>
+    <node x="2013.8873565587855" y="1198.0">com.epam.training.order.controller.OrderRestControllerIntegrationTest</node>
+    <node x="2457.8873565587855" y="1209.0">com.epam.training.order.repository.OrderRepositoryIntegrationTest</node>
+    <node x="3279.642857142857" y="1594.0">com.epam.training.stock.controller.StockRestControllerMockTest</node>
+    <node x="256.3665232254523" y="1209.0">com.epam.training.delivery.repository.DeliveryRepositoryIntegrationTest</node>
+    <node x="1534.3665232254523" y="55.0">com.epam.training.client.Sex</node>
+    <node x="1410.4898480267525" y="768.5">com.epam.training.client.VipClient</node>
+    <node x="2901.245922948304" y="680.0">com.epam.training.stock.repository.StockRepository</node>
+    <node x="136.99531110424027" y="22.0">com.epam.training.delivery.Delivery</node>
+    <node x="970.3248565587857" y="463.0">com.epam.training.revision.repository.RevisionRepository.RevisionRowMapper</node>
+    <node x="404.8333333333335" y="1572.0">com.epam.training.delivery.controller.DeliveryRestControllerMockTest</node>
+    <node x="2274.8873565587855" y="1242.0">com.epam.training.DemoApplicationTest</node>
+    <node x="799.3665232254523" y="1231.0">com.epam.training.revision.repository.RevisionRepositoryTest</node>
+    <node x="2268.0434194553236" y="680.0">com.epam.training.order.repository.OrderRepository</node>
+    <node x="3033.442857142857" y="463.0">com.epam.training.stock.repository.StockRepository.StockRowMapper</node>
+    <node x="1542.1773480267525" y="768.5">com.epam.training.client.BasicClient</node>
+    <node x="915.1673185941042" y="33.0">com.epam.training.revision.Revision</node>
   </nodes>
   <notes />
   <edges>
     <edge source="com.epam.training.delivery.repository.DeliveryRepositoryIntegrationTest" target="com.epam.training.RepositoryIntegrationTest">
-      <point x="21.41666666666697" y="-81.0" />
-      <point x="1149.6694953739068" y="1362.0" />
-      <point x="2914.3498269004585" y="1362.0" />
-      <point x="-119.0" y="25.5" />
+      <point x="19.583333333333485" y="-47.5" />
+      <point x="393.44985655878577" y="986.0" />
+      <point x="1755.2398480267525" y="986.0" />
+      <point x="-80.5" y="14.5" />
     </edge>
     <edge source="com.epam.training.delivery.repository.DeliveryRepository" target="com.epam.training.delivery.Delivery">
-      <point x="0.0" y="-103.5" />
-      <point x="352.375" y="822.0" />
-      <point x="310.010811748944" y="822.0" />
-      <point x="0.0" y="180.5" />
+      <point x="104.0" y="-47.5" />
+      <point x="329.5" y="660.0" />
+      <point x="327.75" y="660.0" />
+      <point x="327.75" y="355.0" />
+      <point x="240.63167474060378" y="355.0" />
+      <point x="27.636363636363512" y="80.5" />
     </edge>
     <edge source="com.epam.training.order.repository.OrderRepository" target="com.epam.training.order.repository.OrderRepository.OrderRowMapper">
-      <point x="-145.33333333333326" y="-159.0" />
-      <point x="3664.345698582465" y="822.0" />
-      <point x="3703.433371682006" y="822.0" />
-      <point x="-56.25" y="25.5" />
+      <point x="-118.66666666666674" y="-103.0" />
+      <point x="2327.3767527886566" y="660.0" />
+      <point x="2351.2100861219906" y="660.0" />
+      <point x="-35.5" y="14.5" />
     </edge>
     <edge source="com.epam.training.delivery.service.DeliveryService" target="com.epam.training.delivery.repository.DeliveryRepository">
-      <point x="-145.0" y="-70.5" />
-      <point x="660.7528287072398" y="1432.0" />
-      <point x="386.625" y="1432.0" />
-      <point x="34.25" y="103.5" />
-    </edge>
-    <edge source="com.epam.training.order.service.OrderService" target="com.epam.training.stock.Stock">
-      <point x="-27.0" y="-70.5" />
-      <point x="2577.8498269004585" y="1352.0" />
-      <point x="2599.3498269004585" y="1352.0" />
-      <point x="2599.3498269004585" y="301.0" />
-      <point x="2275.9797746371305" y="301.0" />
-      <point x="67.17857142857156" y="103.5" />
+      <point x="-111.25" y="-36.5" />
+      <point x="533.6165232254523" y="966.0" />
+      <point x="264.5" y="966.0" />
+      <point x="39.0" y="47.5" />
     </edge>
     <edge source="com.epam.training.stock.repository.StockRepository" target="com.epam.training.stock.Stock">
-      <point x="-132.66666666666652" y="-170.0" />
-      <point x="1919.1166666666666" y="822.0" />
-      <point x="1991.884536541892" y="822.0" />
-      <point x="1991.884536541892" y="321.0" />
-      <point x="2171.4797746371305" y="321.0" />
-      <point x="-37.32142857142844" y="103.5" />
+      <point x="-104.0" y="-103.0" />
+      <point x="2953.245922948304" y="660.0" />
+      <point x="2971.57258612199" y="660.0" />
+      <point x="2971.57258612199" y="315.0" />
+      <point x="3386.1975861219908" y="315.0" />
+      <point x="-45.32142857142844" y="47.5" />
+    </edge>
+    <edge source="com.epam.training.order.service.OrderService" target="com.epam.training.stock.Stock">
+      <point x="100.83333333333337" y="-36.5" />
+      <point x="2976.9290232254516" y="1156.0" />
+      <point x="3223.745922948304" y="1156.0" />
+      <point x="3223.745922948304" y="345.0" />
+      <point x="3416.411871836276" y="345.0" />
+      <point x="-15.10714285714289" y="47.5" />
     </edge>
     <edge source="com.epam.training.delivery.repository.DeliveryRepositoryIntegrationTest" target="com.epam.training.delivery.Delivery">
-      <point x="-21.41666666666697" y="-81.0" />
-      <point x="1106.8361620405728" y="772.0" />
-      <point x="466.37444811258" y="772.0" />
-      <point x="156.36363636363603" y="180.5" />
+      <point x="-97.91666666666652" y="-47.5" />
+      <point x="275.94985655878577" y="1146.0" />
+      <point x="59.0" y="1146.0" />
+      <point x="59.0" y="345.0" />
+      <point x="199.1771292860583" y="345.0" />
+      <point x="-13.818181818181984" y="80.5" />
     </edge>
     <edge source="com.epam.training.client.BasicClient" target="com.epam.training.client.Sex">
-      <point x="75.75" y="-25.5" />
-      <point x="1614.458333333333" y="822.0" />
-      <point x="1661.0178698752254" y="822.0" />
-      <point x="1661.0178698752254" y="271.0" />
-      <point x="1396.4345365418922" y="271.0" />
+      <point x="39.75" y="-14.5" />
+      <point x="1634.9273480267525" y="660.0" />
+      <point x="1722.2398480267525" y="660.0" />
+      <point x="1722.2398480267525" y="265.0" />
+      <point x="1608.533189892119" y="265.0" />
       <point x="29.666666666666742" y="47.5" />
     </edge>
     <edge source="com.epam.training.order.controller.OrderRestController" target="com.epam.training.order.service.OrderService">
-      <point x="0.0" y="-59.5" />
-      <point x="2674.092869875225" y="1727.0" />
-      <point x="2685.8498269004585" y="1727.0" />
-      <point x="81.0" y="70.5" />
-    </edge>
-    <edge source="com.epam.training.delivery.repository.DeliveryRepositoryIntegrationTest" target="com.epam.training.DemoApplication">
-      <point x="107.08333333333303" y="-81.0" />
-      <point x="1235.3361620405728" y="1382.0" />
-      <point x="3259.421255471887" y="1382.0" />
-      <point x="-72.42857142857156" y="36.5" />
+      <point x="68.0" y="-25.5" />
+      <point x="2882.0956898921186" y="1367.0" />
+      <point x="2936.5956898921186" y="1367.0" />
+      <point x="60.5" y="36.5" />
     </edge>
     <edge source="com.epam.training.stock.repository.StockRepositoryTest" target="com.epam.training.DemoApplication">
-      <point x="96.39999999999964" y="-92.0" />
-      <point x="1812.7498269004584" y="1392.0" />
-      <point x="3283.5641126147443" y="1392.0" />
-      <point x="-48.28571428571422" y="36.5" />
+      <point x="-96.39999999999998" y="-36.5" />
+      <point x="3406.437356558785" y="916.0" />
+      <point x="2187.4303242172286" y="916.0" />
+      <point x="60.42857142857156" y="14.5" />
+    </edge>
+    <edge source="com.epam.training.delivery.repository.DeliveryRepositoryIntegrationTest" target="com.epam.training.DemoApplication">
+      <point x="97.91666666666652" y="-47.5" />
+      <point x="471.7831898921188" y="1006.0" />
+      <point x="2066.573181360086" y="1006.0" />
+      <point x="-60.42857142857133" y="14.5" />
     </edge>
     <edge source="com.epam.training.delivery.service.DeliveryService" target="com.epam.training.delivery.Delivery">
-      <point x="-29.0" y="-70.5" />
-      <point x="776.7528287072398" y="1432.0" />
-      <point x="800.2528287072398" y="1432.0" />
-      <point x="800.2528287072398" y="802.0" />
-      <point x="372.55626629439894" y="802.0" />
-      <point x="62.54545454545496" y="180.5" />
+      <point x="22.25" y="-36.5" />
+      <point x="667.1165232254523" y="976.0" />
+      <point x="658.3665232254523" y="976.0" />
+      <point x="658.3665232254523" y="325.0" />
+      <point x="282.0862201951493" y="325.0" />
+      <point x="69.09090909090901" y="80.5" />
     </edge>
     <edge source="com.epam.training.revision.service.RevisionService" target="com.epam.training.order.Order">
-      <point x="-32.75" y="-81.5" />
-      <point x="4289.5998269004585" y="1212.0" />
-      <point x="4060.8500383486726" y="1212.0" />
-      <point x="4060.8500383486726" y="321.0" />
-      <point x="3714.4151430269094" y="321.0" />
-      <point x="141.77777777777783" y="125.5" />
+      <point x="22.416666666666515" y="-36.5" />
+      <point x="1253.741523225452" y="976.0" />
+      <point x="1733.2398480267525" y="976.0" />
+      <point x="1733.2398480267525" y="285.0" />
+      <point x="2315.2089852607705" y="285.0" />
+      <point x="-57.33333333333326" y="69.5" />
     </edge>
     <edge source="com.epam.training.stock.controller.StockRestController" target="com.epam.training.stock.service.StockService">
-      <point x="0.0" y="-70.5" />
-      <point x="2285.8498269004585" y="1727.0" />
-      <point x="2228.758333333333" y="1727.0" />
-      <point x="109.59999999999991" y="81.5" />
+      <point x="0.0" y="-25.5" />
+      <point x="3493.1790232254516" y="1357.0" />
+      <point x="3338.237356558785" y="1357.0" />
+      <point x="96.39999999999998" y="25.5" />
     </edge>
     <edge source="com.epam.training.delivery.controller.DeliveryRestController" target="com.epam.training.delivery.Delivery">
-      <point x="-130.0" y="-48.5" />
-      <point x="552.625" y="1727.0" />
-      <point x="568.375" y="1727.0" />
-      <point x="568.375" y="812.0" />
-      <point x="341.283539021671" y="812.0" />
-      <point x="31.272727272727025" y="180.5" />
+      <point x="-76.33333333333348" y="-25.5" />
+      <point x="357.13735655878577" y="1367.0" />
+      <point x="48.0" y="1367.0" />
+      <point x="48.0" y="335.0" />
+      <point x="185.35894746787676" y="335.0" />
+      <point x="-27.636363636363512" y="80.5" />
     </edge>
     <edge source="com.epam.training.stock.repository.StockRepository.StockRowMapper" target="com.epam.training.stock.Stock">
-      <point x="56.0" y="-25.5" />
-      <point x="2170.384536541892" y="341.0" />
-      <point x="2201.3369174942727" y="341.0" />
-      <point x="-7.464285714285779" y="103.5" />
+      <point x="-35.25" y="-14.5" />
+      <point x="3068.692857142857" y="325.0" />
+      <point x="3396.269014693419" y="325.0" />
+      <point x="-35.25" y="47.5" />
     </edge>
     <edge source="com.epam.training.order.service.OrderService" target="com.epam.training.order.repository.OrderRepository">
-      <point x="135.0" y="-70.5" />
-      <point x="2739.8498269004585" y="1422.0" />
-      <point x="3700.6790319157985" y="1422.0" />
-      <point x="-109.0" y="159.0" />
+      <point x="-60.5" y="-36.5" />
+      <point x="2815.5956898921186" y="926.0" />
+      <point x="2594.376752788657" y="926.0" />
+      <point x="148.33333333333348" y="103.0" />
     </edge>
     <edge source="com.epam.training.stock.service.StockService" target="com.epam.training.stock.Stock">
-      <point x="91.33333333333348" y="-81.5" />
-      <point x="2210.491666666667" y="1352.0" />
-      <point x="2276.375" y="1352.0" />
-      <point x="2276.375" y="341.0" />
-      <point x="2216.2654889228443" y="341.0" />
-      <point x="7.464285714285779" y="103.5" />
+      <point x="80.33333333333326" y="-25.5" />
+      <point x="3322.1706898921184" y="1156.0" />
+      <point x="3375.161871836276" y="1156.0" />
+      <point x="3375.161871836276" y="355.0" />
+      <point x="3426.4833004077045" y="355.0" />
+      <point x="-5.035714285714221" y="47.5" />
     </edge>
     <edge source="com.epam.training.delivery.controller.DeliveryRestControllerMockTest" target="com.epam.training.delivery.Delivery">
-      <point x="-101.66666666666697" y="-125.0" />
-      <point x="498.33616204057284" y="1933.0" />
-      <point x="26.0" y="1933.0" />
-      <point x="26.0" y="792.0" />
-      <point x="184.91990265803497" y="792.0" />
-      <point x="-125.09090909090901" y="180.5" />
-    </edge>
-    <edge source="com.epam.training.stock.controller.StockRestControllerMockTest" target="com.epam.training.stock.repository.StockRepository">
-      <point x="-119.57142857142844" y="-114.0" />
-      <point x="2213.7647334691446" y="1943.0" />
-      <point x="1858.3498269004588" y="1943.0" />
-      <point x="1858.3498269004588" y="1352.0" />
-      <point x="2002.033333333333" y="1352.0" />
-      <point x="-49.75" y="170.0" />
+      <point x="-101.66666666666652" y="-91.5" />
+      <point x="455.66666666666697" y="1542.0" />
+      <point x="15.0" y="1542.0" />
+      <point x="15.0" y="315.0" />
+      <point x="157.7225838315128" y="315.0" />
+      <point x="-55.27272727272748" y="80.5" />
     </edge>
     <edge source="com.epam.training.revision.controller.RevisionRestControllerIntegrationTest" target="com.epam.training.stock.repository.StockRepository">
-      <point x="-157.91666666666652" y="-125.0" />
-      <point x="3574.433160233792" y="1282.0" />
-      <point x="2234.2" y="1282.0" />
-      <point x="182.41666666666652" y="170.0" />
+      <point x="112.08333333333348" y="-80.5" />
+      <point x="1971.470689892119" y="1086.0" />
+      <point x="2966.245922948304" y="1086.0" />
+      <point x="-91.0" y="103.0" />
+    </edge>
+    <edge source="com.epam.training.stock.controller.StockRestControllerMockTest" target="com.epam.training.stock.repository.StockRepository">
+      <point x="-119.57142857142844" y="-69.5" />
+      <point x="3299.5714285714284" y="1552.0" />
+      <point x="3051.0123565587846" y="1552.0" />
+      <point x="3051.0123565587846" y="1146.0" />
+      <point x="3122.245922948304" y="1146.0" />
+      <point x="65.0" y="103.0" />
     </edge>
     <edge source="com.epam.training.client.VipClient" target="com.epam.training.client.Sex">
-      <point x="-24.0" y="-25.5" />
-      <point x="1189.3361620405728" y="822.0" />
-      <point x="1186.0178698752254" y="822.0" />
-      <point x="1186.0178698752254" y="351.0" />
-      <point x="1337.1012032085587" y="351.0" />
-      <point x="-29.66666666666663" y="47.5" />
+      <point x="-12.0" y="-14.5" />
+      <point x="1446.4898480267525" y="610.0" />
+      <point x="1498.6148480267525" y="610.0" />
+      <point x="1498.6148480267525" y="355.0" />
+      <point x="1549.1998565587855" y="355.0" />
+      <point x="-29.666666666666742" y="47.5" />
     </edge>
     <edge source="com.epam.training.delivery.service.DeliveryService" target="com.epam.training.stock.repository.StockRepository">
-      <point x="87.0" y="-70.5" />
-      <point x="892.7528287072398" y="1312.0" />
-      <point x="1869.3666666666666" y="1312.0" />
-      <point x="-182.41666666666652" y="170.0" />
+      <point x="66.75" y="-36.5" />
+      <point x="711.6165232254523" y="1066.0" />
+      <point x="2914.245922948304" y="1066.0" />
+      <point x="-143.0" y="103.0" />
     </edge>
     <edge source="com.epam.training.order.controller.OrderRestControllerIntegrationTest" target="com.epam.training.DemoApplication">
-      <point x="124.875" y="-125.0" />
-      <point x="3124.2248269004585" y="1402.0" />
-      <point x="3307.706969757601" y="1402.0" />
-      <point x="-24.142857142857338" y="36.5" />
+      <point x="30.125" y="-58.5" />
+      <point x="2164.5123565587855" y="1026.0" />
+      <point x="2127.001752788657" y="1026.0" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="com.epam.training.order.repository.OrderRepositoryIntegrationTest" target="com.epam.training.DemoApplication">
-      <point x="-21.0" y="-114.0" />
-      <point x="0.0" y="36.5" />
+      <point x="-45.375" y="-47.5" />
+      <point x="2533.5123565587855" y="956.0" />
+      <point x="2167.2874670743713" y="956.0" />
+      <point x="40.28571428571422" y="14.5" />
     </edge>
     <edge source="com.epam.training.revision.controller.RevisionRestController" target="com.epam.training.revision.Revision">
-      <point x="124.66666666666697" y="-59.5" />
-      <point x="4711.366531915799" y="1727.0" />
-      <point x="4885.523662040572" y="1727.0" />
-      <point x="4885.523662040572" y="331.0" />
-      <point x="4737.72977463713" y="331.0" />
-      <point x="162.42857142857156" y="125.5" />
+      <point x="77.0" y="-25.5" />
+      <point x="1415.5255623124667" y="1367.0" />
+      <point x="1376.3248565587855" y="1367.0" />
+      <point x="1376.3248565587855" y="315.0" />
+      <point x="1083.2387471655327" y="315.0" />
+      <point x="77.57142857142844" y="69.5" />
     </edge>
     <edge source="com.epam.training.order.controller.OrderRestControllerIntegrationTest" target="com.epam.training.RepositoryIntegrationTest">
-      <point x="41.625" y="-125.0" />
-      <point x="3040.9748269004585" y="1372.0" />
-      <point x="3016.3498269004585" y="1372.0" />
-      <point x="-17.0" y="25.5" />
+      <point x="-90.375" y="-58.5" />
+      <point x="2044.0123565587855" y="996.0" />
+      <point x="1847.2398480267525" y="996.0" />
+      <point x="11.5" y="14.5" />
     </edge>
     <edge source="com.epam.training.stock.controller.StockRestController" target="com.epam.training.stock.Stock">
-      <point x="83.33333333333348" y="-70.5" />
-      <point x="2369.1831602337925" y="1727.0" />
-      <point x="2345.625" y="1727.0" />
-      <point x="2345.625" y="331.0" />
-      <point x="2231.194060351416" y="331.0" />
-      <point x="22.392857142857338" y="103.5" />
-    </edge>
-    <edge source="com.epam.training.client.BasicClient" target="com.epam.training.client.Ethnicity">
-      <point x="-75.75" y="-25.5" />
-      <point x="1462.958333333333" y="752.0" />
-      <point x="1136.833333333333" y="752.0" />
-      <point x="0.0" y="102.5" />
+      <point x="67.66666666666674" y="-25.5" />
+      <point x="3560.8456898921186" y="1367.0" />
+      <point x="3633.8373565587854" y="1367.0" />
+      <point x="3633.8373565587854" y="325.0" />
+      <point x="3466.769014693419" y="325.0" />
+      <point x="35.25" y="47.5" />
     </edge>
     <edge source="com.epam.training.client.BasicClient" target="com.epam.training.client.Client">
-      <point x="25.25" y="-25.5" />
-      <point x="1563.958333333333" y="822.0" />
-      <point x="1593.7678698752254" y="822.0" />
-      <point x="170.25" y="158.5" />
+      <point x="13.25" y="-14.5" />
+      <point x="1608.4273480267525" y="650.0" />
+      <point x="1685.4273480267525" y="650.0" />
+      <point x="71.625" y="102.5" />
+    </edge>
+    <edge source="com.epam.training.client.BasicClient" target="com.epam.training.client.Ethnicity">
+      <point x="-39.75" y="-14.5" />
+      <point x="1555.4273480267525" y="600.0" />
+      <point x="1457.1998565587855" y="600.0" />
+      <point x="1457.1998565587855" y="355.0" />
+      <point x="1467.3665232254523" y="355.0" />
+      <point x="0.0" y="102.5" />
     </edge>
     <edge source="com.epam.training.stock.controller.StockRestControllerMockTest" target="com.epam.training.stock.service.StockService">
-      <point x="-79.71428571428578" y="-114.0" />
-      <point x="2253.621876326287" y="1933.0" />
-      <point x="2150.3498269004585" y="1933.0" />
-      <point x="2150.3498269004585" y="1727.0" />
-      <point x="2119.158333333333" y="1727.0" />
-      <point x="0.0" y="81.5" />
+      <point x="-79.71428571428578" y="-69.5" />
+      <point x="3339.4285714285706" y="1542.0" />
+      <point x="3275.0123565587846" y="1542.0" />
+      <point x="3275.0123565587846" y="1367.0" />
+      <point x="3241.8373565587854" y="1367.0" />
+      <point x="0.0" y="25.5" />
     </edge>
     <edge source="com.epam.training.order.repository.OrderRepositoryIntegrationTest" target="com.epam.training.stock.repository.StockRepository">
-      <point x="-147.0" y="-114.0" />
-      <point x="3206.8498269004585" y="1312.0" />
-      <point x="2201.033333333333" y="1312.0" />
-      <point x="149.25" y="170.0" />
+      <point x="105.875" y="-47.5" />
+      <point x="2684.7623565587855" y="1106.0" />
+      <point x="3018.245922948304" y="1106.0" />
+      <point x="-39.0" y="103.0" />
     </edge>
     <edge source="com.epam.training.order.repository.OrderRepository" target="com.epam.training.order.Order">
-      <point x="145.33333333333348" y="-159.0" />
-      <point x="3955.012365249132" y="822.0" />
-      <point x="3885.134536541892" y="822.0" />
-      <point x="3885.134536541892" y="331.0" />
-      <point x="3678.970698582465" y="331.0" />
-      <point x="106.33333333333326" y="125.5" />
+      <point x="118.66666666666674" y="-103.0" />
+      <point x="2564.7100861219906" y="660.0" />
+      <point x="2533.9600861219906" y="660.0" />
+      <point x="2533.9600861219906" y="265.0" />
+      <point x="2372.542318594104" y="265.0" />
+      <point x="0.0" y="69.5" />
     </edge>
     <edge source="com.epam.training.stock.controller.StockRestControllerMockTest" target="com.epam.training.stock.controller.StockRestController">
-      <point x="0.0" y="-114.0" />
-      <point x="2333.336162040573" y="1943.0" />
-      <point x="2348.3498269004585" y="1943.0" />
-      <point x="62.5" y="70.5" />
+      <point x="-39.85714285714286" y="-69.5" />
+      <point x="3379.2857142857138" y="1512.0" />
+      <point x="3442.4290232254516" y="1512.0" />
+      <point x="-50.75" y="25.5" />
     </edge>
     <edge source="com.epam.training.delivery.repository.DeliveryRepository" target="com.epam.training.delivery.repository.DeliveryRepository.DeliveryRowMapper">
-      <point x="-102.75" y="103.5" />
-      <point x="249.625" y="1432.0" />
-      <point x="254.875" y="1432.0" />
-      <point x="88.875" y="-25.5" />
-    </edge>
-    <edge source="com.epam.training.revision.repository.RevisionRepository.RevisionRowMapper" target="com.epam.training.revision.Revision">
-      <point x="-59.75" y="-25.5" />
-      <point x="4457.898662040572" y="351.0" />
-      <point x="4521.158346065702" y="351.0" />
-      <point x="-54.14285714285711" y="125.5" />
+      <point x="-104.0" y="-47.5" />
+      <point x="121.5" y="660.0" />
+      <point x="148.5" y="660.0" />
+      <point x="-38.5" y="14.5" />
     </edge>
     <edge source="com.epam.training.order.service.OrderService" target="com.epam.training.stock.repository.StockRepository">
-      <point x="-81.0" y="-70.5" />
-      <point x="2523.8498269004585" y="1332.0" />
-      <point x="2134.7" y="1332.0" />
-      <point x="82.91666666666652" y="170.0" />
+      <point x="60.5" y="-36.5" />
+      <point x="2936.5956898921186" y="1126.0" />
+      <point x="3070.245922948304" y="1126.0" />
+      <point x="13.0" y="103.0" />
     </edge>
-    <edge source="com.epam.training.order.repository.OrderRepositoryIntegrationTest" target="com.epam.training.RepositoryIntegrationTest">
-      <point x="-63.0" y="-114.0" />
-      <point x="3290.8498269004585" y="1292.0" />
-      <point x="3084.3498269004585" y="1292.0" />
-      <point x="51.0" y="25.5" />
+    <edge source="com.epam.training.revision.repository.RevisionRepository.RevisionRowMapper" target="com.epam.training.revision.Revision">
+      <point x="-39.0" y="-14.5" />
+      <point x="1009.3248565587857" y="355.0" />
+      <point x="979.8101757369616" y="355.0" />
+      <point x="-25.857142857142662" y="69.5" />
     </edge>
     <edge source="com.epam.training.client.Client" target="com.epam.training.order.Order">
-      <point x="170.25" y="-158.5" />
-      <point x="1593.7678698752254" y="351.0" />
-      <point x="3430.8595874713537" y="351.0" />
-      <point x="-141.77777777777783" y="125.5" />
+      <point x="23.875" y="-102.5" />
+      <point x="1637.6773480267525" y="275.0" />
+      <point x="2296.0978741496597" y="275.0" />
+      <point x="-76.44444444444434" y="69.5" />
+    </edge>
+    <edge source="com.epam.training.order.repository.OrderRepositoryIntegrationTest" target="com.epam.training.RepositoryIntegrationTest">
+      <point x="-75.625" y="-47.5" />
+      <point x="2503.2623565587855" y="966.0" />
+      <point x="1916.2398480267525" y="966.0" />
+      <point x="80.5" y="14.5" />
     </edge>
     <edge source="com.epam.training.revision.repository.RevisionRepository" target="com.epam.training.revision.Revision">
-      <point x="145.0" y="-93.0" />
-      <point x="4722.398662040572" y="822.0" />
-      <point x="4712.991531915798" y="822.0" />
-      <point x="4712.991531915798" y="351.0" />
-      <point x="4629.444060351416" y="351.0" />
-      <point x="54.14285714285688" y="125.5" />
+      <point x="104.0" y="-59.0" />
+      <point x="1192.5833333333335" y="660.0" />
+      <point x="1136.8248565587855" y="660.0" />
+      <point x="1136.8248565587855" y="335.0" />
+      <point x="1031.524461451247" y="335.0" />
+      <point x="25.857142857142662" y="69.5" />
     </edge>
     <edge source="com.epam.training.order.repository.OrderRepositoryIntegrationTest" target="com.epam.training.stock.Stock">
-      <point x="21.0" y="-114.0" />
-      <point x="3374.8498269004585" y="1382.0" />
-      <point x="3426.8498269004585" y="1382.0" />
-      <point x="3426.8498269004585" y="281.0" />
-      <point x="2305.8369174942727" y="281.0" />
-      <point x="97.03571428571422" y="103.5" />
+      <point x="75.625" y="-47.5" />
+      <point x="2654.5123565587855" y="1056.0" />
+      <point x="2890.745922948304" y="1056.0" />
+      <point x="2890.745922948304" y="305.0" />
+      <point x="3376.126157550562" y="305.0" />
+      <point x="-55.39285714285711" y="47.5" />
     </edge>
     <edge source="com.epam.training.stock.service.StockService" target="com.epam.training.stock.repository.StockRepository">
-      <point x="-91.33333333333348" y="-81.5" />
-      <point x="2027.8249999999996" y="1352.0" />
-      <point x="2035.1999999999996" y="1352.0" />
-      <point x="-16.583333333333485" y="170.0" />
+      <point x="-80.33333333333331" y="-25.5" />
+      <point x="3161.504023225452" y="1146.0" />
+      <point x="3148.245922948304" y="1146.0" />
+      <point x="91.0" y="103.0" />
     </edge>
     <edge source="com.epam.training.revision.controller.RevisionRestControllerIntegrationTest" target="com.epam.training.order.repository.OrderRepository">
-      <point x="94.75" y="-125.0" />
-      <point x="3827.0998269004585" y="1432.0" />
-      <point x="3846.012365249132" y="1432.0" />
-      <point x="36.33333333333326" y="159.0" />
-    </edge>
-    <edge source="com.epam.training.client.Client" target="com.epam.training.client.Sex">
-      <point x="-56.75" y="-158.5" />
-      <point x="0.0" y="47.5" />
+      <point x="67.25" y="-80.5" />
+      <point x="1926.6373565587855" y="1056.0" />
+      <point x="2416.3767527886566" y="1056.0" />
+      <point x="-29.666666666666742" y="103.0" />
     </edge>
     <edge source="com.epam.training.stock.controller.StockRestControllerMockTest" target="com.epam.training.stock.Stock">
-      <point x="79.71428571428578" y="-114.0" />
-      <point x="2413.0504477548584" y="1943.0" />
-      <point x="2432.3498269004585" y="1943.0" />
-      <point x="2432.3498269004585" y="311.0" />
-      <point x="2261.051203208559" y="311.0" />
-      <point x="52.25" y="103.5" />
+      <point x="119.57142857142844" y="-69.5" />
+      <point x="3538.7142857142853" y="1552.0" />
+      <point x="3683.039737511166" y="1552.0" />
+      <point x="3683.039737511166" y="295.0" />
+      <point x="3496.9833004077045" y="295.0" />
+      <point x="65.46428571428578" y="47.5" />
+    </edge>
+    <edge source="com.epam.training.client.Client" target="com.epam.training.client.Sex">
+      <point x="-23.875" y="-102.5" />
+      <point x="1589.9273480267525" y="355.0" />
+      <point x="1578.8665232254523" y="355.0" />
+      <point x="0.0" y="47.5" />
     </edge>
     <edge source="com.epam.training.stock.repository.StockRepository.StockRowMapper" target="com.epam.training.stock.repository.StockRepository">
-      <point x="56.0" y="25.5" />
-      <point x="2170.384536541892" y="822.0" />
-      <point x="2184.45" y="822.0" />
-      <point x="132.66666666666652" y="-170.0" />
-    </edge>
-    <edge source="com.epam.training.revision.repository.RevisionRepository.RevisionRowMapper" target="com.epam.training.revision.repository.RevisionRepository">
-      <point x="59.75" y="25.5" />
-      <point x="0.0" y="-93.0" />
+      <point x="35.25" y="14.5" />
+      <point x="3139.192857142857" y="660.0" />
+      <point x="3161.245922948304" y="660.0" />
+      <point x="104.0" y="-103.0" />
     </edge>
     <edge source="com.epam.training.revision.service.RevisionService" target="com.epam.training.revision.repository.RevisionRepository">
-      <point x="98.25" y="-81.5" />
-      <point x="4420.5998269004585" y="1422.0" />
-      <point x="4523.023662040572" y="1422.0" />
-      <point x="-54.375" y="93.0" />
+      <point x="-67.25" y="-36.5" />
+      <point x="1164.0748565587855" y="976.0" />
+      <point x="1127.5833333333335" y="976.0" />
+      <point x="39.0" y="59.0" />
+    </edge>
+    <edge source="com.epam.training.revision.repository.RevisionRepository.RevisionRowMapper" target="com.epam.training.revision.repository.RevisionRepository">
+      <point x="39.0" y="14.5" />
+      <point x="1087.3248565587855" y="660.0" />
+      <point x="1088.5833333333335" y="660.0" />
+      <point x="0.0" y="-59.0" />
     </edge>
     <edge source="com.epam.training.order.repository.OrderRepository.OrderRowMapper" target="com.epam.training.order.Order">
-      <point x="-56.25" y="-25.5" />
-      <point x="3703.433371682006" y="351.0" />
-      <point x="3608.0818096935764" y="351.0" />
-      <point x="35.44444444444457" y="125.5" />
+      <point x="-35.5" y="-14.5" />
+      <point x="2351.2100861219906" y="285.0" />
+      <point x="2334.320096371882" y="285.0" />
+      <point x="-38.22222222222217" y="69.5" />
     </edge>
     <edge source="com.epam.training.order.repository.OrderRepositoryIntegrationTest" target="com.epam.training.order.repository.OrderRepository">
-      <point x="147.0" y="-114.0" />
-      <point x="3500.8498269004585" y="1432.0" />
-      <point x="3773.345698582465" y="1432.0" />
-      <point x="-36.33333333333326" y="159.0" />
+      <point x="-15.125" y="-47.5" />
+      <point x="2563.7623565587855" y="946.0" />
+      <point x="2475.7100861219906" y="946.0" />
+      <point x="29.666666666666742" y="103.0" />
     </edge>
     <edge source="com.epam.training.stock.repository.StockRepositoryTest" target="com.epam.training.stock.repository.StockRepository">
-      <point x="48.19999999999982" y="-92.0" />
-      <point x="1764.5498269004586" y="1332.0" />
-      <point x="1935.6999999999996" y="1332.0" />
-      <point x="-116.08333333333348" y="170.0" />
+      <point x="-48.200000000000045" y="-36.5" />
+      <point x="3454.637356558785" y="906.0" />
+      <point x="3200.245922948304" y="906.0" />
+      <point x="143.0" y="103.0" />
     </edge>
     <edge source="com.epam.training.revision.controller.RevisionRestControllerIntegrationTest" target="com.epam.training.revision.repository.RevisionRepository">
-      <point x="157.91666666666652" y="-125.0" />
-      <point x="3890.266493567125" y="1432.0" />
-      <point x="4414.273662040572" y="1432.0" />
-      <point x="-163.125" y="93.0" />
+      <point x="-112.08333333333348" y="-80.5" />
+      <point x="1747.304023225452" y="956.0" />
+      <point x="1205.5833333333335" y="956.0" />
+      <point x="117.0" y="59.0" />
     </edge>
     <edge source="com.epam.training.delivery.controller.DeliveryRestControllerMockTest" target="com.epam.training.stock.repository.StockRepository">
-      <point x="135.55555555555566" y="-125.0" />
-      <point x="735.5583842627955" y="1943.0" />
-      <point x="1847.3498269004588" y="1943.0" />
-      <point x="1847.3498269004588" y="1342.0" />
-      <point x="1968.8666666666666" y="1342.0" />
-      <point x="-82.91666666666652" y="170.0" />
+      <point x="135.55555555555566" y="-91.5" />
+      <point x="692.8888888888891" y="1552.0" />
+      <point x="3040.0123565587846" y="1552.0" />
+      <point x="3040.0123565587846" y="1136.0" />
+      <point x="3096.245922948304" y="1136.0" />
+      <point x="39.0" y="103.0" />
     </edge>
     <edge source="com.epam.training.order.controller.OrderRestControllerIntegrationTest" target="com.epam.training.stock.repository.StockRepository">
-      <point x="-124.875" y="-125.0" />
-      <point x="2874.4748269004585" y="1322.0" />
-      <point x="2167.866666666666" y="1322.0" />
-      <point x="116.08333333333303" y="170.0" />
+      <point x="90.375" y="-58.5" />
+      <point x="2224.7623565587855" y="1096.0" />
+      <point x="2992.245922948304" y="1096.0" />
+      <point x="-65.0" y="103.0" />
     </edge>
     <edge source="com.epam.training.order.controller.OrderRestController" target="com.epam.training.order.Order">
-      <point x="84.0" y="-59.5" />
-      <point x="2758.092869875225" y="1727.0" />
-      <point x="3532.3498269004585" y="1727.0" />
-      <point x="3532.3498269004585" y="351.0" />
-      <point x="3572.6373652491316" y="351.0" />
-      <point x="0.0" y="125.5" />
+      <point x="-68.0" y="-25.5" />
+      <point x="2746.0956898921186" y="1367.0" />
+      <point x="2744.5956898921186" y="1367.0" />
+      <point x="2744.5956898921186" y="235.0" />
+      <point x="2429.8756519274375" y="235.0" />
+      <point x="57.33333333333326" y="69.5" />
     </edge>
     <edge source="com.epam.training.revision.service.RevisionSchedulingService" target="com.epam.training.revision.service.RevisionService">
-      <point x="100.33333333333326" y="-59.5" />
-      <point x="4274.2664935671255" y="1727.0" />
-      <point x="4273.2248269004585" y="1727.0" />
-      <point x="-49.125" y="81.5" />
+      <point x="77.0" y="-36.5" />
+      <point x="1115.2174620353185" y="1367.0" />
+      <point x="1197.6998565587855" y="1367.0" />
+      <point x="-33.625" y="36.5" />
     </edge>
     <edge source="com.epam.training.revision.repository.RevisionRepositoryTest" target="com.epam.training.revision.repository.RevisionRepository">
-      <point x="0.0" y="-59.0" />
-      <point x="163.125" y="93.0" />
+      <point x="0.0" y="-25.5" />
+      <point x="933.8665232254523" y="976.0" />
+      <point x="971.5833333333335" y="976.0" />
+      <point x="-117.0" y="59.0" />
     </edge>
     <edge source="com.epam.training.delivery.controller.DeliveryRestControllerMockTest" target="com.epam.training.delivery.repository.DeliveryRepository">
-      <point x="-33.88888888888869" y="-125.0" />
-      <point x="566.1139398183511" y="1913.0" />
-      <point x="318.125" y="1913.0" />
-      <point x="-34.25" y="103.5" />
-    </edge>
-    <edge source="com.epam.training.revision.controller.RevisionRestControllerIntegrationTest" target="com.epam.training.DemoApplication">
-      <point x="31.583333333333485" y="-125.0" />
-      <point x="3763.933160233792" y="1252.0" />
-      <point x="3355.992684043316" y="1252.0" />
-      <point x="24.142857142857338" y="36.5" />
+      <point x="-33.88888888888869" y="-91.5" />
+      <point x="523.4444444444448" y="1522.0" />
+      <point x="37.0" y="1522.0" />
+      <point x="37.0" y="1156.0" />
+      <point x="108.5" y="1156.0" />
+      <point x="-117.0" y="47.5" />
     </edge>
     <edge source="com.epam.training.stock.repository.StockRepositoryTest" target="com.epam.training.stock.Stock">
-      <point x="0.0" y="-92.0" />
-      <point x="1716.3498269004588" y="1302.0" />
-      <point x="1706.3928698752254" y="1302.0" />
-      <point x="1706.3928698752254" y="311.0" />
-      <point x="2156.551203208559" y="311.0" />
-      <point x="-52.25" y="103.5" />
+      <point x="0.0" y="-36.5" />
+      <point x="3502.8373565587854" y="355.0" />
+      <point x="3436.554728979133" y="355.0" />
+      <point x="5.035714285714221" y="47.5" />
+    </edge>
+    <edge source="com.epam.training.revision.controller.RevisionRestControllerIntegrationTest" target="com.epam.training.DemoApplication">
+      <point x="22.416666666666515" y="-80.5" />
+      <point x="1881.804023225452" y="1026.0" />
+      <point x="2106.8588956457997" y="1026.0" />
+      <point x="-20.142857142857338" y="14.5" />
     </edge>
     <edge source="com.epam.training.revision.repository.RevisionRepositoryTest" target="com.epam.training.revision.Revision">
-      <point x="89.66666666666652" y="-59.0" />
-      <point x="4830.190328707239" y="1432.0" />
-      <point x="4839.961162040572" y="1432.0" />
-      <point x="4839.961162040572" y="341.0" />
-      <point x="4683.586917494273" y="341.0" />
-      <point x="108.28571428571422" y="125.5" />
+      <point x="-89.66666666666652" y="-25.5" />
+      <point x="844.1998565587858" y="976.0" />
+      <point x="822.0331898921193" y="976.0" />
+      <point x="822.0331898921193" y="355.0" />
+      <point x="953.9530328798185" y="355.0" />
+      <point x="-51.71428571428578" y="69.5" />
     </edge>
     <edge source="com.epam.training.revision.service.RevisionService" target="com.epam.training.order.repository.OrderRepository">
-      <point x="-163.75" y="-81.5" />
-      <point x="4158.5998269004585" y="1232.0" />
-      <point x="3918.6790319157985" y="1232.0" />
-      <point x="109.0" y="159.0" />
+      <point x="67.25" y="-36.5" />
+      <point x="1298.5748565587855" y="1036.0" />
+      <point x="2297.7100861219906" y="1036.0" />
+      <point x="-148.33333333333326" y="103.0" />
     </edge>
     <edge source="com.epam.training.revision.controller.RevisionRestController" target="com.epam.training.revision.service.RevisionService">
-      <point x="0.0" y="-59.5" />
-      <point x="4586.699865249131" y="1727.0" />
-      <point x="4469.7248269004585" y="1727.0" />
-      <point x="147.375" y="81.5" />
-    </edge>
-    <edge source="com.epam.training.delivery.controller.DeliveryRestController" target="com.epam.training.delivery.service.DeliveryService">
-      <point x="0.0" y="-48.5" />
-      <point x="682.625" y="1727.0" />
-      <point x="675.2528287072398" y="1727.0" />
-      <point x="-130.5" y="70.5" />
+      <point x="-77.0" y="-25.5" />
+      <point x="1261.5255623124667" y="1367.0" />
+      <point x="1264.9498565587855" y="1367.0" />
+      <point x="33.625" y="36.5" />
     </edge>
     <edge source="com.epam.training.revision.service.RevisionService" target="com.epam.training.revision.Revision">
-      <point x="32.75" y="-81.5" />
-      <point x="4355.0998269004585" y="1422.0" />
-      <point x="4349.398662040572" y="1422.0" />
-      <point x="4349.398662040572" y="341.0" />
-      <point x="4467.015488922844" y="341.0" />
-      <point x="-108.28571428571422" y="125.5" />
+      <point x="-22.416666666666515" y="-36.5" />
+      <point x="1208.908189892119" y="966.0" />
+      <point x="1255.0833333333335" y="966.0" />
+      <point x="1255.0833333333335" y="325.0" />
+      <point x="1057.38160430839" y="325.0" />
+      <point x="51.71428571428578" y="69.5" />
     </edge>
-    <edge source="com.epam.training.client.Client" target="com.epam.training.client.Ethnicity">
-      <point x="-170.25" y="-158.5" />
-      <point x="1253.2678698752254" y="341.0" />
-      <point x="1168.1666666666663" y="341.0" />
-      <point x="31.333333333333314" y="102.5" />
+    <edge source="com.epam.training.delivery.controller.DeliveryRestController" target="com.epam.training.delivery.service.DeliveryService">
+      <point x="76.33333333333348" y="-25.5" />
+      <point x="509.80402322545274" y="1367.0" />
+      <point x="611.4915232254523" y="1367.0" />
+      <point x="-33.375" y="36.5" />
     </edge>
     <edge source="com.epam.training.stock.service.StockSchedulingService" target="com.epam.training.stock.service.StockService">
-      <point x="67.75" y="-70.5" />
-      <point x="2072.0998269004585" y="1727.0" />
-      <point x="2064.3583333333327" y="1727.0" />
-      <point x="-54.80000000000018" y="81.5" />
+      <point x="50.75" y="-47.5" />
+      <point x="3213.7623565587846" y="1367.0" />
+      <point x="3193.637356558785" y="1367.0" />
+      <point x="-48.19999999999999" y="25.5" />
     </edge>
     <edge source="com.epam.training.revision.controller.RevisionRestControllerIntegrationTest" target="com.epam.training.RepositoryIntegrationTest">
-      <point x="-94.75" y="-125.0" />
-      <point x="3637.5998269004585" y="1272.0" />
-      <point x="3118.3498269004585" y="1272.0" />
-      <point x="85.0" y="25.5" />
+      <point x="-22.416666666666515" y="-80.5" />
+      <point x="1836.970689892119" y="996.0" />
+      <point x="1824.2398480267525" y="996.0" />
+      <point x="-11.5" y="14.5" />
+    </edge>
+    <edge source="com.epam.training.client.Client" target="com.epam.training.client.Ethnicity">
+      <point x="-71.625" y="-102.5" />
+      <point x="1542.1773480267525" y="345.0" />
+      <point x="1498.6998565587855" y="345.0" />
+      <point x="31.333333333333258" y="102.5" />
     </edge>
     <edge source="com.epam.training.delivery.repository.DeliveryRepository.DeliveryRowMapper" target="com.epam.training.delivery.repository.DeliveryRepository">
-      <point x="29.625" y="-25.5" />
-      <point x="195.625" y="1432.0" />
-      <point x="181.125" y="1432.0" />
-      <point x="-171.25" y="103.5" />
+      <point x="38.5" y="14.5" />
+      <point x="0.0" y="-47.5" />
     </edge>
     <edge source="com.epam.training.client.Client" target="com.epam.training.stock.Stock">
-      <point x="56.75" y="-158.5" />
-      <point x="1480.2678698752254" y="281.0" />
-      <point x="2111.7654889228443" y="281.0" />
-      <point x="-97.03571428571422" y="103.5" />
+      <point x="71.625" y="-102.5" />
+      <point x="1685.4273480267525" y="295.0" />
+      <point x="3366.054728979133" y="295.0" />
+      <point x="-65.46428571428572" y="47.5" />
     </edge>
     <edge source="com.epam.training.delivery.controller.DeliveryRestControllerMockTest" target="com.epam.training.delivery.controller.DeliveryRestController">
-      <point x="0.0" y="-125.0" />
-      <point x="600.0028287072398" y="1943.0" />
-      <point x="585.125" y="1943.0" />
-      <point x="-97.5" y="48.5" />
+      <point x="0.0" y="-91.5" />
+      <point x="557.3333333333335" y="1512.0" />
+      <point x="376.22068989211925" y="1512.0" />
+      <point x="-57.25" y="25.5" />
     </edge>
     <edge source="com.epam.training.delivery.repository.DeliveryRepositoryIntegrationTest" target="com.epam.training.delivery.repository.DeliveryRepository">
-      <point x="-107.08333333333303" y="-81.0" />
-      <point x="1021.1694953739068" y="1302.0" />
-      <point x="523.625" y="1302.0" />
-      <point x="171.25" y="103.5" />
+      <point x="-58.75" y="-47.5" />
+      <point x="315.1165232254523" y="1136.0" />
+      <point x="186.5" y="1136.0" />
+      <point x="-39.0" y="47.5" />
     </edge>
     <edge source="com.epam.training.stock.repository.StockRepository" target="com.epam.training.stock.repository.StockRepository.StockRowMapper">
-      <point x="0.0" y="-170.0" />
-      <point x="2051.783333333333" y="822.0" />
-      <point x="2058.384536541892" y="822.0" />
-      <point x="-56.0" y="25.5" />
-    </edge>
-    <edge source="com.epam.training.revision.repository.RevisionRepository" target="com.epam.training.revision.repository.RevisionRepository.RevisionRowMapper">
-      <point x="-145.0" y="-93.0" />
-      <point x="4432.398662040572" y="822.0" />
-      <point x="4457.898662040572" y="822.0" />
-      <point x="-59.75" y="25.5" />
+      <point x="0.0" y="-103.0" />
+      <point x="3057.245922948304" y="660.0" />
+      <point x="3068.692857142857" y="660.0" />
+      <point x="-35.25" y="14.5" />
     </edge>
     <edge source="com.epam.training.revision.repository.RevisionRepositoryTest" target="com.epam.training.DemoApplication">
-      <point x="-89.66666666666674" y="-59.0" />
-      <point x="4650.856995373906" y="1202.0" />
-      <point x="3404.27839832903" y="1202.0" />
-      <point x="72.42857142857156" y="36.5" />
+      <point x="89.66666666666652" y="-25.5" />
+      <point x="1023.5331898921188" y="1016.0" />
+      <point x="2086.716038502943" y="1016.0" />
+      <point x="-40.28571428571422" y="14.5" />
+    </edge>
+    <edge source="com.epam.training.revision.repository.RevisionRepository" target="com.epam.training.revision.repository.RevisionRepository.RevisionRowMapper">
+      <point x="-104.0" y="-59.0" />
+      <point x="984.5833333333335" y="660.0" />
+      <point x="1009.3248565587857" y="660.0" />
+      <point x="-39.0" y="14.5" />
     </edge>
     <edge source="com.epam.training.DemoApplicationTest" target="com.epam.training.DemoApplication">
-      <point x="0.0" y="-36.5" />
-      <point x="4023.3498269004585" y="1242.0" />
-      <point x="3380.1355411861728" y="1242.0" />
-      <point x="48.28571428571422" y="36.5" />
-    </edge>
-    <edge source="com.epam.training.order.repository.OrderRepositoryIntegrationTest" target="com.epam.training.order.Order">
-      <point x="63.0" y="-114.0" />
-      <point x="3416.8498269004585" y="1392.0" />
-      <point x="3474.3986620405726" y="1392.0" />
-      <point x="3474.3986620405726" y="331.0" />
-      <point x="3501.7484763602424" y="331.0" />
-      <point x="-70.88888888888891" y="125.5" />
-    </edge>
-    <edge source="com.epam.training.delivery.controller.DeliveryRestControllerMockTest" target="com.epam.training.delivery.service.DeliveryService">
-      <point x="67.77777777777737" y="-125.0" />
-      <point x="667.7806064850172" y="1923.0" />
-      <point x="888.125" y="1923.0" />
-      <point x="888.125" y="1727.0" />
-      <point x="849.2528287072398" y="1727.0" />
-      <point x="43.5" y="70.5" />
-    </edge>
-    <edge source="com.epam.training.delivery.repository.DeliveryRepository.DeliveryRowMapper" target="com.epam.training.delivery.Delivery">
-      <point x="-88.875" y="-25.5" />
-      <point x="77.125" y="1432.0" />
-      <point x="125.375" y="1432.0" />
-      <point x="125.375" y="812.0" />
-      <point x="247.46535720348902" y="812.0" />
-      <point x="-62.54545454545496" y="180.5" />
+      <point x="0.0" y="-14.5" />
+      <point x="2356.3873565587855" y="1016.0" />
+      <point x="2147.1446099315144" y="1016.0" />
+      <point x="20.142857142857338" y="14.5" />
     </edge>
     <edge source="com.epam.training.order.service.OrderService" target="com.epam.training.order.Order">
-      <point x="27.0" y="-70.5" />
-      <point x="2631.8498269004585" y="1352.0" />
-      <point x="2610.3498269004585" y="1352.0" />
-      <point x="2610.3498269004585" y="822.0" />
-      <point x="3463.3986620405726" y="822.0" />
-      <point x="3463.3986620405726" y="351.0" />
-      <point x="3466.304031915798" y="351.0" />
-      <point x="-106.33333333333326" y="125.5" />
+      <point x="-20.166666666666742" y="-36.5" />
+      <point x="2855.9290232254516" y="225.0" />
+      <point x="2448.986763038549" y="225.0" />
+      <point x="76.44444444444457" y="69.5" />
+    </edge>
+    <edge source="com.epam.training.delivery.repository.DeliveryRepository.DeliveryRowMapper" target="com.epam.training.delivery.Delivery">
+      <point x="-38.5" y="-14.5" />
+      <point x="148.5" y="355.0" />
+      <point x="212.99531110424027" y="355.0" />
+      <point x="0.0" y="80.5" />
+    </edge>
+    <edge source="com.epam.training.order.repository.OrderRepositoryIntegrationTest" target="com.epam.training.order.Order">
+      <point x="15.125" y="-47.5" />
+      <point x="2594.0123565587855" y="1036.0" />
+      <point x="2722.5956898921186" y="1036.0" />
+      <point x="2722.5956898921186" y="255.0" />
+      <point x="2391.653429705215" y="255.0" />
+      <point x="19.111111111111086" y="69.5" />
+    </edge>
+    <edge source="com.epam.training.delivery.controller.DeliveryRestControllerMockTest" target="com.epam.training.delivery.service.DeliveryService">
+      <point x="67.77777777777783" y="-91.5" />
+      <point x="625.1111111111113" y="1532.0" />
+      <point x="673.9915232254523" y="1532.0" />
+      <point x="673.9915232254523" y="1367.0" />
+      <point x="678.2415232254523" y="1367.0" />
+      <point x="33.375" y="36.5" />
     </edge>
     <edge source="com.epam.training.revision.service.RevisionSchedulingService" target="com.epam.training.revision.Revision">
-      <point x="-100.33333333333326" y="-59.5" />
-      <point x="4073.5998269004585" y="1727.0" />
-      <point x="4115.3498269004585" y="1727.0" />
-      <point x="4115.3498269004585" y="331.0" />
-      <point x="4412.8726317799865" y="331.0" />
-      <point x="-162.42857142857156" y="125.5" />
+      <point x="-77.0" y="-36.5" />
+      <point x="961.2174620353186" y="1367.0" />
+      <point x="788.8665232254523" y="1367.0" />
+      <point x="788.8665232254523" y="345.0" />
+      <point x="928.0958900226758" y="345.0" />
+      <point x="-77.57142857142844" y="69.5" />
     </edge>
     <edge source="com.epam.training.client.VipClient" target="com.epam.training.client.Client">
-      <point x="24.0" y="-25.5" />
-      <point x="1237.3361620405728" y="822.0" />
-      <point x="1253.2678698752254" y="822.0" />
-      <point x="-170.25" y="158.5" />
+      <point x="36.0" y="-14.5" />
+      <point x="1494.4898480267525" y="630.0" />
+      <point x="1589.9273480267525" y="630.0" />
+      <point x="-23.875" y="102.5" />
     </edge>
     <edge source="com.epam.training.order.repository.OrderRepository.OrderRowMapper" target="com.epam.training.order.repository.OrderRepository">
-      <point x="56.25" y="25.5" />
-      <point x="3815.933371682006" y="822.0" />
-      <point x="3809.679031915799" y="822.0" />
-      <point x="2.2737367544323206E-13" y="-159.0" />
+      <point x="35.5" y="14.5" />
+      <point x="2422.2100861219906" y="660.0" />
+      <point x="2446.0434194553236" y="660.0" />
+      <point x="0.0" y="-103.0" />
     </edge>
     <edge source="com.epam.training.client.VipClient" target="com.epam.training.client.Ethnicity">
-      <point x="-72.0" y="-25.5" />
-      <point x="1141.3361620405728" y="762.0" />
-      <point x="1056.2542050153395" y="762.0" />
-      <point x="1056.2542050153395" y="351.0" />
-      <point x="1105.4999999999998" y="351.0" />
+      <point x="-36.0" y="-14.5" />
+      <point x="1422.4898480267525" y="660.0" />
+      <point x="1393.0748565587855" y="660.0" />
+      <point x="1393.0748565587855" y="355.0" />
+      <point x="1436.033189892119" y="355.0" />
       <point x="-31.333333333333258" y="102.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.2803441181971199" x="2663.4999999999995" y="1194.5" />
+  <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="1281.4999999999984" y="1284.9999999999986" />
   <SelectedNodes />
   <Categories>
     <Category>Inner Classes</Category>
     <Category>Properties</Category>
-    <Category>Methods</Category>
-    <Category>Constructors</Category>
     <Category>Fields</Category>
   </Categories>
   <SCOPE>All</SCOPE>
