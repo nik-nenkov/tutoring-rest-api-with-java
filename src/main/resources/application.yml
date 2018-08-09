@@ -2,6 +2,9 @@ spring:
   profiles.active: dev
 
 ---
+server:
+  tomcat:
+    max-threads: 8
 spring:
   profiles: dev
   datasource:
@@ -12,6 +15,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
 ---
+server:
+  tomcat:
+    max-threads: 8
 spring:
   profiles: test
   datasource:
