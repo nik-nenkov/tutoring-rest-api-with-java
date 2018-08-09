@@ -1,8 +1,11 @@
 package com.epam.training.stock.service;
 
+import com.epam.training.MyThread;
 import com.epam.training.stock.Stock;
 import com.epam.training.stock.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,9 +17,12 @@ public class StockService {
 
     private final StockRepository stockRepository;
 
+    private final TaskExecutor taskExecutor;
+
     @Autowired
-    public StockService(StockRepository stockRepository) {
+    public StockService(StockRepository stockRepository, TaskExecutor taskExecutor) {
         this.stockRepository = stockRepository;
+        this.taskExecutor = taskExecutor;
     }
 
     @Transactional
@@ -47,6 +53,9 @@ public class StockService {
     }
 
     public Stock readStockByStockId(int stockId) {
+
+        MyThread myThread = new MyThread();
+        taskExecutor.execute(myThread);
         return stockRepository.getStockByStockId(stockId);
     }
 }
