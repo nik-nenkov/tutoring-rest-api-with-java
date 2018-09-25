@@ -1,11 +1,10 @@
 package com.epam.training.stock.controller;
 
+import com.epam.training.exception.StockAlreadyExistsException;
 import com.epam.training.stock.Stock;
 import com.epam.training.stock.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.InvalidParameterException;
 
 @RestController
 @RequestMapping("/stock")
@@ -22,7 +21,7 @@ public class StockRestController {
             value = "/new",
             consumes = "application/json",
             produces = "application/json")
-    public Stock newStock(@RequestBody Stock stockToAdd) throws Exception {
+    public Stock newStock(@RequestBody Stock stockToAdd) throws StockAlreadyExistsException {
         return stockService.createStock(stockToAdd.getStockId(), stockToAdd.getPrice(), stockToAdd.getQuantity());
     }
 
@@ -31,7 +30,7 @@ public class StockRestController {
             produces = "application/json")
     public Stock increaseStock(
             @RequestParam("stock_id") int stockId,
-            @RequestParam("quantity") int quantity) throws InvalidParameterException {
+            @RequestParam("quantity") int quantity) {
         return stockService.increaseQuantityOfStock(stockId, quantity);
     }
 

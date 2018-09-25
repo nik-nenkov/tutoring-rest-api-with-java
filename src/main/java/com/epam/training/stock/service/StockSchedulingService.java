@@ -11,8 +11,7 @@ import org.springframework.stereotype.Service;
 @EnableScheduling
 public class StockSchedulingService {
 
-    private final int interval = 60000;
-    //    private static final Logger log = LoggerFactory.getLogger(StockSchedulingService.class);
+    private static final int INTERVAL = 60000;
     private final StockService stockService;
 
     @Autowired
@@ -20,9 +19,9 @@ public class StockSchedulingService {
         this.stockService = stockService;
     }
 
-    @Scheduled(fixedRate = interval)   //  1 minute == 60 000 milliseconds
+    @Scheduled(fixedRate = INTERVAL)   //  1 minute == 60 000 milliseconds
     private void addSomeStocks() {
-        // TODO use a settings file from which to load the stocks and their amounts
+        // to maybe do : use a settings file from which to load the stocks and their amounts
         stockService.increaseQuantityOfStock(111, 20);
         log.info("Stock with id=111 was increased by quantity=20");
         stockService.increaseQuantityOfStock(345, 80);

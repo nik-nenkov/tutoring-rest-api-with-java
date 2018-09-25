@@ -1,5 +1,7 @@
 package com.epam.training.order.service;
 
+import com.epam.training.exception.NoSuchStockException;
+import com.epam.training.exception.QuantityExceedsStorageException;
 import com.epam.training.order.Order;
 import com.epam.training.order.repository.OrderRepository;
 import com.epam.training.stock.Stock;
@@ -8,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.security.InvalidParameterException;
 
 @Service
 public class OrderService {
@@ -21,26 +22,16 @@ public class OrderService {
         this.stockRepository = stockRepository;
     }
 
-    public Order placeNewOrder(int stockId, int quantity) {
+    public Order placeNewOrder(int stockId, int quantity) throws NoSuchStockException, QuantityExceedsStorageException {
         Stock currentStock;
         currentStock = stockRepository.getStockByStockId(stockId);
-        if (currentStock == null) throw new InvalidParameterException() {
-            @Override
-            public String getMessage() {
-                return "Could not find s stock with id=" + stockId;
-            }
-        };
+        if (currentStock == null) throw new NoSuchStockException(stockId);
         BigDecimal orderPrice = currentStock.getPrice().multiply(BigDecimal.valueOf(quantity));
         int newQuantity = currentStock.getQuantity() - quantity;
         if (newQuantity >= 0) {
             currentStock.setQuantity(newQuantity);
         } else {
-            throw new InvalidParameterException() {
-                @Override
-                public String getMessage() {
-                    return "Requested quantity should not exceed total stock quantity!";
-                }
-            };
+            throw new QuantityExceedsStorageException();
         }
         orderRepository.createNewOrder(stockId, quantity, orderPrice);
         stockRepository.updateQuantityById(stockId, newQuantity);

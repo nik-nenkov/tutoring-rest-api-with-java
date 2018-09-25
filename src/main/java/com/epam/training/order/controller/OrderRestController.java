@@ -1,5 +1,7 @@
 package com.epam.training.order.controller;
 
+import com.epam.training.exception.NoSuchStockException;
+import com.epam.training.exception.QuantityExceedsStorageException;
 import com.epam.training.order.Order;
 import com.epam.training.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,7 @@ public class OrderRestController {
             produces = "application/json")
     public Order createOrder(
             @RequestParam("stock_id") int stockId,
-            @RequestParam("quantity") int quantity) {
+            @RequestParam("quantity") int quantity) throws NoSuchStockException, QuantityExceedsStorageException {
         return orderService.placeNewOrder(stockId, quantity);
     }
 }

@@ -30,10 +30,10 @@ public class RevisionSchedulingService {
         );
 
         final String sfm = String.format(
-                "\n\ntotal_quantity:%d\ntotal_price:%f\n",
+                "%n%n total_quantity:%d%n total_price:%f%n",
                 fromLastHalfHour.getTotalQuantities(),
                 fromLastHalfHour.getTotalPrice());
-
+        //suspicious line separator
         log.info(sfm);
     }
 }

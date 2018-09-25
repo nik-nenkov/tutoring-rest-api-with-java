@@ -29,8 +29,14 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
             "SELECT * FROM stock ORDER BY id DESC LIMIT 1";
     private static final String UPDATE_STOCK_QUANTITY_BY_ID =
             "UPDATE stock SET quantity=:quantity WHERE stock_id=:stock_id";
-    private final static String GET_ID_FROM_STOCK_ID =
+    private static final String GET_ID_FROM_STOCK_ID =
             "SELECT id FROM stock WHERE stock_id=:stock_id";
+
+    private static final String STOCK_TABLE = "stock";
+    private static final String PRICE_COLUMN = "price";
+    private static final String STOCK_ID_COLUMN = "stock_id";
+    private static final String ID_COLUMN = "id";
+    private static final String QUANTITY_COLUMN = "quantity";
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final SimpleJdbcInsert simpleJdbcInsert;
@@ -40,9 +46,9 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
         setDataSource(dataSource);
         this.jdbcTemplate = jdbcTemplate;
         simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
-                .withTableName("stock")
-                .usingColumns("stock_id", "price", "quantity")
-                .usingGeneratedKeyColumns("id");
+                .withTableName(STOCK_TABLE)
+                .usingColumns(STOCK_ID_COLUMN, PRICE_COLUMN, QUANTITY_COLUMN)
+                .usingGeneratedKeyColumns(ID_COLUMN);
     }
 
     @Transactional
@@ -53,9 +59,9 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     @Transactional
     public int insertNewStock(int stockId, BigDecimal price, int quantity) {
         final Map<String, Object> params = new HashMap<>();
-        params.put("stock_id", stockId);
-        params.put("price", price);
-        params.put("quantity", quantity);
+        params.put(STOCK_ID_COLUMN, stockId);
+        params.put(PRICE_COLUMN, price);
+        params.put(QUANTITY_COLUMN, quantity);
         return simpleJdbcInsert.executeAndReturnKey(params).intValue();
     }
 
@@ -65,20 +71,10 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
             insertNewStock(stockId, BigDecimal.ZERO, 0);
     }
 
-    private final class StockRowMapper implements RowMapper<Stock> {
-        @Override
-        public Stock mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new Stock(
-                    rs.getInt("stock_id"),
-                    rs.getBigDecimal("price"),
-                    rs.getInt("quantity"));
-        }
-    }
-
     @Transactional
     public Stock getStockByStockId(final int stockId) {
         final Map<String, Object> params = new HashMap<>();
-        params.put("stock_id", stockId);
+        params.put(STOCK_ID_COLUMN, stockId);
         try {
             return jdbcTemplate.queryForObject(SELECT_STOCK_BY_STOCK_ID, params, new StockRowMapper());
         } catch (Exception e) {
@@ -89,7 +85,7 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     @Transactional
     public Stock getStockById(final int id) {
         final Map<String, Object> params = new HashMap<>();
-        params.put("id", id);
+        params.put(ID_COLUMN, id);
         try {
             return jdbcTemplate.queryForObject(SELECT_STOCK_BY_ID, params, new StockRowMapper());
         } catch (Exception e) {
@@ -98,12 +94,22 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     }
 
     @Transactional
-    public Integer updateQuantityById(int stockId, int quantity) throws NullPointerException {
+    public Integer updateQuantityById(int stockId, int quantity) {
         final Map<String, Object> params = new HashMap<>();
-        params.put("stock_id", stockId);
-        params.put("quantity", quantity);
+        params.put(STOCK_ID_COLUMN, stockId);
+        params.put(QUANTITY_COLUMN, quantity);
         jdbcTemplate.update(UPDATE_STOCK_QUANTITY_BY_ID, params);
         return jdbcTemplate.queryForObject(GET_ID_FROM_STOCK_ID, params, Integer.class);
+    }
+
+    private final class StockRowMapper implements RowMapper<Stock> {
+        @Override
+        public Stock mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Stock(
+                    rs.getInt(STOCK_ID_COLUMN),
+                    rs.getBigDecimal(PRICE_COLUMN),
+                    rs.getInt(QUANTITY_COLUMN));
+        }
     }
 
 }

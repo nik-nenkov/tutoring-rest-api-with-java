@@ -24,6 +24,14 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
     private static final String SELECT_DELIVERY_BY_ID =
             "SELECT * FROM `delivery` WHERE `id` = :id";
 
+    private static final String DELIVERY_TABLE = "delivery";
+    private static final String ID_COLUMN = "id";
+    private static final String STOCK_ID_COLUMN = "stock_id";
+    private static final String QUANTITY_COLUMN = "quantity";
+    private static final String FIRST_DATE_COLUMN = "first_date";
+    private static final String SCHEDULED_COLUMN = "scheduled";
+    private static final String TIME_INTERVAL_COLUMN = "time_interval";
+
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     private final SimpleJdbcInsert simpleJdbcInsert;
@@ -34,23 +42,23 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
         this.jdbcTemplate = jdbcTemplate;
         simpleJdbcInsert = new SimpleJdbcInsert(dataSource);
         simpleJdbcInsert.includeSynonymsForTableColumnMetaData();
-        simpleJdbcInsert.withTableName("delivery");
+        simpleJdbcInsert.withTableName(DELIVERY_TABLE);
         simpleJdbcInsert.usingColumns(
-                "stock_id",
-                "quantity",
-                "first_date",
-                "scheduled",
-                "time_interval"
+                STOCK_ID_COLUMN,
+                QUANTITY_COLUMN,
+                FIRST_DATE_COLUMN,
+                SCHEDULED_COLUMN,
+                TIME_INTERVAL_COLUMN
         ).usingGeneratedKeyColumns("id");
     }
 
     private Map<String, Object> deliveryMapper(Delivery delivery) {
         Map<String, Object> params = new HashMap<>();
-        params.put("stock_id", delivery.getStockId());
-        params.put("quantity", delivery.getQuantity());
-        params.put("first_date", delivery.getDate());
-        params.put("scheduled", delivery.isScheduled());
-        params.put("time_interval", delivery.getTimeInterval());
+        params.put(STOCK_ID_COLUMN, delivery.getStockId());
+        params.put(QUANTITY_COLUMN, delivery.getQuantity());
+        params.put(FIRST_DATE_COLUMN, delivery.getDate());
+        params.put(SCHEDULED_COLUMN, delivery.isScheduled());
+        params.put(TIME_INTERVAL_COLUMN, delivery.getTimeInterval());
         return params;
     }
 
@@ -66,16 +74,16 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
     @Transactional
     public Integer createNewSingleDelivery(Delivery deliveryToPersist) {
         Map<String, Object> params = new HashMap<>();
-        params.put("stock_id", deliveryToPersist.getStockId());
-        params.put("quantity", deliveryToPersist.getQuantity());
-        params.put("first_date", deliveryToPersist.getDate());
+        params.put(STOCK_ID_COLUMN, deliveryToPersist.getStockId());
+        params.put(QUANTITY_COLUMN, deliveryToPersist.getQuantity());
+        params.put(FIRST_DATE_COLUMN, deliveryToPersist.getDate());
         KeyHolder key = simpleJdbcInsert.executeAndReturnKeyHolder(params);
         return Objects.requireNonNull(key.getKey()).intValue();
     }
 
     public Delivery getDeliveryById(int id) {
         Map<String, Object> param = new HashMap<>();
-        param.put("id", id);
+        param.put(ID_COLUMN, id);
         return jdbcTemplate.queryForObject(SELECT_DELIVERY_BY_ID, param, new DeliveryRowMapper());
     }
 
@@ -83,12 +91,12 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
         @Override
         public Delivery mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Delivery(
-                    rs.getInt("id"),
-                    rs.getInt("stock_id"),
-                    rs.getInt("quantity"),
-                    rs.getTimestamp("first_date"),
-                    rs.getBoolean("scheduled"),
-                    rs.getLong("time_interval"));
+                    rs.getInt(ID_COLUMN),
+                    rs.getInt(STOCK_ID_COLUMN),
+                    rs.getInt(QUANTITY_COLUMN),
+                    rs.getTimestamp(FIRST_DATE_COLUMN),
+                    rs.getBoolean(SCHEDULED_COLUMN),
+                    rs.getLong(TIME_INTERVAL_COLUMN));
         }
     }
 

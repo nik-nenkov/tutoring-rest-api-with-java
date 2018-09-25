@@ -1,10 +1,10 @@
 package com.epam.training.stock.service;
 
 import com.epam.training.MyThread;
+import com.epam.training.exception.StockAlreadyExistsException;
 import com.epam.training.stock.Stock;
 import com.epam.training.stock.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,14 +35,9 @@ public class StockService {
         return stockRepository.getStockById(id);
     }
 
-    public Stock createStock(int stockId, BigDecimal price, int quantity) throws Exception {
+    public Stock createStock(int stockId, BigDecimal price, int quantity) throws StockAlreadyExistsException {
         if (stockRepository.getStockByStockId(stockId) != null) {
-            throw new Exception() {
-                @Override
-                public String getMessage() {
-                    return "Stock with stockId=" + stockId + " already exists!";
-                }
-            };
+            throw new StockAlreadyExistsException(stockId);
         }
         int newStockId = stockRepository.insertNewStock(stockId, price, quantity);
         return readStock(newStockId);
