@@ -10,7 +10,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/demo_warehouse_db?useSSL=false
     username: root
-    password: abc.abc.123
+    password: '@Yyear7510'
     platform: mysql
     driver-class-name: com.mysql.jdbc.Driver
 
@@ -23,6 +23,6 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/test_warehouse_db?useSSL=false
     username: root
-    password: abc.abc.123
+    password: '@Yyear7510'
     platform: mysql
     driver-class-name: com.mysql.jdbc.Driver
