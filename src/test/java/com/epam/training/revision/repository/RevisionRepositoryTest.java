@@ -1,7 +1,8 @@
 package com.epam.training.revision.repository;
 
 import com.epam.training.DemoApplication;
-import com.epam.training.revision.Revision;
+import com.epam.training.dao.RevisionRepository;
+import com.epam.training.model.Revision;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

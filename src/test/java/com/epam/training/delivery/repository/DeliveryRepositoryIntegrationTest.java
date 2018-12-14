@@ -1,8 +1,9 @@
 package com.epam.training.delivery.repository;
 
+import com.epam.training.dao.DeliveryRepository;
 import com.epam.training.DemoApplication;
 import com.epam.training.RepositoryIntegrationTest;
-import com.epam.training.delivery.Delivery;
+import com.epam.training.model.Delivery;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

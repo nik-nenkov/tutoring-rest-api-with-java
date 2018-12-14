@@ -2,10 +2,11 @@ package com.epam.training.order.repository;
 
 
 import com.epam.training.DemoApplication;
+import com.epam.training.dao.OrderRepository;
 import com.epam.training.RepositoryIntegrationTest;
-import com.epam.training.order.Order;
-import com.epam.training.stock.Stock;
-import com.epam.training.stock.repository.StockRepository;
+import com.epam.training.model.Order;
+import com.epam.training.model.Stock;
+import com.epam.training.dao.StockRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

@@ -1,7 +1,8 @@
 package com.epam.training.stock.repository;
 
 import com.epam.training.DemoApplication;
-import com.epam.training.stock.Stock;
+import com.epam.training.dao.StockRepository;
+import com.epam.training.model.Stock;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;

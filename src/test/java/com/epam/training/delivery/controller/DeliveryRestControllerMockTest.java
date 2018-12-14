@@ -1,9 +1,10 @@
 package com.epam.training.delivery.controller;
 
-import com.epam.training.delivery.Delivery;
-import com.epam.training.delivery.repository.DeliveryRepository;
-import com.epam.training.delivery.service.DeliveryService;
-import com.epam.training.stock.repository.StockRepository;
+import com.epam.training.controller.DeliveryRestController;
+import com.epam.training.model.Delivery;
+import com.epam.training.dao.DeliveryRepository;
+import com.epam.training.service.DeliveryService;
+import com.epam.training.dao.StockRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;

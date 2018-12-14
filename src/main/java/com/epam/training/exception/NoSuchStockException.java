@@ -1,14 +1,15 @@
 package com.epam.training.exception;
 
 public class NoSuchStockException extends Exception {
-    private final int stockId;
 
-    public NoSuchStockException(int stockId) {
-        this.stockId = stockId;
-    }
+  private final int stockId;
 
-    @Override
-    public String getMessage() {
-        return "Could not find s stock with id=" + stockId;
-    }
+  public NoSuchStockException(int stockId) {
+    this.stockId = stockId;
+  }
+
+  @Override
+  public String getMessage() {
+    return "Could not find s stock with id=" + stockId;
+  }
 }

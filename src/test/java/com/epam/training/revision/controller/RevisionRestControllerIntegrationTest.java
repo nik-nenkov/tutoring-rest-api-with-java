@@ -2,9 +2,9 @@ package com.epam.training.revision.controller;
 
 import com.epam.training.DemoApplication;
 import com.epam.training.RepositoryIntegrationTest;
-import com.epam.training.order.repository.OrderRepository;
-import com.epam.training.revision.repository.RevisionRepository;
-import com.epam.training.stock.repository.StockRepository;
+import com.epam.training.dao.OrderRepository;
+import com.epam.training.dao.RevisionRepository;
+import com.epam.training.dao.StockRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

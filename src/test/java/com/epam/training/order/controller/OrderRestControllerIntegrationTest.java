@@ -2,7 +2,7 @@ package com.epam.training.order.controller;
 
 import com.epam.training.DemoApplication;
 import com.epam.training.RepositoryIntegrationTest;
-import com.epam.training.stock.repository.StockRepository;
+import com.epam.training.dao.StockRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

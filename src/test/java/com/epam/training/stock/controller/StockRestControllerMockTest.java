@@ -1,8 +1,9 @@
 package com.epam.training.stock.controller;
 
-import com.epam.training.stock.Stock;
-import com.epam.training.stock.repository.StockRepository;
-import com.epam.training.stock.service.StockService;
+import com.epam.training.controller.StockRestController;
+import com.epam.training.model.Stock;
+import com.epam.training.dao.StockRepository;
+import com.epam.training.service.StockService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
