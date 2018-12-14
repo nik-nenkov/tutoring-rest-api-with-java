@@ -35,7 +35,7 @@ public class OrderRestController {
   public Order createOrder(
       @RequestParam("stock_id") int stockId,
       @RequestParam("quantity") int quantity)
-      throws NoSuchStockException, QuantityExceedsStorageException {
+      throws Exception {
     return orderService.placeNewOrder(stockId, quantity);
   }
 }

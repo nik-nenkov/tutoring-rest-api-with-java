@@ -23,7 +23,7 @@ public class OrderService {
   }
 
   public Order placeNewOrder(int stockId, int quantity)
-      throws NoSuchStockException, QuantityExceedsStorageException {
+      throws QuantityExceedsStorageException, NoSuchStockException {
     Stock currentStock;
     currentStock = stockRepository.getStockByStockId(stockId);
     if (currentStock == null) {
