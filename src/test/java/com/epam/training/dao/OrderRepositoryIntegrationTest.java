@@ -1,4 +1,4 @@
-package com.epam.training.order.repository;
+package com.epam.training.dao;
 
 
 import com.epam.training.DemoApplication;

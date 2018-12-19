@@ -1,4 +1,4 @@
-package com.epam.training.delivery.controller;
+package com.epam.training.controller;
 
 import com.epam.training.controller.DeliveryRestController;
 import com.epam.training.model.Delivery;
@@ -48,9 +48,15 @@ public class DeliveryRestControllerMockTest {
 
     @Before
     public void setup() {
+        
         deliveryService = new DeliveryService(deliveryRepository, stockRepository);
+        
         deliveryRestController = new DeliveryRestController(deliveryService);
+        
+        
         JacksonTester.initFields(this, new ObjectMapper());
+        
+        
         mvc = MockMvcBuilders
                 .standaloneSetup(deliveryRestController)
                 .build();

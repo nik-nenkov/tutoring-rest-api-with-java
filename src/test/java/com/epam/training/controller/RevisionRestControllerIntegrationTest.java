@@ -1,4 +1,4 @@
-package com.epam.training.revision.controller;
+package com.epam.training.controller;
 
 import com.epam.training.DemoApplication;
 import com.epam.training.RepositoryIntegrationTest;

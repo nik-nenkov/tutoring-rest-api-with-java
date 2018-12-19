@@ -1,4 +1,4 @@
-package com.epam.training.stock.controller;
+package com.epam.training.controller;
 
 import com.epam.training.controller.StockRestController;
 import com.epam.training.model.Stock;

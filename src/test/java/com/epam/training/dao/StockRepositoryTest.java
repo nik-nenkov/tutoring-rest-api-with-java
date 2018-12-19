@@ -1,4 +1,4 @@
-package com.epam.training.stock.repository;
+package com.epam.training.dao;
 
 import com.epam.training.DemoApplication;
 import com.epam.training.dao.StockRepository;
