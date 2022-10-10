@@ -1,12 +1,6 @@
 package com.epam.training.dao;
 
 import com.epam.training.model.Stock;
-import java.math.BigDecimal;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,12 +10,18 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.sql.DataSource;
+import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
 @Repository
 @ComponentScan("com.epam.training.*")
 public class StockRepository extends NamedParameterJdbcDaoSupport {
 
-  private static final String SELECT_STOCK_BY_ID =
-      "SELECT * FROM stock WHERE id=:id";
+  private static final String SELECT_STOCK_BY_ID = "SELECT * FROM stock WHERE id=:id";
   private static final String SELECT_STOCK_BY_STOCK_ID =
       "SELECT * FROM stock WHERE stock_id=:stock_id";
   private static final String SELECT_LAST_INSERTED_STOCK =
@@ -44,16 +44,17 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
   public StockRepository(DataSource dataSource, NamedParameterJdbcTemplate jdbcTemplate) {
     setDataSource(dataSource);
     this.jdbcTemplate = jdbcTemplate;
-    simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
-        .withTableName(STOCK_TABLE)
-        .usingColumns(STOCK_ID_COLUMN, PRICE_COLUMN, QUANTITY_COLUMN)
-        .usingGeneratedKeyColumns(ID_COLUMN);
+    simpleJdbcInsert =
+        new SimpleJdbcInsert(dataSource)
+            .withTableName(STOCK_TABLE)
+            .usingColumns(STOCK_ID_COLUMN, PRICE_COLUMN, QUANTITY_COLUMN)
+            .usingGeneratedKeyColumns(ID_COLUMN);
   }
 
   @Transactional
   public Stock getLastInsertedStock() {
-    return jdbcTemplate
-        .queryForObject(SELECT_LAST_INSERTED_STOCK, new HashMap<>(), new StockRowMapper());
+    return jdbcTemplate.queryForObject(
+        SELECT_LAST_INSERTED_STOCK, new HashMap<>(), new StockRowMapper());
   }
 
   @Transactional
@@ -108,10 +109,7 @@ public class StockRepository extends NamedParameterJdbcDaoSupport {
     @Override
     public Stock mapRow(ResultSet rs, int rowNum) throws SQLException {
       return new Stock(
-          rs.getInt(STOCK_ID_COLUMN),
-          rs.getBigDecimal(PRICE_COLUMN),
-          rs.getInt(QUANTITY_COLUMN));
+          rs.getInt(STOCK_ID_COLUMN), rs.getBigDecimal(PRICE_COLUMN), rs.getInt(QUANTITY_COLUMN));
     }
   }
-
 }

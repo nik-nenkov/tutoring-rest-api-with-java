@@ -5,12 +5,7 @@ import com.epam.training.exception.QuantityExceedsStorageException;
 import com.epam.training.model.Order;
 import com.epam.training.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
@@ -23,19 +18,15 @@ public class OrderRestController {
     this.orderService = orderService;
   }
 
-  @GetMapping(value = "/show/{id}",
-      produces = "application/json")
-  public Order showOrder(
-      @PathVariable("id") int orderId) {
+  @GetMapping(value = "/show/{id}", produces = "application/json")
+  public Order showOrder(@PathVariable("id") int orderId) {
     return orderService.getInfoAboutOrder(orderId);
   }
 
-  @PostMapping(value = "/new",
-      produces = "application/json")
+  @PostMapping(value = "/new", produces = "application/json")
   public Order createOrder(
-      @RequestParam("stock_id") int stockId,
-      @RequestParam("quantity") int quantity)
-      throws Exception {
+      @RequestParam("stock_id") int stockId, @RequestParam("quantity") int quantity)
+      throws QuantityExceedsStorageException, NoSuchStockException {
     return orderService.placeNewOrder(stockId, quantity);
   }
 }

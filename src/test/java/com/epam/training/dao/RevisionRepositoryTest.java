@@ -1,9 +1,9 @@
 package com.epam.training.dao;
 
 import com.epam.training.DemoApplication;
-import com.epam.training.dao.RevisionRepository;
 import com.epam.training.model.Revision;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,30 +21,20 @@ import java.util.List;
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-        classes = DemoApplication.class,
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+    classes = DemoApplication.class,
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
 @Rollback
 public class RevisionRepositoryTest {
 
-    @Autowired
-    private RevisionRepository revisionRepository;
+  @Autowired private RevisionRepository revisionRepository;
 
-    @Test
-    public void getLastRevisionEntered() {
-    }
-
-    @Test
-    public void getRevisionsInTimeInterval() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        List<Revision> testData = revisionRepository.getRevisionsInTimeInterval(
-                new Timestamp(sdf.parse("1991-01-01").getTime()),
-                new Timestamp(new Date().getTime())
-        );
-        testData.forEach(System.out::println);
-    }
-
-    @Test
-    public void insertNewRevision() {
-    }
+  @Test
+  public void getRevisionsInTimeInterval() throws ParseException {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    List<Revision> testData =
+        revisionRepository.getRevisionsInTimeInterval(
+            new Timestamp(sdf.parse("1991-01-01").getTime()), new Timestamp(new Date().getTime()));
+    testData.forEach(Assertions::assertNotNull);
+  }
 }

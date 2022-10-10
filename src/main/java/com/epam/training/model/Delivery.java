@@ -1,8 +1,9 @@
 package com.epam.training.model;
 
-import java.sql.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor

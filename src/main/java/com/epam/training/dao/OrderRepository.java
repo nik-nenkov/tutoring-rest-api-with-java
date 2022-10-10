@@ -1,6 +1,13 @@
 package com.epam.training.dao;
 
 import com.epam.training.model.Order;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class OrderRepository extends NamedParameterJdbcDaoSupport {
@@ -28,8 +29,7 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
   private static final String SELECT_ORDER_BY_ID =
       "SELECT * FROM `order` WHERE order_id = :order_id";
 
-  private static final String SELECT_ORDERS_ALL_LIMIT_FIFTY =
-      "select * from `order` LIMIT 50";
+  private static final String SELECT_ORDERS_ALL_LIMIT_FIFTY = "select * from `order` LIMIT 50";
 
   private static final String SELECT_ORDERS_AFTER_UNIX_TIMESTAMP =
       "select * from `order` where order_timestamp>:starting_time";
@@ -58,10 +58,8 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
 
   @Transactional
   public List<Order> getLastOrdersLimitFifty() {
-    return Objects.requireNonNull(getNamedParameterJdbcTemplate()).query(
-        SELECT_ORDERS_ALL_LIMIT_FIFTY,
-        new OrderRowMapper()
-    );
+    return Objects.requireNonNull(getNamedParameterJdbcTemplate())
+        .query(SELECT_ORDERS_ALL_LIMIT_FIFTY, new OrderRowMapper());
   }
 
   @Transactional
@@ -70,9 +68,8 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
     Map<String, Object> params = new HashMap<>();
     params.put("starting_time", startingTime);
 
-    return Objects.requireNonNull(getNamedParameterJdbcTemplate()).query(
-        SELECT_ORDERS_AFTER_UNIX_TIMESTAMP,
-        params, new OrderRowMapper());
+    return Objects.requireNonNull(getNamedParameterJdbcTemplate())
+        .query(SELECT_ORDERS_AFTER_UNIX_TIMESTAMP, params, new OrderRowMapper());
   }
 
   @Transactional
@@ -80,9 +77,8 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
     Map<String, Object> params = new HashMap<>();
     params.put("start_time", start.toString());
     params.put("end_time", end.toString());
-    return Objects.requireNonNull(getNamedParameterJdbcTemplate()).query(
-        SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS,
-        params, new OrderRowMapper());
+    return Objects.requireNonNull(getNamedParameterJdbcTemplate())
+        .query(SELECT_ORDERS_BETWEEN_UNIX_TIMESTAMPS, params, new OrderRowMapper());
   }
 
   @Transactional
@@ -106,5 +102,4 @@ public class OrderRepository extends NamedParameterJdbcDaoSupport {
           rs.getTimestamp("order_timestamp"));
     }
   }
-
 }

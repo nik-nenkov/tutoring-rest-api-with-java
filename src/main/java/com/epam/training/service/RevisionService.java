@@ -4,6 +4,10 @@ import com.epam.training.dao.OrderRepository;
 import com.epam.training.dao.RevisionRepository;
 import com.epam.training.model.Order;
 import com.epam.training.model.Revision;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -11,9 +15,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RevisionService {
@@ -33,8 +34,8 @@ public class RevisionService {
 
     Timestamp timeNow = new Timestamp(System.currentTimeMillis());
 
-    List<Revision> revisionsInTimeInterval = revisionRepository
-        .getRevisionsInTimeInterval(startingTime, timeNow);
+    List<Revision> revisionsInTimeInterval =
+        revisionRepository.getRevisionsInTimeInterval(startingTime, timeNow);
 
     BigDecimal sumOfPrice = BigDecimal.ZERO;
     Integer sumQuantity = 0;
@@ -59,7 +60,6 @@ public class RevisionService {
     Timestamp endingTime = new Timestamp(endDate.getTime());
 
     return revisionFromToTimestamp(startingTime, endingTime);
-
   }
 
   @Transactional

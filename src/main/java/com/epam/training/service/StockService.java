@@ -4,25 +4,19 @@ import com.epam.training.config.MyThread;
 import com.epam.training.dao.StockRepository;
 import com.epam.training.exception.StockAlreadyExistsException;
 import com.epam.training.model.Stock;
-import java.math.BigDecimal;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 
 @Service
+@RequiredArgsConstructor
 public class StockService {
 
   private final StockRepository stockRepository;
-
   private final TaskExecutor taskExecutor;
-
-  @Autowired
-  public StockService(StockRepository stockRepository, TaskExecutor taskExecutor) {
-    this.stockRepository = stockRepository;
-    this.taskExecutor = taskExecutor;
-  }
 
   @Transactional
   public Stock increaseQuantityOfStock(final int stockId, final int quantity) {

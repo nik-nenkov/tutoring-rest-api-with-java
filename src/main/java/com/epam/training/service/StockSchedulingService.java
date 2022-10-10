@@ -19,7 +19,7 @@ public class StockSchedulingService {
     this.stockService = stockService;
   }
 
-  @Scheduled(fixedRate = INTERVAL)   //  1 minute == 60 000 milliseconds
+  @Scheduled(fixedRate = INTERVAL) //  1 minute == 60 000 milliseconds
   private void addSomeStocks() {
     // to maybe do : use a settings file from which to load the stocks and their amounts
     stockService.increaseQuantityOfStock(111, 20);
@@ -27,5 +27,4 @@ public class StockSchedulingService {
     stockService.increaseQuantityOfStock(345, 80);
     log.info("Stock with id=345 was increased by quantity=80");
   }
-
 }

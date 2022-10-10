@@ -1,13 +1,6 @@
 package com.epam.training.dao;
 
-
 import com.epam.training.model.Delivery;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
@@ -17,11 +10,17 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 @Repository
 public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
 
-  private static final String SELECT_DELIVERY_BY_ID =
-      "SELECT * FROM `delivery` WHERE `id` = :id";
+  private static final String SELECT_DELIVERY_BY_ID = "SELECT * FROM `delivery` WHERE `id` = :id";
 
   private static final String DELIVERY_TABLE = "delivery";
   private static final String ID_COLUMN = "id";
@@ -42,13 +41,14 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
     simpleJdbcInsert = new SimpleJdbcInsert(dataSource);
     simpleJdbcInsert.includeSynonymsForTableColumnMetaData();
     simpleJdbcInsert.withTableName(DELIVERY_TABLE);
-    simpleJdbcInsert.usingColumns(
-        STOCK_ID_COLUMN,
-        QUANTITY_COLUMN,
-        FIRST_DATE_COLUMN,
-        SCHEDULED_COLUMN,
-        TIME_INTERVAL_COLUMN
-    ).usingGeneratedKeyColumns("id");
+    simpleJdbcInsert
+        .usingColumns(
+            STOCK_ID_COLUMN,
+            QUANTITY_COLUMN,
+            FIRST_DATE_COLUMN,
+            SCHEDULED_COLUMN,
+            TIME_INTERVAL_COLUMN)
+        .usingGeneratedKeyColumns("id");
   }
 
   private Map<String, Object> deliveryMapper(Delivery delivery) {
@@ -99,5 +99,4 @@ public class DeliveryRepository extends NamedParameterJdbcDaoSupport {
           rs.getLong(TIME_INTERVAL_COLUMN));
     }
   }
-
 }

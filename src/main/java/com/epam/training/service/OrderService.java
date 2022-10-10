@@ -6,9 +6,10 @@ import com.epam.training.exception.NoSuchStockException;
 import com.epam.training.exception.QuantityExceedsStorageException;
 import com.epam.training.model.Order;
 import com.epam.training.model.Stock;
-import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 @Service
 public class OrderService {

@@ -2,27 +2,37 @@ spring:
   profiles.active: dev
 
 ---
-server:
-  tomcat:
-    max-threads: 8
-spring:
-  profiles: dev
-  datasource:
-    url: jdbc:mysql://localhost:3306/demo_warehouse_db?useSSL=false
-    username: root
-    password: '@Yyear7510'
-    platform: mysql
-    driver-class-name: com.mysql.jdbc.Driver
 
----
-server:
-  tomcat:
-    max-threads: 8
 spring:
-  profiles: test
   datasource:
-    url: jdbc:mysql://localhost:3306/test_warehouse_db?useSSL=false
+    url: jdbc:mysql://localhost:3306/warehouse_db?useSSL=false
+    username: root
+
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  sql:
+    init:
+      platform: mysql
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/warehouse_db?useSSL=false
     username: root
     password: '@Yyear7510'
-    platform: mysql
     driver-class-name: com.mysql.jdbc.Driver
+  sql:
+    init:
+      platform: mysql
+  config:
+    activate:
+      on-profile:
+server:
+  tomcat:
+    threads:
+      max: 8
