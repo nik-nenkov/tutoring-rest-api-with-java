@@ -24,14 +24,16 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/warehouse_db?useSSL=false
     username: root
-    password: '@Yyear7510'
     driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   sql:
     init:
       platform: mysql
   config:
     activate:
-      on-profile:
+      on-profile: test
 server:
   tomcat:
     threads:
